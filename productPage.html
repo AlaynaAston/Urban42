@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,24 +8,61 @@
     <link href="styles.css" rel="stylesheet">
     <script src="scripts.js" defer></script>
 </head>
+
 <body>
-    <h1>Hi-top Ultimate Trainer in Black</h1>
-    <section aria-label="Product Photos">
-        <div class="carousel" data-carousel>
+    <div id="product-details">
+        <div class="carousel" data-carousel aria-label="Product Photos">
             <button class="carousel-button prev" data-carousel-button="prev">&#60;</button>
             <button class="carousel-button next" data-carousel-button="next">&#62;</button>
             <ul data-slides>
+                <li class="slide">
+                    <img src="./hi top trainer front no bg.png" alt="Front of High Top Trainer">
+                </li>
                 <li class="slide" data-active>
-                    <img src="./hi top trainer front.png" alt="Front of High Top Trainer">
+                    <img src="./hi top trainer side no bg.png" alt="Side of High Top Trainer">
                 </li>
                 <li class="slide">
-                    <img src="./hi top trainer side.png" alt="Side of High Top Trainer">
-                </li>
-                <li class="slide">
-                    <img src="./Hi-top trainer back.png" alt="Back of High Top Trainer">
+                    <img src="./hi top trainer back no bg.png" alt="Back of High Top Trainer">
                 </li>
             </ul>
-        </section>
+        </div>
+        <div id="product-text">
+            <div id="product-title">
+                <p>Hi-top Ultimate Trainer in Black</p>
+            </div>
+            <div id="price">
+                <p>£42.99</p>
+            </div>
+            <div id="product-description">
+                <p>A sleek yet casual style trainer with a futurustic black design. Paired with comfortable cushioned
+                    soles, these trainers are perfect for everyday wear.</p>
+            </div>
+            <form>
+                <div id="inputSize">
+                    <label>Size: </label><br>
+                    <select name="sizes" class="sizes">
+                        <option value="" disabled selected>Select size: </option>
+                        <option value="3">3</option>
+                        <option value="3.5">3 1/2</option>
+                        <option value="4">4</option>
+                        <option value="4.5">4 1/2</option>
+                        <option value="5">5</option>
+                        <option value="5.5">5 1/2</option>
+                        <option value="6">6</option>
+                        <option value="6.5">6 1/2</option>
+                        <option value="7">7</option>
+                        <option value="7.5">7 1/2</option>
+                        <option value="8">8</option>
+                        <option value="8.5">8 1/2</option>
+                        <option value="9">9</option>
+                    </select>
+                </div>
+                <div class="checkout"><input type="submit" value="Add to Basket"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
+                 <div class="checkout"><input type="submit" value="Buy Now"></div> 
+            </form>
+        </div>
     </div>
+
 </body>
+
 </html>
