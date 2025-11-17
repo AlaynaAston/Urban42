@@ -26,3 +26,19 @@ buttonsArray.forEach(button => {
         delete activeSlide.dataset.active
     })
 });
+
+var materials = document.getElementById("materials");
+var fullDescription = document.getElementById("full-description");
+
+materials.addEventListener("click", ()=> {
+    if (fullDescription.hidden == true) {fullDescription.hidden = false;}
+    else {fullDescription.hidden = true;}
+});
+
+var returns = document.getElementById("returns");
+var returnPolicy = document.getElementById("return-policy");
+
+returns.addEventListener("click", ()=> {
+    if (returnPolicy.hidden == true) {returnPolicy.hidden = false;}
+    else {returnPolicy.hidden = true;}
+});

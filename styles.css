@@ -11,7 +11,6 @@ body {
     width: 50vw;
     height: 50vh;
     position: relative;
-    border: 1px solid black;
     padding-top: 5vw;
     margin-top: 5vw;
 }
@@ -80,7 +79,7 @@ active slides will be hidden. */
     font-size: 2.5vw;
 }
 
-#product-description {
+#short-description {
     font-size: 1.2vw;
     max-width: 30%;
 }
@@ -92,9 +91,18 @@ active slides will be hidden. */
     max-width: 100%;
     max-height: 50%;
     vertical-align: top;
-    border: 1px solid black;
 }
 
 .checkout {
     padding-top: 1rem;
+}
+
+#materials, #returns {
+    cursor: pointer;
+}
+
+#extra-details {
+    padding-top: 5rem;
+    padding-left: 1rem;
+    max-width: 40vw;
 }
