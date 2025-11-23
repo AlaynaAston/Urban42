@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Urban 42 About</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: #333;
+        }
+        header {
+            background: #f8f8f8;
+            padding: 20px;
+            border-bottom: 2px solid #5c4033;
+        }
+        .logo {
+            font-size: 36px;
+            font-weight: 900;
+            color: #5c4033;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 4px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        .image-box {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        .image-box img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border: 3px solid #5c4033;
+        }
+        .text-box {
+            padding: 40px;
+            border: 4px solid #5c4033;
+            border-radius: 20px;
+            background: linear-gradient(to bottom right, #fff 0%, #faf7f5 100%);
+        }
+        h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-family: 'Bebas Neue', sans-serif;
+            letter-spacing: 6px;
+            color: #5c4033;
+            font-weight: 400;
+        }
+        h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #5c4033;
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+        .line {
+            height: 3px;
+            background: linear-gradient(to right, #5c4033, #8b6f47);
+            margin: 20px 0;
+        }
+        p {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-weight: 400;
+            font-size: 15px;
+        }
+        .grey-section {
+            background: linear-gradient(to bottom, #f5f0eb 0%, #e8dfd5 100%);
+            padding: 50px 20px;
+            margin: 40px 0;
+        }
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+        .card {
+            background: white;
+            padding: 30px;
+            border: 3px solid #8b6f47;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            border-color: #5c4033;
+            box-shadow: 0 5px 15px rgba(92, 64, 51, 0.2);
+        }
+        .policy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+        .policy-box {
+            background: #faf7f5;
+            padding: 25px;
+            border-left: 5px solid #5c4033;
+        }
+        .black-section {
+            background: linear-gradient(135deg, #2c1810 0%, #5c4033 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        .button {
+            display: inline-block;
+            background: #8b6f47;
+            color: white;
+            padding: 15px 40px;
+            margin: 20px 10px;
+            text-decoration: none;
+            font-weight: 700;
+            border: 3px solid #5c4033;
+            transition: all 0.3s;
+            font-family: 'Oswald', sans-serif;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #5c4033;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">URBAN 42</div>
+    </header>
+
+    <div class="container">
+        <div class="about-grid">
+            <div class="image-box">
+                <img src="streetwear-photo.jpg" alt="street fashion">
+                <img src="urban42-logo.png" alt="Urban 42 logo">
+            </div>
+
+            <div class="text-box">
+                <h1>ABOUT US</h1>
+                <h2>MEET REAL STREETWEAR</h2>
+                <div class="line"></div>
+                <p>At urban 42 we redefine streetwear by combining bold urban style with a strong commitment to the environment. Our pieces are designed for those who want to stand out on the streets without compromising the planet.</p>
+                <p>We blend the edgy, vibrant energy of city life with eco-friendly practices, creating clothing that is both stylish and responsible. From sleek jackets to statement sneakers, our designs reflect the dynamic spirit of the streets.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="grey-section">
+        <div class="container">
+            <h2>OUR MISSION</h2>
+            <div class="line"></div>
+            <p>Our mission is to revolutionize urban fashion by proving that style and sustainability can coexist. We aim to create clothing that empowers individuals to express their unique identity while making conscious choices for the planet.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>OUR VALUES</h2>
+        <div class="line"></div>
+        <div class="cards">
+            <div class="card">
+                <h3>Sustainable Materials</h3>
+                <p>We use organic cotton, recycled polyester, and plant-based fabrics.</p>
+            </div>
+            <div class="card">
+                <h3>Fair Production</h3>
+                <p>Every factory partner is audited for fair wages and safe conditions.</p>
+            </div>
+            <div class="card">
+                <h3>Carbon Neutral</h3>
+                <p>Our entire supply chain is carbon neutral.</p>
+            </div>
+            <div class="card">
+                <h3>Quality First</h3>
+                <p>We create timeless pieces built to last.</p>
+            </div>
+            <div class="card">
+                <h3>Transparency</h3>
+                <p>Track your item from factory to doorstep.</p>
+            </div>
+            <div class="card">
+                <h3>Community Impact</h3>
+                <p>5% of profits support environmental projects.</p>
+            </div>
+        </div>
+
+        <h2 style="margin-top: 60px;">SHIPPING AND RETURNS</h2>
+        <div class="line"></div>
+        <div class="policy-grid">
+            <div class="policy-box">
+                <h3>Free Shipping</h3>
+                <p>Free shipping on UK orders over 50 pounds.</p>
+                <p>UK: 2-3 days | Europe: 4-6 days</p>
+            </div>
+            <div class="policy-box">
+                <h3>30-Day Returns</h3>
+                <p>Return any item within 30 days for a full refund.</p>
+                <p>Free return shipping in the UK.</p>
+            </div>
+            <div class="policy-box">
+                <h3>Eco Packaging</h3>
+                <p>100% recyclable and biodegradable packaging.</p>
+            </div>
+            <div class="policy-box">
+                <h3>Quality Guarantee</h3>
+                <p>2-year warranty on all products.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="black-section">
+        <h2>JOIN THE MOVEMENT</h2>
+        <p>Be part of the sustainable streetwear revolution</p>
+        <a href="#" class="button">SHOP COLLECTION</a>
+    </div>
+</body>
+</html>
