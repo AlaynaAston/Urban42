@@ -43,7 +43,7 @@
             <form>
                 <div id="inputSize">
                     <label>Size: </label><br>
-                    <select name="sizes" class="sizes">
+                    <select name="sizes" class="sizes" required>
                         <option value="" disabled selected>Select size: </option>
                         <option value="3">3</option>
                         <option value="3.5">3 1/2</option>
@@ -60,8 +60,13 @@
                         <option value="9">9</option>
                     </select>
                 </div>
+                <div id="inputQuantity">
+                    <label>Quantity: </label><br>
+                    <input type="number" min="1" value="1" name="quantity">
+                </div>
+                <input hidden value="5" name="productID">
                 <div class="checkout"><input type="submit" value="Add to Basket"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
-                 <div class="checkout"><input type="submit" value="Buy Now"></div> 
+                <!--<div class="checkout"><input type="submit" value="Buy Now"></div> -->
             </form>
         </div>
     </div>
