@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Your Basket — Urban 42</title>
+  <link rel="stylesheet" href="rahmanstyle.css">
+  <script defer src="basket.js"></script>
+</head>
+<body>
+
+<div class="navbar">
+  <div class="nav-left">
+    <div class="sidebar-icon">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="brand-logo">
+      <img src="urban42.png" alt="Urban 42 Logo">
+      <span>Urban 42</span>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <img src="ukflag.jpg" class="flag-icon">
+    <span>GBP £</span>
+    <a href="contact.html">Help</a>
+    <a href="login.html">Log in</a>
+
+    <form class="search-form">
+      <input type="text" placeholder="Search..." name="search">
+      <button type="submit">🔍</button>
+    </form>
+
+    <a href="basket.html">Cart</a>
+  </div>
+</div>
+
+<div class="container">
+  <h1>Your Basket</h1>
+
+  <div class="basket-item">
+    <span>Urban Hoodie <span class="price" data-price="29.99">£29.99</span></span>
+    <input class="qty" type="number" min="0" value="0">
+  </div>
+
+  <div class="basket-item">
+    <span>Graphic Tee <span class="price" data-price="19.99">£19.99</span></span>
+    <input class="qty" type="number" min="0" value="0">
+  </div>
+
+  <div class="basket-item">
+    <span>Joggers <span class="price" data-price="24.99">£24.99</span></span>
+    <input class="qty" type="number" min="0" value="0">
+  </div>
+
+  <div class="total-box">
+    Total: £<span id="total">0.00</span>
+  </div>
+
+  <button>Checkout</button>
+</div>
+
+</body>
+</html>
