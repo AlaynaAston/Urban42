@@ -3,25 +3,109 @@
 <head>
     <meta charset="UTF-8">
     <title>Urban 42 About</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@400;600;700;900&family=Oswald:wght@400;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             margin: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: Arial, sans-serif;
             color: #333;
+            background-color: #f9f9f9;
         }
+        
+        a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 40px;
+            background-color: #fff;
+            border-bottom: 1px solid #eee;
+            font-size: 14px;
+        }
+
+        .nav-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .sidebar-icon {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .sidebar-icon .bar {
+            width: 25px;
+            height: 3px;
+            background-color: #333;
+        }
+
+        .brand-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        .brand-logo img {
+            width: 40px;
+            height: auto;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .flag-icon {
+            width: 20px;
+            height: auto;
+        }
+
+        .search-form {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .search-form input {
+            padding: 8px 12px;
+            border: none;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .search-form button {
+            background-color: #222;
+            color: #fff;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+        }
+        
         header {
             background: #f8f8f8;
             padding: 20px;
-            border-bottom: 2px solid #5c4033;
+            border-bottom: 2px solid #2563eb;
         }
         .logo {
             font-size: 36px;
             font-weight: 900;
-            color: #5c4033;
-            font-family: 'Bebas Neue', sans-serif;
+            color: #333;
+            font-family: Arial, sans-serif;
             letter-spacing: 4px;
         }
         .container {
@@ -40,45 +124,74 @@
             flex-direction: column;
             gap: 15px;
         }
+        .logo-display {
+            width: 100%;
+            height: 380px;
+            border: 3px solid #2563eb;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        .logo-display::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml;utf8,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="20" height="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/><rect x="20" y="20" width="20" height="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/><rect x="40" y="40" width="20" height="20" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></svg>');
+            opacity: 0.3;
+        }
+        .logo-text {
+            font-family: Arial, sans-serif;
+            font-size: 80px;
+            color: white;
+            letter-spacing: 8px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            z-index: 1;
+        }
         .image-box img {
             width: 100%;
             height: 380px;
             object-fit: cover;
-            border: 3px solid #5c4033;
+            border: 3px solid #2563eb;
         }
         .text-box {
             padding: 40px;
-            border: 4px solid #5c4033;
+            border: 4px solid #2563eb;
             border-radius: 20px;
-            background: linear-gradient(to bottom right, #fff 0%, #faf7f5 100%);
+            background: linear-gradient(to bottom right, #fff 0%, #eff6ff 100%);
         }
         h1 {
-            font-size: 48px;
+            font-size: 42px;
             margin-bottom: 15px;
-            font-family: 'Bebas Neue', sans-serif;
-            letter-spacing: 6px;
-            color: #5c4033;
-            font-weight: 400;
+            font-family: Arial, sans-serif;
+            letter-spacing: 2px;
+            color: #333;
+            font-weight: 700;
         }
         h2 {
-            font-size: 36px;
+            font-size: 32px;
             margin-bottom: 20px;
-            color: #5c4033;
-            font-family: 'Oswald', sans-serif;
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-        }
-        h3 {
-            font-family: 'Oswald', sans-serif;
-            font-weight: 600;
-            font-size: 20px;
+            color: #333;
+            font-family: Arial, sans-serif;
+            font-weight: 700;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
+        h3 {
+            font-family: Arial, sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 0px;
+            color: #333;
+        }
         .line {
             height: 3px;
-            background: linear-gradient(to right, #5c4033, #8b6f47);
+            background: linear-gradient(to right, #2563eb, #3b82f6);
             margin: 20px 0;
         }
         p {
@@ -88,7 +201,7 @@
             font-size: 15px;
         }
         .grey-section {
-            background: linear-gradient(to bottom, #f5f0eb 0%, #e8dfd5 100%);
+            background: linear-gradient(to bottom, #eff6ff 0%, #dbeafe 100%);
             padding: 50px 20px;
             margin: 40px 0;
         }
@@ -101,14 +214,14 @@
         .card {
             background: white;
             padding: 30px;
-            border: 3px solid #8b6f47;
+            border: 3px solid #3b82f6;
             text-align: center;
             transition: transform 0.3s;
         }
         .card:hover {
             transform: translateY(-5px);
-            border-color: #5c4033;
-            box-shadow: 0 5px 15px rgba(92, 64, 51, 0.2);
+            border-color: #2563eb;
+            box-shadow: 0 5px 15px rgba(37, 99, 235, 0.2);
         }
         .policy-grid {
             display: grid;
@@ -117,38 +230,63 @@
             margin-top: 30px;
         }
         .policy-box {
-            background: #faf7f5;
+            background: #eff6ff;
             padding: 25px;
-            border-left: 5px solid #5c4033;
+            border-left: 5px solid #2563eb;
         }
         .black-section {
-            background: linear-gradient(135deg, #2c1810 0%, #5c4033 100%);
+            background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
             color: white;
             padding: 60px 20px;
             text-align: center;
         }
         .button {
             display: inline-block;
-            background: #8b6f47;
+            background: #3b82f6;
             color: white;
             padding: 15px 40px;
             margin: 20px 10px;
             text-decoration: none;
             font-weight: 700;
-            border: 3px solid #5c4033;
+            border: 3px solid #2563eb;
             transition: all 0.3s;
-            font-family: 'Oswald', sans-serif;
-            letter-spacing: 2px;
+            font-family: Arial, sans-serif;
+            letter-spacing: 1px;
             text-transform: uppercase;
-            font-size: 16px;
+            font-size: 14px;
         }
         .button:hover {
-            background: #5c4033;
+            background: #2563eb;
             transform: scale(1.05);
         }
     </style>
 </head>
 <body>
+    <div class="navbar">
+        <div class="nav-left">
+            <div class="sidebar-icon">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <div class="brand-logo">
+                <img src="urban42.png" alt="Urban 42 Logo">
+                <span>Urban 42</span>
+            </div>
+        </div>
+        <div class="nav-right">
+            <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
+            <span>GBP £</span>
+            <a href="#">Help</a>
+            <a href="#">Log in</a>
+            <form class="search-form">
+                <input type="text" placeholder="Search..." name="search">
+                <button type="submit">🔍</button>
+            </form>
+            <a href="#">Cart</a>
+        </div>
+    </div>
+
     <header>
         <div class="logo">URBAN 42</div>
     </header>
@@ -156,8 +294,7 @@
     <div class="container">
         <div class="about-grid">
             <div class="image-box">
-                <img src="streetwear-photo.jpg" alt="street fashion">
-                <img src="urban42-logo.png" alt="Urban 42 logo">
+                <img src="urban42.png" alt="Urban 42 logo">
             </div>
 
             <div class="text-box">
