@@ -1,0 +1,211 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #222;
+  margin-top: 30px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #fff;
+  border-bottom: 2px solid #030303;
+  font-size: 14px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.sidebar-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.brand-logo img {
+  width: 40px;
+  height: auto;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.flag-icon {
+  width: 20px;
+  height: auto;
+}
+
+.search-form {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-form input {
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-form button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+
+.wishlist-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.wishlist-card {
+  background-color: #fdfdfd;
+  border: 1px solid #eee;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wishlist-card p {
+  margin: 0;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.wishlist-card button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.wishlist-card button:hover {
+  background-color: #444;
+}
+
+.orders-section {
+  max-width: 1000px;
+  width: 100%;
+  margin: 40px auto;
+  padding: 40px;
+  border-radius: 20px;
+  border-style: solid;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  background-color: #fff;
+}
+
+.orders-section h1 {
+  font-size: 26px;
+  margin-bottom: 30px;
+  text-align: center;
+  color: #222;
+}
+
+.orders-section h2 {
+  font-size: 20px;
+  margin-top: 30px;
+  margin-bottom: 15px;
+  color: #222;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f2f2f2;
+}
+
+.return-form {
+  display: block;
+  margin-top: 20px;
+  font-size: 14px;
+  color: #333;
+}
+
+.return-form input,
+.return-form select,
+.return-form textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.return-form button {
+  margin-top: 25px;
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.return-form button:hover {
+  background-color: #444;
+}
