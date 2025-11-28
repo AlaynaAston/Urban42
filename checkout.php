@@ -40,14 +40,22 @@
   <!-- Order Summary -->
   <h2>Order Summary</h2>
   
-  <table border="1" cellpadding="5">
-      <tr>
-          <th>Product</th>
-          <th>Price</th>
-          <th>Quantity</th>
-          <th>Subtotal</th>
-      </tr>
-  </table>
+<form action="checkoutprocess.php" method="POST">
+
+    <label>Order ID</label>
+    <input type="number" name="orderID" required>
+
+    <label>Product ID</label>
+    <input type="number" name="productID" required>
+
+    <label>Quantity</label>
+    <input type="number" name="quantity" required>
+
+    <label>Item Price</label>
+    <input type="number" step="0.01" name="itemPrice" required>
+
+    <button type="submit">Add Purchase</button>
+</form>
 
   <!-- Footer Section -->
   <footer>
