@@ -2,6 +2,14 @@
     include('db.php');
     session_start();
 
+    $pid = $_GET['id'];
+    $sql = $db->prepare("
+    SELECT products.*
+    FROM products
+    WHERE products.productID = :pid");
+    $sql->execute([':pid'=>$pid]);
+    $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
+
     $_SESSION["userID"] = "1"; //some hard coding ill use for now until the user account functionality has been made
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) { 
         $user_id = $_SESSION['userID'];
@@ -13,6 +21,7 @@
          $stmt->execute([$user_id, $productID, $productQuantity, $productSize]);
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,6 +31,7 @@
     <link href="styles.css" rel="stylesheet">
     <link href="navbarstyling.css" rel="stylesheet">
     <script src="scripts.js" defer></script>
+    <script src="ajax.js" defer></script>
 </head>
 
 <body>
@@ -67,17 +77,16 @@
         </div>
         <div id="product-text">
             <div id="product-title">
-                <p>Hi-top Ultimate Trainer in Black</p>
+                <p><?php echo nl2br(htmlspecialchars($productDetails['name'])); ?></p>
             </div>
             <div id="price">
-                <p>£42.99</p>
+                <p><?php echo nl2br(htmlspecialchars($productDetails['price']));?></p>
             </div>
             <div id="stockCount">
                 <p>In Stock</p>
             </div>
             <div id="short-description">
-                <p>A sleek yet casual style trainer with a futuristic black design. Paired with comfortable cushioned
-                    soles, these trainers are perfect for everyday wear.</p>
+                <p><?php echo nl2br(htmlspecialchars($productDetails['description']));?></p>
             </div>
             <form method="POST">
                 <input type="hidden" name="submitted" value="1">
@@ -85,40 +94,28 @@
                     <label>Size: </label><br>
                     <select name="sizes" class="sizes" required>
                         <option value="" disabled selected>Select size: </option>
-                        <option value="3">3</option>
-                        <option value="3.5">3 1/2</option>
-                        <option value="4">4</option>
-                        <option value="4.5">4 1/2</option>
-                        <option value="5">5</option>
-                        <option value="5.5">5 1/2</option>
-                        <option value="6">6</option>
-                        <option value="6.5">6 1/2</option>
-                        <option value="7">7</option>
-                        <option value="7.5">7 1/2</option>
-                        <option value="8">8</option>
-                        <option value="8.5">8 1/2</option>
-                        <option value="9">9</option>
+                        <option value="XS">Extra Small</option>
+                        <option value="S">Small</option>
+                        <option value="M">Medium</option>
+                        <option value="L">Large</option>
+                        <option value="XL">Extra Large</option>
+                        <option value="XXL">XX-Large</option>
                     </select>
                 </div>
-                <div id="inputQuantity">
-                    <label>Quantity: </label><br>
-                    <input type="number" min="1" value="1" name="quantity">
+                <div id="inputQuantity" hidden>
+                    <input type="number" value="1" name="quantity">
                 </div>
-                <input hidden value="5" name="productID">
+                <input hidden value="<?php echo nl2br(htmlspecialchars($productDetails['productID']));?>" name="productID">
                 <div class="checkout"><input type="submit" value="Add to Basket"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
                 <!--<div class="checkout"><input type="submit" value="Buy Now"></div> -->
             </form>
         </div>
     </div>
     <div id="extra-details">
-        <p id="materials">Materials</p>
+        <p id="materials">More Information</p>
     <div id="full-description" hidden >
-        <ul>
-            <li>LINING: Fabric</li>
-            <li>UPPER: Suede </li>
-            <li>OUTER SOLE: Rubber</li>
-            <li>Product code: 23482518</li> <!--will use Product ID here-->
-        </ul>
+        <p><?php echo nl2br(htmlspecialchars($productDetails['material']));?></p>
+        <p>Product code: <?php echo nl2br(htmlspecialchars($productDetails['productID']));?></p>
     </div>
     <p id="returns">Return Policy</p>
     <div id="return-policy" hidden> 
