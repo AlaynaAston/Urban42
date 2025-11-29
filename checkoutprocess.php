@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     
     $stmt = $conn->prepare("
-        INSERT INTO purchases (orderID, productID, quantity, itemPrice, subtotal)
+        INSERT INTO purchasedItems (orderID, productID, quantity, itemPrice, subtotal)
         VALUES (?, ?, ?, ?, ?)
     ");
 
