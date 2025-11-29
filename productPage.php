@@ -1,5 +1,5 @@
 <?php 
-    include('db.php');
+    include('testdb.php');
     session_start();
 
     $pid = $_GET['id'];

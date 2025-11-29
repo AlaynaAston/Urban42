@@ -3,7 +3,7 @@
 //the prooductID is passed to the url of productPage.php. it wont work otherwise. 
 
 <?php
-require 'db.php';
+require 'testdb.php';
 
 $sql = "SELECT products.* FROM products";
 $products = $db->query($sql);
