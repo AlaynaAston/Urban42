@@ -123,6 +123,7 @@
 
   <!-- Footer Section -->
   <footer>
+    <a href="aboutus.php">About Us</a>
     <p>&copy; 2025 Urban 42 | All Rights Reserved</p>
   </footer>
 

@@ -40,24 +40,46 @@
   </div>
 
   <!-- Order Summary -->
-  <h2>Order Summary</h2>
-  
-<form action="checkoutprocess.php" method="POST">
+<div class="summary-container">
+    <h2>Order Summary</h2>
 
-    <label>Order ID</label>
-    <input type="number" name="orderID" required>
+    <table>
+        <thead>
+            <tr>
+                <th>Product ID</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Subtotal</th>
+            </tr>
+        </thead>
 
-    <label>Product ID</label>
-    <input type="number" name="productID" required>
+        <tbody>
+            <!-- Example row — these would be replaced dynamically with PHP -->
+            <tr>
+                <td>101</td>
+                <td>2</td>
+                <td>$15.00</td>
+                <td>$30.00</td>
+            </tr>
 
-    <label>Quantity</label>
-    <input type="number" name="quantity" required>
+            <tr>
+                <td>205</td>
+                <td>1</td>
+                <td>$40.00</td>
+                <td>$40.00</td>
+            </tr>
 
-    <label>Item Price</label>
-    <input type="number" step="0.01" name="itemPrice" required>
+            <tr class="total-row">
+                <td colspan="3">Total</td>
+                <td>$70.00</td>
+            </tr>
+        </tbody>
+    </table>
 
-    <button type="submit">Add Purchase</button>
-</form>
+    <form action="add_purchase.php" method="POST">
+        <button class="purchase-button" type="submit">Purchase</button>
+    </form>
+</div>
 
   <!-- Footer Section -->
   <footer>

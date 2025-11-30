@@ -1,12 +1,12 @@
 <?php 
-    include('testdb.php');
+    include('db.php');
     session_start();
 
     $pid = $_GET['id'];
     $sql = $db->prepare("
-    SELECT products.*
-    FROM products
-    WHERE products.productID = :pid");
+    SELECT Products.*
+    FROM Products
+    WHERE Products.productID = :pid");
     $sql->execute([':pid'=>$pid]);
     $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
 
@@ -50,13 +50,13 @@
   <div class="nav-right">
     <img src="ukflag.png" alt="UK Flag" class="flag-icon">
     <span>GBP £</span>
-    <a href="#">Help</a>
-    <a href="#">Log in</a>
+    <a href="ContactPage.php">Help</a>
+    <a href="login.html">Log in</a>
     <a><form class="search-form">
       <input type="text" placeholder="Search..." name="search">
       <button type="submit">🔍</button>
     </form></a>
-    <a href="#">Cart</a>
+    <a href="basket.html">Cart</a>
 
   
     </div>

@@ -1,5 +1,5 @@
 <?php
-include 'database file';
+include 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 

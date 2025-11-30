@@ -92,58 +92,67 @@ body {
 	
 
     /*Table*/
-    h2 {
-    font-family: Arial, sans-serif;
-    margin-bottom: 10px;
-  }
-
-  form {
+	
+    .summary-container {
+        max-width: 600px;
+        margin: auto;
         background: #fff;
-        padding: 25px 30px;
-        width: 350px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        padding: 25px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-radius: 10px;
     }
 
-    form label {
-        display: block;
-        margin-bottom: 6px;
-        font-weight: bold;
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
         color: #333;
     }
 
-    form input {
+    table {
         width: 100%;
-        padding: 10px;
-        margin-bottom: 18px;
-        border: 1px solid #ccc;
-        border-radius: 6px;
-        font-size: 15px;
-        transition: 0.2s;
+        border-collapse: collapse;
+        margin-bottom: 25px;
     }
 
-    form input:focus {
-        border-color: #007bff;
-        box-shadow: 0 0 5px rgba(0,123,255,0.4);
-        outline: none;
-    }
-
-    form button {
-        width: 100%;
-        background: #007bff;
-        color: white;
+    table th, table td {
         padding: 12px;
-        font-size: 16px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background: #222;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .total-row td {
+        font-weight: bold;
+        font-size: 1.1em;
+        background: #fafafa;
+    }
+
+    .purchase-button {
+        width: 100%;
+        padding: 15px;
+        background: #28a745;
         border: none;
-        border-radius: 6px;
+        color: white;
+        font-size: 18px;
+        border-radius: 8px;
         cursor: pointer;
-        transition: 0.2s;
+        transition: 0.3s;
     }
 
-    form button:hover {
-        background: #0056b3;
+    .purchase-button:hover {
+        background: #218838;
     }
-
   /* ---------------------------
    Footer
 ---------------------------- */
