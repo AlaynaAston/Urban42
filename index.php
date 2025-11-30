@@ -36,13 +36,13 @@
   <div class="nav-right">
     <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
     <span>GBP £</span>
-    <a href="#">Help</a>
-    <a href="#">Log in</a>
+    <a href="ContactPage.php">Help</a>
+    <a href="login.html">Log in</a>
     <a><form class="search-form">
       <input type="text" placeholder="Search..." name="search">
       <button type="submit">🔍</button>
     </form></a>
-    <a href="#">Cart</a>
+    <a href="basket.html">Cart</a>
     </div>
   </div>
  </body>
@@ -74,8 +74,8 @@
     </div>
 
     <div>
-      <a href="#">
-        <img src=>
+      <a href="productPage.php">
+        <img src="hi top trainer back no bg.png">
         <p>Shoes</p>
       </a>
       

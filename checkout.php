@@ -25,15 +25,15 @@
     <div class="nav-right">
       <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
       <span>GBP £</span>
-      <a href="#">Help</a>
-      <a href="#">Log in</a>
+      <a href="ContactPage">Help</a>
+      <a href="login.html">Log in</a>
 
       <form class="search-form">
         <input type="text" placeholder="Search..." name="search">
         <button type="submit">🔍</button>
       </form>
 
-      <a href="#">Cart</a>
+      <a href="basket.html">Cart</a>
     </div>
   </div>
 

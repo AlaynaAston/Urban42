@@ -17,7 +17,7 @@
         $productSize = $_POST['sizes'];
         $productQuantity = $_POST['quantity'];
         
-         $stmt = $db->prepare("INSERT INTO baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
+         $stmt = $db->prepare("INSERT INTO Baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
          $stmt->execute([$user_id, $productID, $productQuantity, $productSize]);
     }
 ?>
