@@ -1,12 +1,12 @@
 <?php 
-    include('testdb.php');
+    include('db.php');
     session_start();
 
     $pid = $_GET['id'];
     $sql = $db->prepare("
-    SELECT products.*
-    FROM products
-    WHERE products.productID = :pid");
+    SELECT Products.*
+    FROM Products
+    WHERE Products.productID = :pid");
     $sql->execute([':pid'=>$pid]);
     $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
 
@@ -17,11 +17,10 @@
         $productSize = $_POST['sizes'];
         $productQuantity = $_POST['quantity'];
         
-         $stmt = $db->prepare("INSERT INTO baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
+         $stmt = $db->prepare("INSERT INTO Baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
          $stmt->execute([$user_id, $productID, $productQuantity, $productSize]);
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,12 +48,12 @@
   </div>
   <div class="nav-right">
     <img src="ukflag.png" alt="UK Flag" class="flag-icon">
-    <span>GBP £</span>
+    <span>GBP Â£</span>
     <a href="#">Help</a>
     <a href="#">Log in</a>
     <a><form class="search-form">
       <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔍</button>
+      <button type="submit">ðŸ”?</button>
     </form></a>
     <a href="#">Cart</a>
     </div>
