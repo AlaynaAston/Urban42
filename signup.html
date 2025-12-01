@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Sign Up — Urban 42</title>
+  <link rel="stylesheet" href="rahmanstyle.css">
+</head>
+<body>
+
+<div class="navbar">
+  <div class="nav-left">
+    <div class="sidebar-icon">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="brand-logo">
+      <img src="urban42.png" alt="Urban 42 Logo">
+      <span>Urban 42</span>
+    </div>
+  </div>
+
+  <div class="nav-right">
+    <img src="ukflag.jpg" class="flag-icon">
+    <span>GBP £</span>
+    <a href="ContactPage.php">Help</a>
+    <a href="login.html">Log in</a>
+
+    <form class="search-form">
+      <input type="text" placeholder="Search..." name="search">
+      <button type="submit">🔍</button>
+    </form>
+
+    <a href="basket.html">Cart</a>
+
+   
+  </div>
+</div>
+
+<div class="container">
+  <h1>Create Account</h1>
+
+  <form>
+
+    <select required>
+      <option value="">Title</option>
+      <option>Mr</option>
+      <option>Ms</option>
+      <option>Mrs</option>
+      <option>Other</option>
+    </select>
+
+    <input type="text" placeholder="First Name" required>
+    <input type="text" placeholder="Last Name" required>
+    <input type="email" placeholder="Email" required>
+    <input type="password" placeholder="Password" minlength="8" required>
+    <input type="password" placeholder="Repeat Password" minlength="8" required>
+    <input type="date" required>
+
+    <input type="tel" placeholder="Mobile Number" required>
+
+    <div class="checkbox-row">
+      <input type="checkbox" id="tos" required>
+      <label for="tos">I agree to the Terms</label>
+    </div>
+
+    <button type="submit">Create Account</button>
+  </form>
+
+</div>
+
+</body>
+</html>

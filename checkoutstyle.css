@@ -1,0 +1,183 @@
+body {
+	  margin: 0;
+	  font-family: 'Segoe UI', sans-serif;
+	  background-color: #f9f9f9;
+	}
+	a {
+	  color: #333;
+	  text-decoration: none;
+	}
+
+	a:hover {
+	  text-decoration: underline;
+	}
+
+	/*Maida's nav */
+	.navbar {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  padding: 15px 40px;
+	  background-color: #fff;
+	  border-bottom: 1px solid #eee;
+	  font-size: 14px;
+	}
+
+	.nav-left {
+	  display: flex;
+	  align-items: center;
+	  gap: 20px;
+	}
+
+	.sidebar-icon {
+	  display: flex;
+	  flex-direction: column;
+	  gap: 5px;
+	  cursor: pointer;
+	}
+
+	.sidebar-icon .bar {
+	  width: 25px;
+	  height: 3px;
+	  background-color: #333;
+	}
+
+	.brand-logo {
+	  display: flex;
+	  align-items: center;
+	  gap: 10px;
+	  font-size: 18px;
+	  font-weight: bold;
+	  color: #222;
+	}
+
+	.brand-logo img {
+	  width: 40px;
+	  height: auto;
+	}
+
+	.nav-right {
+	  display: flex;
+	  align-items: center;
+	  gap: 20px;
+	}
+
+	.flag-icon {
+	  width: 20px;
+	  height: auto;
+	}
+
+	.search-form {
+	  display: flex;
+	  border: 1px solid #ccc;
+	  border-radius: 4px;
+	  overflow: hidden;
+	}
+
+	.search-form input {
+	  padding: 8px 12px;
+	  border: none;
+	  outline: none;
+	  font-size: 14px;
+	}
+
+	.search-form button {
+	  background-color: #222;
+	  color: #fff;
+	  border: none;
+	  padding: 8px 12px;
+	  cursor: pointer;
+	}
+
+	
+
+    /*Table*/
+	
+    .summary-container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 25px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        border-radius: 10px;
+    }
+
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-bottom: 25px;
+    }
+
+    table th, table td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    table th {
+        background: #222;
+        color: #fff;
+        font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    table tr:last-child td {
+        border-bottom: none;
+    }
+
+    .total-row td {
+        font-weight: bold;
+        font-size: 1.1em;
+        background: #fafafa;
+    }
+
+    .purchase-button {
+        width: 100%;
+        padding: 15px;
+        background: #28a745;
+        border: none;
+        color: white;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .purchase-button:hover {
+        background: #218838;
+    }
+  /* ---------------------------
+   Footer
+---------------------------- */
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background: #111;
+  color: #fff;
+  margin-top: 40px;
+  font-size: 0.95rem;
+}
+
+/* ---------------------------
+   Responsive Design
+---------------------------- */
+
+@media (max-width: 768px) {
+  section div {
+    width: 45%;
+  }
+}
+
+@media (max-width: 480px) {
+  section div {
+    width: 90%;
+  }
+}

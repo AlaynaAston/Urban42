@@ -21,6 +21,7 @@
          $stmt->execute([$user_id, $productID, $productQuantity, $productSize]);
     }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,14 +49,16 @@
   </div>
   <div class="nav-right">
     <img src="ukflag.png" alt="UK Flag" class="flag-icon">
-    <span>GBP Â£</span>
-    <a href="#">Help</a>
-    <a href="#">Log in</a>
+    <span>GBP £</span>
+    <a href="ContactPage.php">Help</a>
+    <a href="login.html">Log in</a>
     <a><form class="search-form">
       <input type="text" placeholder="Search..." name="search">
-      <button type="submit">ðŸ”?</button>
+      <button type="submit">🔍</button>
     </form></a>
-    <a href="#">Cart</a>
+    <a href="basket.html">Cart</a>
+
+  
     </div>
   </div>
     <div id="product-details">

@@ -1,0 +1,214 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2, h3 {
+  color: #222;
+  margin-top: 30px;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: #fff;
+  border-bottom: 2px solid #030303;
+  font-size: 14px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.sidebar-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #222;
+}
+
+.brand-logo img {
+  width: 40px;
+  height: auto;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.flag-icon {
+  width: 20px;
+  height: auto;
+}
+
+.search-form {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-form input {
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-form button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  padding: 40px;
+  max-width: 1200px;
+  margin: auto;
+  gap: 40px;
+}
+
+.logo-section {
+  flex: 1;
+}
+
+.logo-section img {
+  max-width: 300px;
+  margin-bottom: 40px;
+  border-style: solid;
+  border-radius: 20px;
+}
+
+.contact-info {
+  font-size: 14px;
+}
+
+.contact-info b {
+  display: block;
+  margin-top: 10px;
+}
+
+.contact-form {
+  width: 90%;
+  margin: 2px; 
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  border-style: solid;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.contact-form h2 {
+  margin-top: 0;
+  font-size: 24px;
+  padding: 7px;
+  border-style: solid;
+  border-radius: 8px;
+}
+
+.contact-form p {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.contact-form textarea {
+  resize: vertical;
+  height: 120px;
+}
+
+.contact-form button {
+  background-color: #222;
+  color: #fff;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.contact-form button:hover {
+  background-color: #444;
+}
+
+.faq {
+  font-size: 13px;
+  color: #777;
+  margin-top: 20px;
+}
+
+.faq-section {
+  width: 90%;
+  margin: -30px auto;
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  border-style: solid;
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+.faq-section h2 {
+  font-size: 22px;
+  margin-bottom: 30px;
+  margin-top: 5px;
+}
+
+.faq-section h3 {
+  font-size: 16px;
+  margin-top: 20px;
+  color: #222;
+}
+
+.faq-section p {
+  font-size: 14px;
+  color: #555;
+}

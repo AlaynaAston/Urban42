@@ -1,0 +1,234 @@
+/* ============================== */
+/* ROOT VARIABLES – USED EVERYWHERE */
+/* ============================== */
+:root {
+  --primary: #2196F3;
+  --primary-dark: #1976D2;
+  --bg: #f5f7fa;
+  --card-bg: #ffffff;
+  --radius: 10px;
+  --shadow: 0 4px 10px rgba(0,0,0,0.15);
+  --transition: 0.25s ease;
+  --text: #333;
+  --nav-bg: #ffffff;
+}
+
+/* ============================== */
+/* GLOBAL PAGE STYLES (ALL PAGES) */
+/* Used by: login, signup, basket */
+/* ============================== */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* ============================== */
+/* NAVBAR STYLES (ALL PAGES)      */
+/* ============================== */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: var(--nav-bg);
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.sidebar-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.sidebar-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.brand-logo img {
+  width: 40px;
+  height: auto;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.flag-icon {
+  width: 20px;
+  height: auto;
+}
+
+.search-form {
+  display: flex;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-form input {
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-form button {
+  background-color: #222;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
+
+/* ============================== */
+/* MAIN CONTAINER (LOGIN & SIGNUP) */
+/* ============================== */
+.container {
+  max-width: 420px;
+  background: var(--card-bg);
+  margin: 50px auto;
+  padding: 24px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  color: var(--text);
+}
+
+/* ============================== */
+/* INPUTS & DROPDOWNS (LOGIN & SIGNUP) */
+/* ============================== */
+input:not([type="checkbox"]),
+select {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 18px;
+  border: 1px solid #ccc;
+  border-radius: var(--radius);
+  font-size: 15px;
+  transition: var(--transition);
+  box-sizing: border-box;
+}
+
+input:not([type="checkbox"]):focus,
+select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 4px rgba(33,150,243,0.5);
+  outline: none;
+}
+
+/* ============================== */
+/* CHECKBOX ROWS */
+/* Used in: Login (remember me) & Signup (terms) */
+/* ============================== */
+.remember-wrapper,
+.checkbox-row {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 8px;
+  margin: 10px 0;
+  padding: 0;
+  white-space: nowrap;
+
+  background: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.remember-wrapper *:focus,
+.checkbox-row *:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.remember-wrapper input[type="checkbox"],
+.checkbox-row input[type="checkbox"] {
+  margin: 0;
+  transform: scale(1.2); 
+}
+
+/* ============================== */
+/* BUTTON STYLES (ALL PAGES) */
+/* ============================== */
+button {
+  width: 100%;
+  padding: 14px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 17px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: var(--transition);
+}
+
+button:hover {
+  background: var(--primary-dark);
+}
+
+/* ============================== */
+/* BASKET PAGE STYLES (basket.html) */
+/* ============================== */
+.basket-item {
+  display: flex;
+  justify-content: space-between;
+  background: #fafafa;
+  border-radius: var(--radius);
+  padding: 14px;
+  margin-bottom: 16px;
+  border: 1px solid #e5e5e5;
+}
+
+.price {
+  font-weight: bold;
+  margin-left: 8px;
+}
+
+.qty {
+  width: 60px;
+  text-align: center;
+}
+
+.total-box {
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
