@@ -1,0 +1,212 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: Inter, sans-serif;
+    background: #f8fafc;
+    color: #1e293b;
+}
+
+.container { max-width: 1100px; margin: auto; padding: 1.5rem; }
+
+.topbar {
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.topbar-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+.logo {
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'Inter', sans-serif;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav a {
+    margin: 0 1rem;
+    color: #475569;
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+.nav a:hover {
+    color: #1e293b;
+}
+
+.actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn {
+    padding: 0.45rem 0.9rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+}
+
+.btn.primary {
+    background: #111827;
+    color: white;
+}
+
+.btn.outline {
+    border: 1px solid #111827;
+    color: #111827;
+    background: transparent;
+}
+
+.btn.small {
+    padding: 0.35rem 0.7rem;
+}
+
+.product-wrapper { margin-top: 2rem; }
+
+.product-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.image-box {
+    width: 100%;
+    max-width: 500px;
+    height: 400px;
+    background: #e2e8f0;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.image-box img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.thumb-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.thumb-row img {
+    width: 70px;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-title {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.price {
+    font-weight: 700;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.description {
+    margin-bottom: 1.2rem;
+    line-height: 1.5;
+}
+
+.stock {
+    margin-bottom: 1.2rem;
+    font-weight: 600;
+}
+
+.in-stock { color: #059669; }
+
+.footer {
+    margin-top: 3rem;
+    background: #f1f5f9;
+    padding: 2rem 0;
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-col h4 { margin-bottom: 0.6rem; }
+
+.footer-col a {
+    display: block;
+    margin-bottom: 0.3rem;
+    color: #475569;
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #cbd5e1;
+    font-size: 0.85rem;
+}
+
+.size-chart-wrapper {
+    margin-top: 2rem;
+    background: white;
+    padding: 2rem;
+    border-radius: 16px;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+}
+
+.size-chart-wrapper h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.size-chart-subtitle {
+    font-size: 1rem;
+    margin-bottom: 1.2rem;
+    color: #475569;
+}
+
+.size-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    border: 1px solid #cbd5e1;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.size-table th,
+.size-table td {
+    padding: 0.9rem;
+    text-align: center;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.size-table th {
+    background: #f1f5f9;
+    font-weight: 700;
+}
+
+.size-table tr:last-child td {
+    border-bottom: none;
+}
+
+.measure-note {
+    margin-top: 1.2rem;
+    font-size: 0.95rem;
+    color: #475569;
+    line-height: 1.5;
+}
