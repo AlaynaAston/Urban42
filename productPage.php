@@ -1,27 +1,3 @@
-<?php 
-    include('db.php');
-    session_start();
-
-    $pid = $_GET['id'];
-    $sql = $db->prepare("
-    SELECT Products.*
-    FROM Products
-    WHERE Products.productID = :pid");
-    $sql->execute([':pid'=>$pid]);
-    $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
-
-    $_SESSION["userID"] = "1"; //some hard coding ill use for now until the user account functionality has been made
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) { 
-        $user_id = $_SESSION['userID'];
-        $productID = $_POST['productID'];
-        $productSize = $_POST['sizes'];
-        $productQuantity = $_POST['quantity'];
-        
-         $stmt = $db->prepare("INSERT INTO Baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
-         $stmt->execute([$user_id, $productID, $productQuantity, $productSize]);
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,16 +25,14 @@
   </div>
   <div class="nav-right">
     <img src="ukflag.png" alt="UK Flag" class="flag-icon">
-    <span>GBP £</span>
-    <a href="ContactPage.php">Help</a>
-    <a href="login.html">Log in</a>
+    <span>GBP Â£</span>
+    <a href="#">Help</a>
+    <a href="#">Log in</a>
     <a><form class="search-form">
       <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔍</button>
+      <button type="submit">ðŸ”?</button>
     </form></a>
-    <a href="basket.html">Cart</a>
-
-  
+    <a href="#">Cart</a>
     </div>
   </div>
     <div id="product-details">
@@ -79,16 +53,17 @@
         </div>
         <div id="product-text">
             <div id="product-title">
-                <p><?php echo nl2br(htmlspecialchars($productDetails['name'])); ?></p>
+                <p>Hi-top Ultimate Trainer in Black</p>
             </div>
             <div id="price">
-                <p><?php echo nl2br(htmlspecialchars($productDetails['price']));?></p>
+                <p>£24.99</p>
             </div>
             <div id="stockCount">
                 <p>In Stock</p>
             </div>
             <div id="short-description">
-                <p><?php echo nl2br(htmlspecialchars($productDetails['description']));?></p>
+                <p>A sleek yet casual style trainer with a futurustic black design. Paired with comfortable cushioned
+                    soles, these trainers are perfect for everyday wear.</p>
             </div>
             <form method="POST">
                 <input type="hidden" name="submitted" value="1">
@@ -116,8 +91,12 @@
     <div id="extra-details">
         <p id="materials">More Information</p>
     <div id="full-description" hidden >
-        <p><?php echo nl2br(htmlspecialchars($productDetails['material']));?></p>
-        <p>Product code: <?php echo nl2br(htmlspecialchars($productDetails['productID']));?></p>
+        <ul>
+            <li>LINING: Fabric</li>
+            <li>UPPER: Suede </li>
+            <li>OUTER SOLE: Rubber</li>
+            <li>Product code: 23482518</li> <!--will use Product ID here-->
+        </ul>
     </div>
     <p id="returns">Return Policy</p>
     <div id="return-policy" hidden> 
