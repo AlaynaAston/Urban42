@@ -3,7 +3,7 @@
     session_start();
 
     $pid = $_GET['id'];
-    $sql = $kayo->prepare("
+    $sql = $db->prepare("
     SELECT Products.*
     FROM Products
     WHERE Products.productID = :pid");
@@ -17,7 +17,7 @@
         $productSize = $_POST['sizes'];
         $productQuantity = $_POST['quantity'];
         
-         $stmt = $kayo->prepare("INSERT INTO Baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
+         $stmt = $db->prepare("INSERT INTO Baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
          $stmt->execute([$user_id, $productID, $productQuantity, $productSize]);
     }
 ?>
