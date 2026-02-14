@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Your Basket — Urban 42</title>
   <link rel="stylesheet" href="rahmanstyle.css">
   <script defer src="basket.js"></script>
+  <script defer src="chatbox.js"></script>
 </head>
 <body>
 
@@ -24,14 +26,8 @@
   <div class="nav-right">
     <img src="ukflag.jpg" class="flag-icon">
     <span>GBP £</span>
-    <a href="contact.html">Help</a>
+    <a href="ContactPage.php">Help</a>
     <a href="login.html">Log in</a>
-
-    <form class="search-form">
-      <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔍</button>
-    </form>
-
     <a href="basket.html">Cart</a>
   </div>
 </div>
@@ -58,7 +54,22 @@
     Total: £<span id="total">0.00</span>
   </div>
 
-  <button>Checkout</button>
+  <button onclick="proceedToCheckout()">Proceed to Checkout</button>
+</div>
+
+<!-- Chatbox -->
+<div class="chat-toggle" onclick="toggleChat()">💬</div>
+
+<div class="chatbox" id="chatbox">
+  <div class="chat-header">
+    Urban 42 Support
+    <span onclick="toggleChat()">✕</span>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Ask us something...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
 </div>
 
 </body>

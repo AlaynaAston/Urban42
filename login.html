@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Log In — Urban 42</title>
   <link rel="stylesheet" href="rahmanstyle.css">
+  <script defer src="chatbox.js"></script>
 </head>
 <body>
 
@@ -13,7 +15,6 @@
       <span class="bar"></span>
       <span class="bar"></span>
     </div>
-
     <div class="brand-logo">
       <img src="urban42.png" alt="Urban 42 Logo">
       <span>Urban 42</span>
@@ -23,14 +24,7 @@
   <div class="nav-right">
     <img src="ukflag.jpg" class="flag-icon">
     <span>GBP £</span>
-    <a href="contact.html">Help</a>
-    <a href="login.html">Log in</a>
-
-    <form class="search-form">
-      <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔍</button>
-    </form>
-
+    <a href="ContactPage.php">Help</a>
     <a href="basket.html">Cart</a>
   </div>
 </div>
@@ -38,8 +32,8 @@
 <div class="container">
   <h1>Log In</h1>
 
-  <form>
-    <input type="email" placeholder="Email" required>
+  <form id="loginForm">
+    <input type="email" placeholder="Email address" required>
     <input type="password" placeholder="Password" required>
 
     <div class="remember-wrapper">
@@ -49,14 +43,47 @@
       </label>
     </div>
 
-<!-- Whoever does database redirect to whatever -->
     <button type="submit">Log In</button>
   </form>
 
   <p style="text-align:center; margin-top:15px;">
-    Don't have an account?
-    <a href="signup.html">Sign up</a>
+    New here? <a href="signup.html">Create an account</a>
   </p>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const email = this.querySelector("input[type='email']").value.trim();
+  const password = this.querySelector("input[type='password']").value;
+
+  if (!email.includes("@")) {
+    alert("Please enter a valid email address.");
+    return;
+  }
+
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters.");
+    return;
+  }
+
+  alert("Login validation complete (demo mode).");
+});
+</script>
+
+<!-- Chatbox -->
+<div class="chat-toggle" onclick="toggleChat()">💬</div>
+<div class="chatbox" id="chatbox">
+  <div class="chat-header">
+    Urban 42 Support
+    <span onclick="toggleChat()">✕</span>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Ask us something...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
 </div>
 
 </body>

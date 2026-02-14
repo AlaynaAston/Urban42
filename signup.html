@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Sign Up — Urban 42</title>
+  <meta charset="UTF-8">
+  <title>Create Account — Urban 42</title>
   <link rel="stylesheet" href="rahmanstyle.css">
+  <script defer src="chatbox.js"></script>
 </head>
 <body>
 
@@ -13,7 +15,6 @@
       <span class="bar"></span>
       <span class="bar"></span>
     </div>
-
     <div class="brand-logo">
       <img src="urban42.png" alt="Urban 42 Logo">
       <span>Urban 42</span>
@@ -23,14 +24,6 @@
   <div class="nav-right">
     <img src="ukflag.jpg" class="flag-icon">
     <span>GBP £</span>
-    <a href="contact.html">Help</a>
-    <a href="login.html">Log in</a>
-
-    <form class="search-form">
-      <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔍</button>
-    </form>
-
     <a href="basket.html">Cart</a>
   </div>
 </div>
@@ -38,8 +31,7 @@
 <div class="container">
   <h1>Create Account</h1>
 
-  <form>
-
+  <form id="signupForm">
     <select required>
       <option value="">Title</option>
       <option>Mr</option>
@@ -48,23 +40,49 @@
       <option>Other</option>
     </select>
 
-    <input type="text" placeholder="First Name" required>
-    <input type="text" placeholder="Last Name" required>
-    <input type="email" placeholder="Email" required>
-    <input type="password" placeholder="Password" minlength="8" required>
-    <input type="password" placeholder="Repeat Password" minlength="8" required>
+    <input type="text" placeholder="First name" required>
+    <input type="text" placeholder="Last name" required>
+    <input type="email" placeholder="Email address" required>
+    <input type="password" placeholder="Password (min 8 characters)" minlength="8" required>
+    <input type="password" placeholder="Confirm password" minlength="8" required>
     <input type="date" required>
-
-    <input type="tel" placeholder="Mobile Number" required>
+    <input type="tel" placeholder="Mobile number" required>
 
     <div class="checkbox-row">
       <input type="checkbox" id="tos" required>
-      <label for="tos">I agree to the Terms</label>
+      <label for="tos">I agree to the Terms & Conditions</label>
     </div>
 
     <button type="submit">Create Account</button>
   </form>
+</div>
 
+<script>
+document.getElementById("signupForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const passwords = this.querySelectorAll("input[type='password']");
+  if (passwords[0].value !== passwords[1].value) {
+    alert("Passwords do not match.");
+    return;
+  }
+
+  alert("Account created (demo mode).");
+});
+</script>
+
+<!-- Chatbox -->
+<div class="chat-toggle" onclick="toggleChat()">💬</div>
+<div class="chatbox" id="chatbox">
+  <div class="chat-header">
+    Urban 42 Support
+    <span onclick="toggleChat()">✕</span>
+  </div>
+  <div class="chat-messages" id="chatMessages"></div>
+  <div class="chat-input-area">
+    <input type="text" id="chatInput" placeholder="Ask us something...">
+    <button onclick="sendMessage()">Send</button>
+  </div>
 </div>
 
 </body>

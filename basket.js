@@ -4,7 +4,7 @@ window.onload = function () {
   updateTotal();
 };
 
-// Save quantities to localStorage
+// Save quantities
 function saveBasket() {
   let basket = [];
 
@@ -20,13 +20,12 @@ function saveBasket() {
     });
   });
 
-  localStorage.setItem("basket", JSON.stringify(basket));
+  localStorage.setItem("urban42_basket", JSON.stringify(basket));
 }
 
-// Load basket from localStorage
+// Load basket
 function loadBasket() {
-  const savedBasket = JSON.parse(localStorage.getItem("basket"));
-
+  const savedBasket = JSON.parse(localStorage.getItem("urban42_basket"));
   if (!savedBasket) return;
 
   const items = document.querySelectorAll(".basket-item");
@@ -38,24 +37,31 @@ function loadBasket() {
   });
 }
 
-// Update total price
+// Update total
 function updateTotal() {
   let total = 0;
 
   document.querySelectorAll(".basket-item").forEach(item => {
     const price = parseFloat(item.querySelector(".price").dataset.price);
     const qty = parseInt(item.querySelector(".qty").value) || 0;
-
     total += price * qty;
   });
 
   document.getElementById("total").innerText = total.toFixed(2);
-
-  // Save every time it updates
   saveBasket();
 }
 
-// Listen for quantity changes
+function proceedToCheckout() {
+  let total = parseFloat(document.getElementById("total").innerText);
+
+  if (total === 0) {
+    alert("Your basket is currently empty.");
+  } else {
+    window.location.href = "checkout.php";
+  }
+}
+
+// Listen for quantity change
 document.querySelectorAll(".qty").forEach(qtyInput => {
   qtyInput.addEventListener("input", updateTotal);
 });
