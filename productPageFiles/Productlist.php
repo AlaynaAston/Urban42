@@ -33,14 +33,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) {
     $image3Type = $_FILES['image3']['type'];
 
     
-    $stmt = $db->prepare('SELECT name FROM products WHERE name = ?');
-    $stmt->execute([$name]);
-
- 
-    if ($row = $stmt->fetch()) {
-        $message = "Product already exists";
-        
-    } else {
+    
         
         $ext1 = pathinfo($image1Name, PATHINFO_EXTENSION);  
         $newFileName1 = uniqid('img_', true) . '.' . $ext1;
@@ -62,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) {
         move_uploaded_file($image2TmpPath, $destPath2);
         move_uploaded_file($image3TmpPath, $destPath3);
 
-    }
+    
 
 }
 
@@ -82,9 +75,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) {
         <input type="hidden" name="submitted" value="1">
         <label for="productname">Enter Product Name:</label>
         <input name="name" placeholder="Product Name..." id="name" required type="text" maxlength="255"><br>
-        <?php if (!empty($message)): ?>
-                    <p class="form-message"><?php echo $message; ?></p>
-                    <?php endif; ?>
+        
         <label for="availableStock">Select Product Stock:</label>
         <input name="availableStock" placeholder="1" id="availableStock" required type="number" min="1"><br>
         <label for="price">Enter Price:</label>

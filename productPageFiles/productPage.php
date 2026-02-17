@@ -9,7 +9,9 @@
     WHERE products.productID = :pid");
     $sql->execute([':pid'=>$pid]);
     $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
-
+    if(!$productDetails){
+        header("Location: 404PageError.php"); 
+    }
     $_SESSION["userID"] = "1"; //some hard coding ill use for now until the user account functionality has been made
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) { 
         $user_id = $_SESSION['userID'];
@@ -102,8 +104,9 @@
                         <option value="XXL">XX-Large</option>
                     </select>
                 </div>
-                <div id="inputQuantity" hidden>
-                    <input type="number" value="1" name="quantity">
+                <div id="inputQuantity">
+                    <label>Quantity: </label><br>
+                    <input type="number" value="1" name="quantity" min="1">
                 </div>
                 <input hidden value="<?php echo nl2br(htmlspecialchars($productDetails['productID']));?>" name="productID">
                 <div class="checkout"><input type="submit" value="Add to Basket"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
