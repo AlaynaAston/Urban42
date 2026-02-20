@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "cs2team42_db");
+$conn = new mysqli("localhost", "cs2team42", "5EUURc7WnOkMUR0kAsEz2L5gp", "cs2team42_db");
 
 $userID = 1; 
 
