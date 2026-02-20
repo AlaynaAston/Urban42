@@ -13,9 +13,11 @@ if ($conn->connect_error) {
 $userID = 1; 
 
 $sql = "SELECT Product.name, Product.price, BasketItem.quantity
-        FROM BasketItem
-        JOIN Product ON BasketItem.productID = Product.productID
-        WHERE BasketItem.userID = $userID";
+FROM BasketItem
+JOIN Product ON BasketItem.productID = Product.productID
+JOIN Basket ON BasketItem.basketID = Basket.basketID
+WHERE Basket.userID = $userID
+";
 
 $result = $conn->query($sql);
 
