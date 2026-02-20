@@ -1,85 +1,102 @@
+<?php
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+
+$conn = new mysqli("localhost","cs2team42","5EUURc7WnOkMUR0kAsEz2L5gp","cs2team42_db");
+if ($conn->connect_error) die("DB error");
+
+$userID = 1;
+
+// Get basket items
+$sql = "
+SELECT BasketItem.productID, BasketItem.quantity, Product.price
+FROM BasketItem
+JOIN Basket ON BasketItem.basketID = Basket.basketID
+JOIN Product ON BasketItem.productID = Product.productID
+WHERE Basket.userID = $userID
+";
+$result = $conn->query($sql);
+
+$total = 0;
+$rows = [];
+while($row = $result->fetch_assoc()){
+    $row['subtotal'] = $row['price'] * $row['quantity'];
+    $total += $row['subtotal'];
+    $rows[] = $row;
+}
+
+// If user clicks Purchase
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+    // Create order
+    $conn->query("INSERT INTO OrderTable (userID, orderDate, totalAmount)
+                  VALUES ($userID, NOW(), $total)");
+
+    $orderID = $conn->insert_id;
+
+    // Insert order items
+    foreach($rows as $r){
+        $conn->query("INSERT INTO OrderItem (orderID, productID, quantity, priceAtPurchase)
+                      VALUES ($orderID, {$r['productID']}, {$r['quantity']}, {$r['price']})");
+    }
+
+    // Clear basket
+    $conn->query("DELETE FROM BasketItem 
+                  WHERE basketID = (SELECT basketID FROM Basket WHERE userID=$userID)");
+
+    echo "<h2>Order placed successfully!</h2>";
+    exit;
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Urban 42 | Checkout</title>
-  <link rel="stylesheet" href="checkoutstyle.css">
+<meta charset="UTF-8">
+<title>Checkout</title>
+<link rel="stylesheet" href="checkoutstyle.css">
 </head>
 
 <body>
 
-  <div class="navbar">
-    <div class="nav-left">
-      <div class="sidebar-icon">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <div class="brand-logo">
-        <img src="urban42.png" alt="Urban 42 Logo">
-        <span>Urban 42</span>
-      </div>
-    </div>
-
-    <div class="nav-right">
-      <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
-      <span>GBP £</span>
-      <a href="ContactPage">Help</a>
-      <a href="login.html">Log in</a>
-
-      <form class="search-form">
-        <input type="text" placeholder="Search..." name="search">
-        <button type="submit">🔍</button>
-      </form>
-
-      <a href="basket.html">Cart</a>
-
-      
-    </div>
-  </div>
-
-  <!-- Order Summary -->
 <div class="summary-container">
-    <h2>Order Summary</h2>
+<h2>Order Summary</h2>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Product ID</th>
-                <th>Qty</th>
-                <th>Price</th>
-                <th>Subtotal</th>
-            </tr>
-        </thead>
+<table>
+<thead>
+<tr>
+<th>Product ID</th>
+<th>Qty</th>
+<th>Price</th>
+<th>Subtotal</th>
+</tr>
+</thead>
+<tbody>
 
-        <tbody>
-            <!-- Example row — these would be replaced dynamically with PHP -->
-            <tr>
-                <td>101</td>
-                <td>2</td>
-                <td>$15.00</td>
-                <td>$30.00</td>
-            </tr>
+<?php foreach($rows as $r){ ?>
+<tr>
+<td><?php echo $r['productID']; ?></td>
+<td><?php echo $r['quantity']; ?></td>
+<td>£<?php echo number_format($r['price'],2); ?></td>
+<td>£<?php echo number_format($r['subtotal'],2); ?></td>
+</tr>
+<?php } ?>
 
-            <tr>
-                <td>205</td>
-                <td>1</td>
-                <td>$40.00</td>
-                <td>$40.00</td>
-            </tr>
+<tr class="total-row">
+<td colspan="3">Total</td>
+<td>£<?php echo number_format($total,2); ?></td>
+</tr>
 
-            <tr class="total-row">
-                <td colspan="3">Total</td>
-                <td>$70.00</td>
-            </tr>
-        </tbody>
-    </table>
+</tbody>
+</table>
 
-    <form action="add_purchase.php" method="POST">
-        <button class="purchase-button" type="submit">Purchase</button>
-    </form>
+<form method="POST">
+<button class="purchase-button" type="submit">Purchase</button>
+</form>
+
 </div>
+</body>
+</html>
 
   <!-- Footer Section -->
   <footer>
