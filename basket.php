@@ -1,5 +1,14 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+
 $conn = new mysqli("localhost", "cs2team42", "5EUURc7WnOkMUR0kAsEz2L5gp", "cs2team42_db");
+
+if ($conn->connect_error) {
+    die("Database connection failed: " . $conn->connect_error);
+}
 
 $userID = 1; 
 
