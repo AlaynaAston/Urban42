@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "shopdb");
+$conn = new mysqli("localhost", "root", "", "cs2team42_db");
 
 $userID = 1; 
 
