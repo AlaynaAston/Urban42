@@ -1,32 +1,29 @@
 /* ============================== */
-/* ROOT VARIABLES – USED EVERYWHERE */
+/* ROOT VARIABLES */
 /* ============================== */
 :root {
   --primary: #2196F3;
   --primary-dark: #1976D2;
-  --bg: #f5f7fa;
+  --background: #f4f6f9;
   --card-bg: #ffffff;
   --radius: 10px;
-  --shadow: 0 4px 10px rgba(0,0,0,0.15);
-  --transition: 0.25s ease;
+  --shadow: 0 4px 12px rgba(0,0,0,0.12);
   --text: #333;
-  --nav-bg: #ffffff;
 }
 
 /* ============================== */
-/* GLOBAL PAGE STYLES (ALL PAGES) */
-/* Used by: login, signup, basket */
+/* GLOBAL STYLES */
 /* ============================== */
 body {
   margin: 0;
   font-family: "Segoe UI", Arial, sans-serif;
-  background: var(--bg);
+  background: var(--background);
   color: var(--text);
 }
 
 a {
-  color: var(--text);
   text-decoration: none;
+  color: var(--text);
 }
 
 a:hover {
@@ -34,15 +31,15 @@ a:hover {
 }
 
 /* ============================== */
-/* NAVBAR STYLES (ALL PAGES)      */
+/* NAVBAR */
 /* ============================== */
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  background-color: var(--nav-bg);
-  border-bottom: 1px solid #eee;
+  background: white;
+  border-bottom: 1px solid #eaeaea;
   font-size: 14px;
 }
 
@@ -55,27 +52,26 @@ a:hover {
 .sidebar-icon {
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
   cursor: pointer;
 }
 
 .sidebar-icon .bar {
-  width: 25px;
+  width: 24px;
   height: 3px;
-  background-color: #333;
+  background: #333;
 }
 
 .brand-logo {
   display: flex;
   align-items: center;
-  gap: 10px;
-  font-size: 20px;
+  gap: 8px;
+  font-size: 18px;
   font-weight: bold;
 }
 
 .brand-logo img {
-  width: 40px;
-  height: auto;
+  width: 38px;
 }
 
 .nav-right {
@@ -86,117 +82,70 @@ a:hover {
 
 .flag-icon {
   width: 20px;
-  height: auto;
-}
-
-.search-form {
-  display: flex;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
-}
-
-.search-form input {
-  padding: 8px 12px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-}
-
-.search-form button {
-  background-color: #222;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
 }
 
 /* ============================== */
-/* MAIN CONTAINER (LOGIN & SIGNUP) */
+/* CONTAINER */
 /* ============================== */
 .container {
   max-width: 420px;
   background: var(--card-bg);
-  margin: 50px auto;
-  padding: 24px;
+  margin: 60px auto;
+  padding: 25px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 24px;
-  color: var(--text);
+  margin-bottom: 25px;
 }
 
 /* ============================== */
-/* INPUTS & DROPDOWNS (LOGIN & SIGNUP) */
+/* INPUTS */
 /* ============================== */
 input:not([type="checkbox"]),
 select {
   width: 100%;
-  padding: 14px;
+  padding: 13px;
   margin-bottom: 18px;
-  border: 1px solid #ccc;
   border-radius: var(--radius);
-  font-size: 15px;
-  transition: var(--transition);
+  border: 1px solid #ccc;
+  font-size: 14px;
   box-sizing: border-box;
 }
 
-input:not([type="checkbox"]):focus,
+input:focus,
 select:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 4px rgba(33,150,243,0.5);
   outline: none;
+  border-color: var(--primary);
 }
 
 /* ============================== */
 /* CHECKBOX ROWS */
-/* Used in: Login (remember me) & Signup (terms) */
 /* ============================== */
 .remember-wrapper,
 .checkbox-row {
-  display: flex !important;
-  align-items: center;
+  display: flex;
   justify-content: center;
-  width: 100%;
-  gap: 8px;
-  margin: 10px 0;
-  padding: 0;
-  white-space: nowrap;
-
-  background: none !important;
-  border: none !important;
-  box-shadow: none !important;
-}
-
-.remember-wrapper *:focus,
-.checkbox-row *:focus {
-  outline: none !important;
-  box-shadow: none !important;
-}
-
-.remember-wrapper input[type="checkbox"],
-.checkbox-row input[type="checkbox"] {
-  margin: 0;
-  transform: scale(1.2); 
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
 }
 
 /* ============================== */
-/* BUTTON STYLES (ALL PAGES) */
+/* BUTTON */
 /* ============================== */
 button {
   width: 100%;
   padding: 14px;
-  background: var(--primary);
-  color: white;
   border: none;
   border-radius: var(--radius);
-  font-size: 17px;
+  background: var(--primary);
+  color: white;
+  font-size: 16px;
   cursor: pointer;
-  margin-top: 8px;
-  transition: var(--transition);
+  transition: 0.25s ease;
 }
 
 button:hover {
@@ -204,21 +153,16 @@ button:hover {
 }
 
 /* ============================== */
-/* BASKET PAGE STYLES (basket.html) */
+/* BASKET */
 /* ============================== */
 .basket-item {
   display: flex;
   justify-content: space-between;
   background: #fafafa;
-  border-radius: var(--radius);
   padding: 14px;
-  margin-bottom: 16px;
+  margin-bottom: 15px;
+  border-radius: var(--radius);
   border: 1px solid #e5e5e5;
-}
-
-.price {
-  font-weight: bold;
-  margin-left: 8px;
 }
 
 .qty {
@@ -227,8 +171,103 @@ button:hover {
 }
 
 .total-box {
-  margin-top: 20px;
-  font-size: 20px;
-  font-weight: bold;
   text-align: center;
+  font-size: 18px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* ============================== */
+/* CHATBOX */
+/* ============================== */
+
+.chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--primary);
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: var(--shadow);
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.chat-toggle:hover {
+  transform: scale(1.1);
+}
+
+.chatbox {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 320px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 1000;
+}
+
+.chat-header {
+  background: var(--primary);
+  color: white;
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+.chat-messages {
+  height: 250px;
+  padding: 12px;
+  overflow-y: auto;
+  background: #f7f7f7;
+}
+
+.chat-message {
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+
+.user-message {
+  text-align: right;
+  color: var(--primary-dark);
+}
+
+.bot-message {
+  text-align: left;
+}
+
+.timestamp {
+  display: block;
+  font-size: 11px;
+  opacity: 0.6;
+  margin-top: 2px;
+}
+
+.chat-input-area {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.chat-input-area button {
+  width: 80px;
+  border-radius: 0;
 }
