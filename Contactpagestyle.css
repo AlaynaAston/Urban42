@@ -1,214 +1,213 @@
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
+  margin: 0; /*removes the default space around the page*/
+  font-family: 'Segoe UI', sans-serif; /*sets the style of the main text*/
+  background-color: #f9f9f9; /*sets light grey background for the whole page*/
+  color: #333; /*sets the text colour to dark grey*/
+  line-height: 1.6; /*adds space between lines to make the text easier to read*/
 }
 
-h1, h2, h3 {
-  color: #222;
-  margin-top: 30px;
+h1, h2, h3 { /*applies to all these headings*/
+  color: #222; /*sets very dark grey color for headings*/
+  margin-top: 30px; /*adds space above each heading*/
 }
 
 a {
-  color: #333;
-  text-decoration: none;
+  color: #333; /*sets text colour for links*/
+  text-decoration: none; /*removes the underline from links*/
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /*adds undeline when the mouse is over a link*/
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background-color: #fff;
-  border-bottom: 2px solid #030303;
-  font-size: 14px;
+  display: flex; /*places items in a row*/
+  justify-content: space-between; /*spreads items to left and right*/
+  align-items: center; /*centers items vertically*/
+  padding: 15px 40px; /*space inside the navigation bar*/
+  background-color: #fff; /*sets the background colour to white*/
+  border-bottom: 2px solid #030303; /*creates a black line under the navigation bar*/
+  font-size: 14px; /*sets the text size in the navigation bar*/
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.nav-left { 
+  display: flex; /*places items in a row*/
+  align-items: center; /*centers items vertically*/
+  gap: 20px; /*space between items*/
 }
 
 .sidebar-icon {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
+  display: flex; /*shows the bars in a column*/
+  flex-direction: column; /*stacks the bars (-) vertically*/
+  gap: 5px; /*sets the space between each bar*/
+  cursor: pointer; /*shows a pointer when hovering to make it look clickable*/
 }
 
 .sidebar-icon .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
+  width: 25px; /*length of the each bar*/
+  height: 3px; /*thickness of the each bar*/
+  background-color: #333; /*sets dark grey as the bar colour*/
 }
 
 .brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #222;
+  display: flex; /*puts logo and text in a row*/
+  align-items: center; /*centers them vertically*/
+  gap: 10px; /*space between logo and text*/
+  font-size: 18px; /*size of the brand name text*/
+  font-weight: bold; /*makes the brand name bold*/
+  color: #222; /*sets the text colour*/
 }
 
 .brand-logo img {
-  width: 40px;
-  height: auto;
+  width: 40px; /*sets the width of the brand logo image*/
+  height: auto; /*keeps the image shape correct*/
 }
 
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  display: flex; /*puts items in a row*/
+  align-items: center; /*centers them vertically*/
+  gap: 20px; /*space between each item*/
 }
 
 .flag-icon {
-  width: 20px;
-  height: auto;
+  width: 20px; /*size of the flag image*/
+  height: auto; /*keeps the image shape correct*/
 }
 
 .search-form {
-  display: flex;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
+  display: flex; /*puts items in a row*/
+  border: 1px solid #ccc; /*sets light grey border*/
+  border-radius: 4px; /*creates slightly rounded corners*/
+  overflow: hidden; /*keeps the corners clean and neat*/
 }
 
 .search-form input {
-  padding: 8px 12px;
-  border: none;
-  outline: none;
-  font-size: 14px;
+  padding: 8px 12px; /*spac inside the input box*/
+  border: none; /*it removes the border of search bar*/
+  outline: none; /*removes the outline when clicked*/
+  font-size: 14px; /*sets the text size*/
 }
 
 .search-form button {
-  background-color: #222;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
+  background-color: #222; /*sets dark background for button*/
+  color: #fff; /*sets the text colour to white*/
+  border: none; /*removes border*/
+  padding: 8px 12px; /*adds space inside the button*/
+  cursor: pointer; /*shows pointer when hovering*/
 }
 
-
 .container {
-  display: flex;
-  justify-content: space-between;
-  padding: 40px;
-  max-width: 1200px;
-  margin: auto;
-  gap: 40px;
+  display: flex; /*places sections side by side*/
+  justify-content: space-between; /*speads them apart*/
+  padding: 40px; /*space inside the container*/
+  max-width: 1200px; /*it limits how wide the content can get*/
+  margin: auto; /*centers the container on the page*/
+  gap: 40px; /*sets the space between two main sections*/
 }
 
 .logo-section {
-  flex: 1;
+  flex: 1; /*allows this section to grow and fill space*/
 }
 
 .logo-section img {
-  max-width: 300px;
-  margin-bottom: 40px;
-  border-style: solid;
-  border-radius: 20px;
+  max-width: 300px; /*limits fow the logo can get*/
+  margin-bottom: 40px; /*sets the space under the logo*/
+  border-style: solid; /*adds a solid border*/
+  border-radius: 20px; /*rounds the corners of the logo*/
 }
 
 .contact-info {
-  font-size: 14px;
+  font-size: 14px; /*sets the text size for contact details*/
 }
 
 .contact-info b {
-  display: block;
-  margin-top: 10px;
+  display: block; /*makes the bold text appear on its own line*/
+  margin-top: 10px; /*adds space above each heading in bold*/
 }
 
 .contact-form {
-  width: 90%;
-  margin: 2px; 
-  background-color: #fff;
-  padding: 50px;
-  border-radius: 20px;
-  border-style: solid;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  width: 90%; /*makes the form take up 90% of the space*/
+  margin: 2px; /*puts the small space around the form*/
+  background-color: #fff; /*sets the background colour to white*/
+  padding: 50px; /*sets the space inside the form*/
+  border-radius: 20px; /*make the corners round*/
+  border-style: solid; /*adds a solid border*/
+  box-shadow: 0 0 10px rgba(0,0,0,0.05); /*creats a soft shadow around the form*/
 }
 
 .contact-form h2 {
-  margin-top: 0;
-  font-size: 24px;
-  padding: 7px;
-  border-style: solid;
-  border-radius: 8px;
+  margin-top: 0; /*removes space around the heading*/
+  font-size: 24px; /*sets the heading size*/
+  padding: 7px; /*sets the space inside the heading box*/
+  border-style: solid; /*adds a solid border*/
+  border-radius: 8px; /*makes corners of the border round*/
 }
 
 .contact-form p {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 20px;
+  font-size: 14px; /*sets text size*/
+  color: #666; /*sets the text colour to grey*/
+  margin-bottom: 20px; /*sets space under the paragraph*/
 }
 
 .contact-form input,
 .contact-form select,
 .contact-form textarea {
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 14px;
+  width: 100%; /*makes input boxes stretch across the form*/
+  padding: 12px; /*sets the space inside the input boxes*/
+  margin-bottom: 15px; /*sets the space under each input box*/
+  border: 1px solid #ccc; /*adds a sold light grey border*/
+  border-radius: 4px; /*makes the corners slightly round*/
+  font-size: 14px; /*sets the text size*/
 }
 
 .contact-form textarea {
-  resize: vertical;
-  height: 120px;
+  resize: vertical; /*allows the user to make the tmessage box taller or bigger*/
+  height: 120px; /*default height of the message box*/
 }
 
 .contact-form button {
-  background-color: #222;
-  color: #fff;
-  padding: 12px 20px;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+  background-color: #222; /*sets the button background colour to very dark grey*/
+  color: #fff; /*sets the text colour to white*/
+  padding: 12px 20px; /*adds space inside the button*/
+  border: none; /*removes border*/
+  border-radius: 4px; /*makes the corners round*/
+  cursor: pointer; /*shows pointer when hovering*/
+  font-weight: bold; /*makes the button text bold*/
 }
 
 .contact-form button:hover {
-  background-color: #444;
+  background-color: #444; /*makes the button background colour slightly light when hovered*/
 }
 
 .faq {
-  font-size: 13px;
-  color: #777;
-  margin-top: 20px;
+  font-size: 13px; /*sets the size of text*/
+  color: #777; /*sets the text colour*/
+  margin-top: 20px; /*adds the space above the FAQ note*/
 }
 
 .faq-section {
-  width: 90%;
-  margin: -30px auto;
-  background-color: #fff;
-  padding: 50px;
-  border-radius: 20px;
-  border-style: solid;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  width: 90%; /*makes the FAQ box wide*/
+  margin: -30px auto; /*it centers and moves the box up slightly*/
+  background-color: #fff; /*sets the background colour to white*/
+  padding: 50px; /*adds the space inside the FAQ box*/
+  border-radius: 20px; /*makes the corners round*/
+  border-style: solid; /* adds a border*/
+  box-shadow: 0 0 10px rgba(0,0,0,0.05); /*adds a soft shadow*/
 }
 
 .faq-section h2 {
-  font-size: 22px;
-  margin-bottom: 30px;
-  margin-top: 5px;
+  font-size: 22px; /*sets the size of FAQ section's heading*/
+  margin-bottom: 30px; /*adds the space under the heading*/
+  margin-top: 5px; /*adds the space above the heading*/
 }
 
 .faq-section h3 {
-  font-size: 16px;
-  margin-top: 20px;
-  color: #222;
+  font-size: 16px; /*sets the text side of each question in FAQ section*/
+  margin-top: 20px; /*adds space above eah question in FAQ section*/
+  color: #222; /*sets the text colour to very dark grey*/
 }
 
 .faq-section p {
-  font-size: 14px;
-  color: #555;
+  font-size: 14px; /*sets the text size of each answer in FAQ section*/
+  color: #555; /*sets the text colour to medium grey*/
 }
