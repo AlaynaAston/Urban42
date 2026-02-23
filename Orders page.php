@@ -2,74 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>My Orders — Urban 42</title>
-  <link rel="stylesheet" href="Orderspagestyle.css" />
+  <title>My Orders — Urban 42</title> <!--text/title shown in the browser tab-->
+  <link rel="stylesheet" href="Orderspagestyle.css" /> <!--connects the CSS file-->
 </head>
 <body>
-  <div class="navbar">
-  <div class="nav-left">
-    <div class="sidebar-icon">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+  <div class="navbar"> <!--main navigation bar container-->
+  <div class="nav-left"> <!--left side of the navigation bar-->
+    <div class="sidebar-icon">  <!--button that users will click to open the side menu-->
+      <span class="bar"></span> <!--horizontal line 1 that creates the button-->
+      <span class="bar"></span> <!--line 2-->
+      <span class="bar"></span> <!--line 3-->
     </div>
-    <div class="brand-logo">
-      <img src="urban42.png" alt="Urban 42 Logo">
-      <span>Urban 42</span>
+    <div class="brand-logo"> <!--container that has logo and brand name in it-->
+      <img src="urban42.png" alt="Urban 42 Logo"> <!--shows the brand logo-->
+      <span>Urban 42</span> <!--displays the brand name-->
     </div>
   </div>
-  <div class="nav-right">
-    <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
-    <span>GBP £</span>
-    <a href="ContactPage.php">Help</a>
-    <a href="login.html">Log in</a>
-    <a><form class="search-form">
-      <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔍</button>
+  <div class="nav-right"> <!--right side of the navigation bar-->
+    <img src="ukflag.jpg" alt="UK Flag" class="flag-icon"> <!--shows a UK flag icon-->
+    <span>GBP £</span> <!--shows the currency-->
+    <a href="#">Help</a> <!--link to the help page-->
+    <a href="#">Log in</a> <!--link to the login page-->
+    <a><form class="search-form"> <!--the search bar form-->
+      <input type="text" placeholder="Search..." name="search"> <!--box where the user types what they want to search-->
+      <button type="submit">🔍</button> <!--button that user clicks to start the searching-->
     </form></a>
-    <a href="basket.html">Cart</a>
-
-  
+    <a href="#">Cart</a> <!--link that takes user to the shopping cart-->
     </div>
-  </div>
+  </div> <!--end of the navigation bar-->
 
-  <div class="orders-section">
-    <section id="wishlist">
-      <h2>My Wishlist</h2>
-      <div class="wishlist-grid">
-        <div class="wishlist-card">
-          <p><strong>Urban Hoodie</strong></p>
-          <button>Add to Cart</button>
+  <div class="orders-section"> <!--main section that contains order related content-->
+    <section id="wishlist"> <!--wishlist section-->
+      <h2>My Wishlist</h2> <!--heading of the wishlist section-->
+      <div class="wishlist-grid"> <!--grid layout for the wishlist items-->
+        <div class="wishlist-card"> <!--one wishlist item-->
+          <p><strong>Urban Hoodie</strong></p> <!--shows name of the item-->
+          <button>Add to Cart</button> <!--button to add the item to the cart-->
         </div>
-        <div class="wishlist-card">
-          <p><strong>Denim Jacket</strong></p>
-          <button>Add to Cart</button>
+        <div class="wishlist-card"> <!--second wishlist item-->
+          <p><strong>Denim Jacket</strong></p> <!--name of the item-->
+          <button>Add to Cart</button> <!--button to add the item to the cart-->
         </div>
-        <div class="wishlist-card">
-          <p><strong>Leather Boots</strong></p>
-          <button>Add to Cart</button>
+        <div class="wishlist-card"> <!--thired wishlist item-->
+          <p><strong>Leather Boots</strong></p> <!--name of the item-->
+          <button>Add to Cart</button> <!--button to add the item to the cart-->
         </div>
       </div>
     </section>
 
-    <section id="current-orders">
-      <h2>Current Orders</h2>
-      <table>
-        <tr>
-          <th>Order ID</th>
+    <section id="current-orders"> <!--section for current orders-->
+      <h2>Current Orders</h2> <!--displays title of the section-->
+      <table> <!--creats a table to show current orders-->
+        <tr> <!--table header row-->
+          <th>Order ID</th> <!--title of the column-->
           <th>Date</th>
           <th>Items</th>
           <th>Status</th>
           <th>Tracking</th>
         </tr>
-        <tr>
-          <td>#U42-12345</td>
-          <td>15 Nov 2025</td>
-          <td>Urban Hoodie, Sneakers</td>
-          <td>Shipped</td>
-          <td><a href="#">Track Order</a></td>
+        <tr> <!--first order row-->
+          <td>#U42-12345</td> <!--order ID-->
+          <td>15 Nov 2025</td> <!--order's date-->
+          <td>Urban Hoodie, Sneakers</td> <!--items in the order-->
+          <td>Shipped</td> <!--order status-->
+          <td><a href="#">Track Order</a></td> <!--link totrack the order-->
         </tr>
-        <tr>
+        <tr> <!--second order row-->
           <td>#U42-12346</td>
           <td>27 Nov 2025</td>
           <td>Denim Jacket</td>
@@ -79,22 +77,22 @@
       </table>
     </section>
 
-    <section id="previous-orders">
-      <h2>Previous Orders</h2>
-      <table>
-        <tr>
-          <th>Order ID</th>
+    <section id="previous-orders"> <!--section for past orders-->
+      <h2>Previous Orders</h2> <!--heading of this section-->
+      <table> <!--table showing previous orders-->
+        <tr> <!--header row-->
+          <th>Order ID</th> <!--title of the column-->
           <th>Date</th>
           <th>Items</th>
           <th>Status</th>
         </tr>
-        <tr>
+        <tr> <!--first previous order row-->
           <td>#U42-12200</td>
           <td>05 Oct 2025</td>
           <td>Graphic Tee</td>
           <td>Delivered</td>
         </tr>
-        <tr>
+        <tr> <!--second previous order-->
           <td>#U42-12150</td>
           <td>15 Sep 2025</td>
           <td>Leather Boots</td>
@@ -103,35 +101,35 @@
       </table>
     </section>
 
-    <section id="tracking">
-      <h2>Track an Order</h2>
-      <form>
-        <label for="tracking-id">Enter Order ID:</label>
-        <input type="text" id="tracking-id" name="tracking-id" required>
-        <button type="submit">Track</button>
+    <section id="tracking"> <!--section to track an order-->
+      <h2>Track an Order</h2> <!--heading of the section-->
+      <form> <!--form that users will use to track an order-->
+        <label for="tracking-id">Enter Order ID:</label> <!--label for the tracking id box-->
+        <input type="text" id="tracking-id" name="tracking-id" required> <!--text box to input tracking id-->
+        <button type="submit">Track</button> <!--button to submit the tracking id and get the result-->
       </form>
     </section>
 
-    <div class="return-form">
-    <section id="returns">
-      <h2>Returns & Refunds</h2>
-      <form>
-        <label for="return-order-id">Order ID:</label>
-        <input type="text" id="return-order-id" name="return-order-id" required>
+    <div class="return-form"> <!--container for returns form-->
+    <section id="returns"> <!--section that holds the returns information and form-->
+      <h2>Returns & Refunds</h2> <!--heading of th returns section-->
+      <form> <!--form that user will use in order to request a return-->
+        <label for="return-order-id">Order ID:</label> <!--label of the return order id-->
+        <input type="text" id="return-order-id" name="return-order-id" required> <!--text box to input id of the order user wants to return-->
 
-        <label for="reason">Reason for Return:</label>
-        <select id="reason" name="reason" required>
+        <label for="reason">Reason for Return:</label> <!--label for the reason for return box-->
+        <select id="reason" name="reason" required> <!--dropdown menu to choose reason of returning-->
           <option value="">Select</option>
-          <option value="size">Wrong Size</option>
-          <option value="faulty">Faulty Item</option>
-          <option value="wrong-item">Wrong Item Sent</option>
-          <option value="other">Other</option>
+          <option value="size">Wrong Size</option> <!--option for wrong size-->
+          <option value="faulty">Faulty Item</option> <!--option for faulty item-->
+          <option value="wrong-item">Wrong Item Sent</option> <!--option for wrong item received-->
+          <option value="other">Other</option> <!--option for anythng else-->
         </select>
 
-        <label for="details">Additional Details:</label>
-        <textarea id="details" name="details" rows="4"></textarea>
+        <label for="details">Additional Details:</label> <!--label for additional details box-->
+        <textarea id="details" name="details" rows="4"></textarea> <!--box to input any additional detail-->
 
-        <button type="submit">Submit Request</button>
+        <button type="submit">Submit Request</button> <!--button to submit request-->
       </form>
     </section>
     </div>
