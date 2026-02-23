@@ -1,213 +1,210 @@
 body {
-  margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
-  color: #333;
-  line-height: 1.6;
+  margin: 0; /*removes the default space around the page*/
+  font-family: 'Segoe UI', sans-serif; /*sets the style of the main text*/
+  background-color: #f9f9f9; /*sets light grey background for the whole page*/
+  color: #333; /*sets the text colour to dark grey*/
+  line-height: 1.6; /*adds space between lines to make the text easier to read*/
 }
 
-h1, h2, h3 {
-  color: #222;
-  margin-top: 30px;
+h1, h2, h3 { /*applies to all these headings*/
+  color: #222; /*sets very dark grey color for headings*/
+  margin-top: 30px; /*adds space above each heading*/
 }
 
 a {
-  color: #333;
-  text-decoration: none;
+  color: #333; /*sets text colour for links*/
+  text-decoration: none; /*removes the underline from links*/
 }
 
 a:hover {
-  text-decoration: underline;
+  text-decoration: underline; /*adds undeline when the mouse is over a link*/
 }
 
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background-color: #fff;
-  border-bottom: 2px solid #030303;
-  font-size: 14px;
+  display: flex; /*places items in a row*/
+  justify-content: space-between; /*spreads items to left and right*/
+  align-items: center; /*centers items vertically*/
+  padding: 15px 40px; /*space inside the navigation bar*/
+  background-color: #fff; /*sets the background colour to white*/
+  border-bottom: 2px solid #030303; /*creates a black line under the navigation bar*/
+  font-size: 14px; /*sets the text size in the navigation bar*/
 }
 
 .nav-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  display: flex; /*places items in a row*/
+  align-items: center; /*centers items vertically*/
+  gap: 20px; /*space between items*/
 }
 
 .sidebar-icon {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
+  display: flex; /*shows the bars in a column*/
+  flex-direction: column; /*stacks the bars (-) vertically*/
+  gap: 5px; /*sets the space between each bar*/
+  cursor: pointer; /*shows a pointer when hovering to make it look clickable*/
 }
 
 .sidebar-icon .bar {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
+  width: 25px; /*length of the each bar*/
+  height: 3px; /*thickness of the each bar*/
+  background-color: #333; /*sets dark grey as the bar colour*/
 }
 
 .brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #222;
+  display: flex; /*puts logo and text in a row*/
+  align-items: center; /*centers them vertically*/
+  gap: 10px; /*space between logo and text*/
+  font-size: 18px; /*size of the brand name text*/
+  font-weight: bold; /*makes the brand name bold*/
+  color: #222; /*sets the text colour*/
 }
 
 .brand-logo img {
-  width: 40px;
-  height: auto;
+  width: 40px; /*sets the width of the brand logo image*/
+  height: auto; /*keeps the image shape correct*/
 }
 
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  display: flex; /*puts items in a row*/
+  align-items: center; /*centers them vertically*/
+  gap: 20px; /*space between each item*/
 }
 
 .flag-icon {
-  width: 20px;
-  height: auto;
+  width: 20px; /*size of the flag image*/
+  height: auto; /*keeps the image shape correct*/
 }
 
 .search-form {
-  display: flex;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  overflow: hidden;
+  display: flex; /*puts items in a row*/
+  border: 1px solid #ccc; /*sets light grey border*/
+  border-radius: 4px; /*creates slightly rounded corners*/
+  overflow: hidden; /*keeps the corners clean and neat*/
 }
 
 .search-form input {
-  padding: 8px 12px;
-  border: none;
-  outline: none;
-  font-size: 14px;
+  padding: 8px 12px; /*spac inside the input box*/
+  border: none; /*it removes the border of search bar*/
+  outline: none; /*removes the outline when clicked*/
+  font-size: 14px; /*sets the text size*/
 }
 
 .search-form button {
-  background-color: #222;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
+  background-color: #222; /*sets dark background for button*/
+  color: #fff; /*sets the text colour to white*/
+  border: none; /*removes border*/
+  padding: 8px 12px; /*adds space inside the button*/
+  cursor: pointer; /*shows pointer when hovering*/
 }
 
-
-
-
 .wishlist-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  margin-bottom: 30px;
+  display: flex; /*displays wishlist items in a column*/
+  flex-direction: column; /*stacks items vertically*/
+  gap: 15px; /*adds space between each wishlist item*/
+  margin-bottom: 30px; /*adds space below the wishlist section*/
 }
 
 .wishlist-card {
-  background-color: #fdfdfd;
-  border: 1px solid #eee;
-  padding: 15px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  background-color: #fdfdfd; /*sets the background colour to light grey*/
+  border: 1px solid #eee; /*adds a ligh tcolour border around each card*/
+  padding: 15px; /*adds space inside the card*/
+  border-radius: 6px; /*makes the corners slightly round*/
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03); /*adds soft shadow under the card*/
+  display: flex; /*puts text and button in a row*/
+  justify-content: space-between; /*spreads the content apart*/
+  align-items: center; /*centers the cards vertically*/
 }
 
 .wishlist-card p {
-  margin: 0;
-  font-size: 14px;
-  font-weight: 500;
+  margin: 0; /*removes default space around the text*/
+  font-size: 14px; /*sets the text size*/
+  font-weight: 500; /*makes the text slightly bold*/
 }
 
 .wishlist-card button {
-  background-color: #222;
-  color: #fff;
-  border: none;
-  padding: 8px 12px;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: bold;
+  background-color: #222; /*sets the button background to dark grey*/
+  color: #fff; /*sets the text colour to white*/
+  border: none; /*removes border*/
+  padding: 8px 12px; /*adds space inside the button*/
+  border-radius: 4px; /*make the corners round*/
+  cursor: pointer; /*show pointer cursor when hovered*/
+  font-weight: bold; /*makes the text bold*/
 }
 
 .wishlist-card button:hover {
-  background-color: #444;
+  background-color: #444; /*change the colour to slightly light grey when hovered*/
 }
 
 .orders-section {
-  max-width: 1000px;
-  width: 100%;
-  margin: 40px auto;
-  padding: 40px;
-  border-radius: 20px;
-  border-style: solid;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-  background-color: #fff;
+  max-width: 1000px; /*limits how wide the section can be*/
+  width: 100%; /*makes it stretch to full width if needed*/
+  margin: 40px auto; /*adds space above and below and centers it*/
+  padding: 40px; /*adds space inside the section*/
+  border-radius: 20px; /*make the corners round*/
+  border-style: solid; /*adds a solid border*/
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /*adds a soft shadow around the section*/
+  background-color: #fff; /*sets the background colour to white*/
 }
 
 .orders-section h1 {
-  font-size: 26px;
-  margin-bottom: 30px;
-  text-align: center;
-  color: #222;
+  font-size: 26px; /*sets the size of the orders section main heading*/
+  margin-bottom: 30px; /*adds space under the heading*/
+  text-align: center; /*centers the text*/
+  color: #222; /*sets the text colour to dark grey*/
 }
 
 .orders-section h2 {
-  font-size: 20px;
-  margin-top: 30px;
-  margin-bottom: 15px;
-  color: #222;
+  font-size: 20px; /*sets size of the heading*/
+  margin-top: 30px; /*adds space above the heading*/
+  margin-bottom: 15px; /*adds space below the heading*/
+  color: #222; /*sets the text colour to dark grey*/
 }
 
 table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 30px;
+  width: 100%; /*makes the table stretch across the section*/
+  border-collapse: collapse; /*removes gaps between table cells*/
+  margin-bottom: 30px; /*adds space under the table*/
 }
 
 table th, table td {
-  border: 1px solid #ddd;
-  padding: 12px;
-  font-size: 14px;
-  text-align: left;
+  border: 1px solid #ddd; /*adds light grey border around each cell*/
+  padding: 12px; /*adds space inside each cell*/
+  font-size: 14px; /*sets text size*/
+  text-align: left; /*aligns text to the left*/
 }
 
 table th {
-  background-color: #f2f2f2;
+  background-color: #f2f2f2; /*adds light grey background for table headers*/
 }
 
 .return-form {
-  display: block;
-  margin-top: 20px;
-  font-size: 14px;
-  color: #333;
+  display: block; /*makes the section take up full width and start on a new line*/
+  margin-top: 20px; /*adds space above the return form*/
+  font-size: 14px; /*sets the size of text*/
+  color: #333; /*sets the text colour*/
 }
 
 .return-form input,
 .return-form select,
 .return-form textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 6px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 100%; /*makes the input boxes stretch across the form*/
+  padding: 10px; /*adds space inside the input box*/
+  margin-top: 6px; /*adds space above each input box*/
+  font-size: 14px; /*sets the text size*/
+  border: 1px solid #ccc; /*adds a light grey border*/
+  border-radius: 4px; /*make the corners round*/
 }
 
 .return-form button {
-  margin-top: 25px;
-  background-color: #222;
-  color: #fff;
-  border: none;
-  padding: 10px 18px;
-  font-weight: bold;
-  cursor: pointer;
-  border-radius: 4px;
+  margin-top: 25px; /*adds space above the button*/
+  background-color: #222; /*sets the button's background colour to dark grey*/
+  color: #fff; /*sets the text colour to white*/
+  border: none; /*removes the border*/
+  padding: 10px 18px; /*adds space inside the button*/
+  font-weight: bold; /*makes the text bold*/
+  cursor: pointer; /*show pointer when cursor hovered*/
+  border-radius: 4px; /*make the corners round*/
 }
 
 .return-form button:hover {
-  background-color: #444;
+  background-color: #444; /*make the button's background colour slightly light when hovered*/
 }
