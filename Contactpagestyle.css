@@ -1,18 +1,39 @@
+:root {
+  --bg: #f9f9f9;
+  --text: #333;
+  --heading: #222;
+  --card-bg: #fff;
+  --border: #030303;
+  --input-border: #ccc;
+  --button-bg: #222;
+  --button-text: #fff;
+}
+
+body.dark-mode {
+  --bg: #121212;
+  --text: #e5e5e5;
+  --heading: #ffffff;
+  --card-bg: #1e1e1e;
+  --border: #444;
+  --input-border: #555;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+}
 body {
   margin: 0; /*removes the default space around the page*/
   font-family: 'Segoe UI', sans-serif; /*sets the style of the main text*/
-  background-color: #f9f9f9; /*sets light grey background for the whole page*/
-  color: #333; /*sets the text colour to dark grey*/
+  background-color: var(--bg); /*sets light grey background for the whole page*/
+  color: var(--text); /*sets the text colour to dark grey*/
   line-height: 1.6; /*adds space between lines to make the text easier to read*/
 }
 
 h1, h2, h3 { /*applies to all these headings*/
-  color: #222; /*sets very dark grey color for headings*/
+  color: var(--heading); /*sets very dark grey color for headings*/
   margin-top: 30px; /*adds space above each heading*/
 }
 
 a {
-  color: #333; /*sets text colour for links*/
+  color: var(--text); /*sets text colour for links*/
   text-decoration: none; /*removes the underline from links*/
 }
 
@@ -25,8 +46,8 @@ a:hover {
   justify-content: space-between; /*spreads items to left and right*/
   align-items: center; /*centers items vertically*/
   padding: 15px 40px; /*space inside the navigation bar*/
-  background-color: #fff; /*sets the background colour to white*/
-  border-bottom: 2px solid #030303; /*creates a black line under the navigation bar*/
+  background-color: var(--card-bg); /*sets the background colour to white*/
+  border-bottom: 2px solid var(--border); /*creates a black line under the navigation bar*/
   font-size: 14px; /*sets the text size in the navigation bar*/
 }
 
@@ -46,7 +67,7 @@ a:hover {
 .sidebar-icon .bar {
   width: 25px; /*length of the each bar*/
   height: 3px; /*thickness of the each bar*/
-  background-color: #333; /*sets dark grey as the bar colour*/
+  background-color: var(--text); /*sets dark grey as the bar colour*/
 }
 
 .brand-logo {
@@ -76,7 +97,7 @@ a:hover {
 
 .search-form {
   display: flex; /*puts items in a row*/
-  border: 1px solid #ccc; /*sets light grey border*/
+  border: 1px solid var(--input-border); /*sets light grey border*/
   border-radius: 4px; /*creates slightly rounded corners*/
   overflow: hidden; /*keeps the corners clean and neat*/
 }
@@ -90,10 +111,30 @@ a:hover {
 
 .search-form button {
   background-color: #222; /*sets dark background for button*/
-  color: #fff; /*sets the text colour to white*/
+  color: var(--button-text); /*sets the text colour to white*/
   border: none; /*removes border*/
   padding: 8px 12px; /*adds space inside the button*/
   cursor: pointer; /*shows pointer when hovering*/
+}
+
+.sidebar {
+  position: fixed;
+  top: 70px;
+  left: -350px; /* hides the side bar off-screen */
+  width: 250px;
+  height: 100%;
+  background: var(--card-bg);
+  border-right: 2px solid var(--border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s ease; /* smooth slide animation */
+}
+
+/* When sidebar is open */
+.sidebar.open {
+  left: 0;
 }
 
 .container {
@@ -128,11 +169,11 @@ a:hover {
 .contact-form {
   width: 90%; /*makes the form take up 90% of the space*/
   margin: 2px; /*puts the small space around the form*/
-  background-color: #fff; /*sets the background colour to white*/
+  background-color: var(--card-bg); /*sets the background colour to white*/
   padding: 50px; /*sets the space inside the form*/
   border-radius: 20px; /*make the corners round*/
   border-style: solid; /*adds a solid border*/
-  box-shadow: 0 0 10px rgba(0,0,0,0.05); /*creats a soft shadow around the form*/
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*creats a soft shadow around the form*/
 }
 
 .contact-form h2 {
@@ -145,7 +186,7 @@ a:hover {
 
 .contact-form p {
   font-size: 14px; /*sets text size*/
-  color: #666; /*sets the text colour to grey*/
+  color: var(--text); /*sets the text colour to grey*/
   margin-bottom: 20px; /*sets space under the paragraph*/
 }
 
@@ -155,7 +196,7 @@ a:hover {
   width: 100%; /*makes input boxes stretch across the form*/
   padding: 12px; /*sets the space inside the input boxes*/
   margin-bottom: 15px; /*sets the space under each input box*/
-  border: 1px solid #ccc; /*adds a sold light grey border*/
+  border: 1px solid var(--border); /*adds a sold light grey border*/
   border-radius: 4px; /*makes the corners slightly round*/
   font-size: 14px; /*sets the text size*/
 }
@@ -166,8 +207,8 @@ a:hover {
 }
 
 .contact-form button {
-  background-color: #222; /*sets the button background colour to very dark grey*/
-  color: #fff; /*sets the text colour to white*/
+  background-color: var(--button-bg); /*sets the button background colour to very dark grey*/
+  color: var(--button-text); /*sets the text colour to white*/
   padding: 12px 20px; /*adds space inside the button*/
   border: none; /*removes border*/
   border-radius: 4px; /*makes the corners round*/
@@ -188,11 +229,11 @@ a:hover {
 .faq-section {
   width: 90%; /*makes the FAQ box wide*/
   margin: -30px auto; /*it centers and moves the box up slightly*/
-  background-color: #fff; /*sets the background colour to white*/
+  background-color: var(--card-bg); /*sets the background colour to white*/
   padding: 50px; /*adds the space inside the FAQ box*/
   border-radius: 20px; /*makes the corners round*/
   border-style: solid; /* adds a border*/
-  box-shadow: 0 0 10px rgba(0,0,0,0.05); /*adds a soft shadow*/
+  box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*adds a soft shadow*/
 }
 
 .faq-section h2 {
@@ -204,10 +245,31 @@ a:hover {
 .faq-section h3 {
   font-size: 16px; /*sets the text side of each question in FAQ section*/
   margin-top: 20px; /*adds space above eah question in FAQ section*/
-  color: #222; /*sets the text colour to very dark grey*/
+  color: var(--heading); /*sets the text colour to very dark grey*/
 }
 
 .faq-section p {
   font-size: 14px; /*sets the text size of each answer in FAQ section*/
-  color: #555; /*sets the text colour to medium grey*/
+  color: var(--text); /*sets the text colour to medium grey*/
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text);
+}
+
+.chart-container {
+  width: 80%;
+  max-width: 700px;
+  margin: 60px auto;
+  padding: 30px;
+  background: var(--card-bg);
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  box-shadow: 0 0 12px rgba(0,0,0,0.08);
 }
