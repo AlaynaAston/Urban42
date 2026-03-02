@@ -308,18 +308,18 @@
         <img src="ukflag.jpg" alt="UK Flag" class="flag-icon"> <!--shows a UK flag icon-->
         <span>GBP £</span> <!--shows the currency-->
         <a href="ContactPage.php">Help</a> <!--link to the help page-->
-        <a href="login.html">Log in</a> <!--link to the login page-->
+        <a href="login.php">Log in</a> <!--link to the login page-->
         <button id="theme-toggle" class="theme-toggle">🌙</button>
         <form class="search-form"> <!--the search bar form-->
         <input type="text" placeholder="Search..." name="search" class="nav-search"> <!--box where the user types what they want to search-->
         <button type="submit">🔍</button> <!--button that user clicks to start the searching-->
         </form>
-        <a href="basket.html">Cart</a> <!--link that takes user to the shopping cart-->
+        <a href="basket.php">Cart</a> <!--link that takes user to the shopping cart-->
     </div>
     </div> 
     <div id="sidebar" class="sidebar">
         <a href="Profile.php">Your Account</a>
-        <a href="index.html">Home</a>
+        <a href="index.php">Home</a>
         <a href="aboutus.php">About Us</a>
         <a href="index.php">Shop</a>
         <a href="#">New Arrivals</a>

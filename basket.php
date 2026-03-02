@@ -1,16 +1,13 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
+session_start();
+require 'db.php';
 
-
-$conn = new mysqli("localhost", "cs2team42", "5EUURc7WnOkMUR0kAsEz2L5gp", "cs2team42_db");
-
-if ($conn->connect_error) {
-    die("Database connection failed: " . $conn->connect_error);
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit();
 }
 
-$userID = 1; 
+$userID = $_SESSION["user_id"];
 
 $sql = "SELECT Product.name, Product.price, BasketItem.quantity
 FROM BasketItem
@@ -38,34 +35,41 @@ echo json_encode($items);
 </head>
 <body>
 
-<div class="navbar">
-  <div class="nav-left">
-    <div class="sidebar-icon">
-      <span class="bar"></span>
-      <span class="bar"></span>
-      <span class="bar"></span>
+ <!-- NAVBAR (original, unchanged) -->
+   <div class="navbar"> <!--main navigation bar container-->
+    <div class="nav-left"> <!--left side of the navigation bar-->
+    <div class="sidebar-icon"> <!--button that users will click to open the side menu-->
+      <span class="bar"></span> <!--horizontal line 1 that creates the button-->
+      <span class="bar"></span> <!--line 2-->
+      <span class="bar"></span> <!--line 3-->
     </div>
-
-    <div class="brand-logo">
-      <img src="urban42.png" alt="Urban 42 Logo">
-      <span>Urban 42</span>
+    <div class="brand-logo"> <!--container that has logo and brand name in it-->
+      <img src="urban42.png" alt="Urban 42 Logo"> <!--shows the brand logo-->
+      <span>Urban 42</span> <!--displays the brand name-->
     </div>
-  </div>
-
-  <div class="nav-right">
-    <img src="ukflag.jpg" class="flag-icon">
-    <span>GBP £</span>
-    <a href="contact.html">Help</a>
-    <a href="login.html">Log in</a>
-
-    <form class="search-form">
-      <input type="text" placeholder="Search..." name="search">
-      <button type="submit">🔍</button>
-    </form>
-
-    <a href="basket.php">Cart</a>
-  </div>
-</div>
+    </div>
+    <div class="nav-right"> <!--right side of the navigation bar-->
+        <img src="ukflag.jpg" alt="UK Flag" class="flag-icon"> <!--shows a UK flag icon-->
+        <span>GBP £</span> <!--shows the currency-->
+        <a href="ContactPage.php">Help</a> <!--link to the help page-->
+        <a href="login.php">Log in</a> <!--link to the login page-->
+        <button id="theme-toggle" class="theme-toggle">🌙</button>
+        <form class="search-form"> <!--the search bar form-->
+        <input type="text" placeholder="Search..." name="search" class="nav-search"> <!--box where the user types what they want to search-->
+        <button type="submit">🔍</button> <!--button that user clicks to start the searching-->
+        </form>
+        <a href="basket.php">Cart</a> <!--link that takes user to the shopping cart-->
+    </div>
+    </div> 
+    <div id="sidebar" class="sidebar">
+        <a href="Profile.php">Your Account</a>
+        <a href="index.php">Home</a>
+        <a href="aboutus.php">About Us</a>
+        <a href="index.php">Shop</a>
+        <a href="#">New Arrivals</a>
+        <a href="#">Sale</a>
+        <a href="ContactPage.php">Contact Us</a>
+    </div><!--end of the navigation bar-->
 
 <div class="container">
   <h1>Your Basket</h1>

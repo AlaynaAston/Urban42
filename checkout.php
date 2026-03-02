@@ -1,11 +1,13 @@
 <?php
-ini_set('display_errors',1);
-error_reporting(E_ALL);
+session_start();
+require 'db.php';
 
-$conn = new mysqli("localhost","cs2team42","5EUURc7WnOkMUR0kAsEz2L5gp","cs2team42_db");
-if ($conn->connect_error) die("DB error");
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit();
+}
 
-$userID = 1;
+$userID = $_SESSION["user_id"];
 
 // Get basket items
 $sql = "
