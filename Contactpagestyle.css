@@ -2,7 +2,8 @@
   --bg: #f9f9f9;
   --text: #333;
   --heading: #222;
-  --card-bg: #fff;
+  --subheading: #222;
+  --card-bg: #ffffff;
   --border: #030303;
   --input-border: #ccc;
   --button-bg: #222;
@@ -13,6 +14,7 @@ body.dark-mode {
   --bg: #121212;
   --text: #e5e5e5;
   --heading: #ffffff;
+  --subheading: #ffffff;
   --card-bg: #1e1e1e;
   --border: #444;
   --input-border: #555;
@@ -76,7 +78,7 @@ a:hover {
   gap: 10px; /*space between logo and text*/
   font-size: 18px; /*size of the brand name text*/
   font-weight: bold; /*makes the brand name bold*/
-  color: #222; /*sets the text colour*/
+  color: var(--text); /*sets the text colour*/
 }
 
 .brand-logo img {
@@ -153,7 +155,7 @@ a:hover {
 .logo-section img {
   max-width: 300px; /*limits fow the logo can get*/
   margin-bottom: 40px; /*sets the space under the logo*/
-  border-style: solid; /*adds a solid border*/
+  /*border-style: solid; /*adds a solid border*/
   border-radius: 20px; /*rounds the corners of the logo*/
 }
 
@@ -172,7 +174,7 @@ a:hover {
   background-color: var(--card-bg); /*sets the background colour to white*/
   padding: 50px; /*sets the space inside the form*/
   border-radius: 20px; /*make the corners round*/
-  border-style: solid; /*adds a solid border*/
+  /*border-style: solid; /*adds a solid border*/
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*creats a soft shadow around the form*/
 }
 
@@ -232,7 +234,7 @@ a:hover {
   background-color: var(--card-bg); /*sets the background colour to white*/
   padding: 50px; /*adds the space inside the FAQ box*/
   border-radius: 20px; /*makes the corners round*/
-  border-style: solid; /* adds a border*/
+  /*border-style: solid; /* adds a border*/
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*adds a soft shadow*/
 }
 
@@ -261,15 +263,4 @@ a:hover {
   cursor: pointer;
   font-size: 16px;
   color: var(--text);
-}
-
-.chart-container {
-  width: 80%;
-  max-width: 700px;
-  margin: 60px auto;
-  padding: 30px;
-  background: var(--card-bg);
-  border-radius: 20px;
-  border: 1px solid var(--border);
-  box-shadow: 0 0 12px rgba(0,0,0,0.08);
 }
