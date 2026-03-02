@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <title>Your Basket — Urban 42</title>
+
+  <!-- Your main styles (unchanged) -->
   <link rel="stylesheet" href="rahmanstyle.css">
+
+  <!-- Chatbox styles -->
+  <link rel="stylesheet" href="chatbox.css">
+
+  <!-- Your basket script -->
   <script defer src="basket.js"></script>
+
+  <!-- Chatbox script -->
   <script defer src="chatbox.js"></script>
+
 </head>
 <body>
 
@@ -29,8 +39,6 @@
     <a href="ContactPage.php">Help</a>
     <a href="login.html">Log in</a>
     <a href="basket.html">Cart</a>
-
-     
   </div>
 </div>
 
@@ -59,20 +67,30 @@
   <button onclick="proceedToCheckout()">Proceed to Checkout</button>
 </div>
 
-<!-- Chatbox -->
-<div class="chat-toggle" onclick="toggleChat()">💬</div>
 
-<div class="chatbox" id="chatbox">
-  <div class="chat-header">
-    Urban 42 Support
-    <span onclick="toggleChat()">✕</span>
+<!-- ============= CHATBOX (UPDATED TO MATCH LOGIN + SIGNUP) ============= -->
+<div class="u42-chat-system">
+
+  <div class="u42-chat-toggle" onclick="toggleChat()">💬</div>
+
+  <div class="u42-chatbox" id="chatbox">
+
+    <div class="u42-chat-header">
+      Urban 42 Support
+      <span onclick="toggleChat()">✕</span>
+    </div>
+
+    <div class="u42-chat-messages" id="chatMessages"></div>
+
+    <div class="u42-chat-input-area">
+      <input type="text" id="chatInput" placeholder="Ask us something...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
+
   </div>
-  <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-input-area">
-    <input type="text" id="chatInput" placeholder="Ask us something...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
+
 </div>
+<!-- ===================================================================== -->
 
 </body>
 </html>

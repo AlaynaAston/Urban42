@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <title>Create Account — Urban 42</title>
+
+  <!-- Main Styles -->
   <link rel="stylesheet" href="rahmanstyle.css">
-  <script defer src="chatbox.js"></script>
+
+  <!-- Chatbox Styles -->
+  <link rel="stylesheet" href="chatbox.css">
+
 </head>
 <body>
 
+<!-- ================= NAVBAR (updated to match cart) ================= -->
 <div class="navbar">
   <div class="nav-left">
     <div class="sidebar-icon">
@@ -15,6 +21,7 @@
       <span class="bar"></span>
       <span class="bar"></span>
     </div>
+
     <div class="brand-logo">
       <img src="urban42.png" alt="Urban 42 Logo">
       <span>Urban 42</span>
@@ -24,11 +31,13 @@
   <div class="nav-right">
     <img src="ukflag.jpg" class="flag-icon">
     <span>GBP £</span>
-    <a href="basket.html">Cart</a>
 
-   
+    <a href="ContactPage.php">Help</a>
+    <a href="login.html">Log in</a>
+    <a href="basket.html">Cart</a>
   </div>
 </div>
+<!-- ================================================================ -->
 
 <div class="container">
   <h1>Create Account</h1>
@@ -73,19 +82,29 @@ document.getElementById("signupForm").addEventListener("submit", function(e) {
 });
 </script>
 
-<!-- Chatbox -->
-<div class="chat-toggle" onclick="toggleChat()">💬</div>
-<div class="chatbox" id="chatbox">
-  <div class="chat-header">
-    Urban 42 Support
-    <span onclick="toggleChat()">✕</span>
+<!-- ================= CHATBOX ================= -->
+<div class="u42-chat-system">
+
+  <div class="u42-chat-toggle" onclick="toggleChat()">💬</div>
+
+  <div class="u42-chatbox" id="chatbox">
+    <div class="u42-chat-header">
+      Urban 42 Support
+      <span onclick="toggleChat()">✕</span>
+    </div>
+
+    <div class="u42-chat-messages" id="chatMessages"></div>
+
+    <div class="u42-chat-input-area">
+      <input type="text" id="chatInput" placeholder="Ask us something...">
+      <button onclick="sendMessage()">Send</button>
+    </div>
   </div>
-  <div class="chat-messages" id="chatMessages"></div>
-  <div class="chat-input-area">
-    <input type="text" id="chatInput" placeholder="Ask us something...">
-    <button onclick="sendMessage()">Send</button>
-  </div>
+
 </div>
+
+<!-- Chatbox Script -->
+<script src="chatbox.js"></script>
 
 </body>
 </html>
