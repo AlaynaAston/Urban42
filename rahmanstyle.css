@@ -224,3 +224,21 @@ button:hover {
   font-weight: bold;
   margin-top: 20px;
 }
+
+/* Add black border around form containers */
+.container {
+  border: 2px solid #030303;
+}
+
+/* Fix checkbox alignment */
+.container div:has(input[type="checkbox"]) {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.container input[type="checkbox"] {
+  width: auto;
+  margin-bottom: 0;
+}
