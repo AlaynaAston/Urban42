@@ -43,14 +43,33 @@
       <a href="basket.html">Cart</a>
     </div>
   </div>
+  <div class="nav-right"> <!--right side of the navigation bar-->
+    <img src="ukflag.jpg" alt="UK Flag" class="flag-icon"> <!--shows a UK flag icon-->
+    <span>GBP £</span> <!--shows the currency-->
+    <a href="#">Help</a> <!--link to the help page-->
+    <a href="#">Log in</a> <!--link to the login page-->
+    <button id="theme-toggle" class="theme-toggle">🌙</button>
+      <form class="search-form"> <!--the search bar form-->
+      <input type="text" placeholder="Search..." name="search"> <!--box where the user types what they want to search-->
+      <button type="submit">🔍</button> <!--button that user clicks to start the searching-->
+    </form>
+    <a href="#">Cart</a> <!--link that takes user to the shopping cart-->
+    </div>
+  </div> <!--end of the navigation bar-->
+      <div id="sidebar" class="sidebar">
+  <a href="#">Home</a>
+  <a href="#">Shop</a>
+  <a href="#">New Arrivals</a>
+  <a href="#">Sale</a>
+  <a href="#">Contact</a>
+</div>
+  <div class="container"> <!--container that holds the main content-->
 
-  <div class="container">
-    <div class="logo-section">
-      <img src="urban42.png" alt="Urban 42 Logo">
-
-      <div class="contact-info">
-        <b>Customer Service Line:</b> +44 20 637 7921<br>
-        Available Monday–Friday, 9am–6pm GMT<br><br>
+    <div class="logo-section"> <!--section that holds the logo and contact details-->
+      <img src="urban42.png" alt="Urban 42 Logo"> <!--shows the brand logo-->
+      <div class="contact-info"> <!--area that contains the contact information-->
+        <b>Customer Service Line:</b> +44 20 637 7921<br> <!--phone number-->
+        Available Monday–Friday, 9am–6pm GMT<br><br> <!--opening hours informatiom-->
 
         <b>Email Contacts:</b><br>
         General: support@urban42.co.uk<br>
@@ -72,17 +91,16 @@
         <label for="name">Full Name*</label>
         <input type="text" id="name" name="name" required>
 
-        <label for="email">Email Address*</label>
-        <input type="email" id="email" name="email" required>
-
-        <label for="type">Request Type*</label>
-        <select id="type" name="type" required>
-          <option value="">Select</option>
-          <option value="order">Order Issue</option>
-          <option value="returns">Returns & Refunds</option>
-          <option value="product">Product Inquiry</option>
-          <option value="technical">Technical Support</option>
-          <option value="other">Other</option>
+        <label for="email">Email Address*</label> <!--label for email box-->
+        <input type="email" id="email" name="email" required> <!--box to input email-->
+        <label for="type">Request Type*</label> <!--label for the dropdown menu-->
+        <select id="type" name="type" required> <!--dropdown menu to choose request type-->
+          <option value="">Select</option> 
+          <option value="order">Order Issue</option> <!--option for order problems-->
+          <option value="returns">Returns & Refunds</option> <!--option for returns-->
+          <option value="product">Product Inquiry</option> <!--option for questions related to products-->
+          <option value="technical">Technical Support</option> <!--option for technical help-->
+          <option value="other">Other</option> <!--option for anything else-->
         </select>
 
         <br>
@@ -123,36 +141,177 @@
     </div>
   </div>
 
-  <!-- ====================================================== -->
-  <!-- added: start of chatbox -->
-  <!-- ====================================================== -->
-  <div class="u42-chat-system">
+  <script>
+    document.querySelector(".sidebar-icon").addEventListener("click", () => { //when the menu icon is clicked open or close the sidebar.
+    document.getElementById("sidebar").classList.toggle("open");
+    });
+    document.addEventListener("click", (e) => { //it closes the sidebar when anywhere else on the page is clicked.
+    const sidebar = document.getElementById("sidebar");
+    const icon = document.querySelector(".sidebar-icon");
 
-    <div class="u42-chat-toggle" onclick="toggleChat()">💬</div>
+    if (!sidebar.contains(e.target) && !icon.contains(e.target)) { //it makes sure the sidebar only closes when the click is not inside the sidebar.
+      sidebar.classList.remove("open"); //closes the sidebar
+    }
+  });
+  </script>
 
-    <div class="u42-chatbox" id="chatbox">
+  <script>
+  const toggleBtn = document.getElementById("theme-toggle");
 
-      <div class="u42-chat-header">
-        Urban 42 Support
-        <span onclick="toggleChat()">✕</span>
-      </div>
+  if (localStorage.getItem("theme") === "dark") { //this checks if the user previously chose dark mode. If yes, it turns dark mode back on when the page loads.
+    document.body.classList.add("dark-mode"); //turns the dark mode on.
+    toggleBtn.textContent = "☀️"; //shows the button with sun icon.
+  }
 
-      <div class="u42-chat-messages" id="chatMessages"></div>
+  toggleBtn.addEventListener("click", () => {  //this runs when the user clicks dark mode button which is moon icon.
+    document.body.classList.toggle("dark-mode"); //makes the theme switch between dark mode and light mode.
 
-      <div class="u42-chat-input-area">
-        <input type="text" id="chatInput" placeholder="Ask us something...">
-        <button onclick="sendMessage()">Send</button>
-      </div>
+    const isDark = document.body.classList.contains("dark-mode"); //checks if dark mode is currently active.
+    toggleBtn.textContent = isDark ? "☀️" : "🌙"; //changes the icon on button depending on the mode. Sun means dark mode is on and Moon means light mode is on.
 
-    </div>
+    localStorage.setItem("theme", isDark ? "dark" : "light"); //it saves the user's choice so the website remembers it next time.
+  });
+</script>
 
-  </div>
-  <!-- ====================================================== -->
-  <!-- added: end of chatbox -->
-  <!-- ====================================================== -->
+<div class="chart-container"> <!--this container holds the first bar chart which is Monthly Sales-->
+  <canvas id="monthlySalesChart"></canvas> <!--the <canvas> element is where Chart.js draws the chart.-->
+</div>
 
-  <!-- added: chatbox js -->
-  <script src="chatbox.js"></script>
+<div class="chart-container"> <!--this container holds the second bar chart which is Best‑Selling Categories-->
+  <canvas id="categoryChart"></canvas> <!--here canvas is used again for the second chart as each chart needs it own <canvas> element with a unique id-->
+</div>
 
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!--this loads the Chart.js library from an online CDN. Chart.js is the JavaScript library used to create the bar charts on the website. -->
+
+<script>
+function textColor() {
+  return getComputedStyle(document.body).getPropertyValue('--text');
+} //this fuction gets the text colour from CSS file so it makes sure the chart text changes correctly according to the selected mode.
+function isDarkMode() {
+  return document.body.classList.contains("dark-mode");
+}
+/*Chart 1: MONTHLY SALES CHART*/
+function createMonthlySalesChart() {
+  const ctx1 = document.getElementById('monthlySalesChart'); //this finds the canvas element where the monthly sales chart will be drawn
+
+  return new Chart(ctx1, { //it creates a new bar chart using Chart.js.
+    type: 'bar', //states that this chart is a bar chart.
+    data: {
+      labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'], //These are the labels along the bottom of the chart.
+      datasets: [{ //the data that will be shown as bars
+        label: 'Monthly Sales (£)',
+        data: [1700, 2500, 1500, 2000, 2600, 1200], //sales numbers
+         backgroundColor: function(context) {
+          const chart = context.chart; //it gets the chart that is currently being drawn.
+          const {ctx, chartArea} = chart; //it gets the drawing tool(ctx) and the chart's size.
+
+          if (!chartArea) return null; //if the chart isn’t fully ready yet, it stops here to avoid errors.
+
+          const gradient = ctx.createLinearGradient( //it creates a vertical gradient from top to bottom of the chart.
+            0,
+            chartArea.top,
+            0,
+            chartArea.bottom
+          );
+
+          if (isDarkMode()) { //it applies different gradient colours depending on the theme.
+            gradient.addColorStop(0, "#ffffff"); //sets the top colour in dark mode
+            gradient.addColorStop(1, "#777777"); //sets the bottom colour in dark mode
+          } else {
+            gradient.addColorStop(0, "#111111"); //sets the top colour in light mode
+            gradient.addColorStop(1, "#777777"); //sets the bottom colour in light mode
+          }
+
+          return gradient; //returns the finished gradient so Chart.js can use it as the bar colour.
+        },
+
+        borderRadius: 8 //it rounds the corners of each bar.
+      }]
+    },
+    
+    options: {
+      responsive: true, //this makes the chart resize on different screens.
+      plugins: {
+        title: { //adds the title above the chart.
+          display: true,
+          text: 'Urban 42 — Monthly Sales Overview',
+          color: textColor(), //makes the title match dark or light mode.
+          font: {size: 20, weight: 'bold'} //sets the text size to 20 and makes it bold.
+        },
+        legend: { //it styles the legend.
+          labels: {color: textColor()}
+        }
+      },
+      scales: { //it controls the X and Y axes
+        x: {
+          ticks: {color: textColor()}, //sets the text colour of X-axis
+          grid: {display: false} //removes the vertical grid lines
+        },
+        y: {
+          beginAtZero: true, //makes the Y-Axis start at 0.
+          ticks: {color: textColor()}, //sets the text colour of Y-axis.
+          grid: {color: 'rgba(150,150,150,0.2)'} //sets the colour of grid lines to light grey.
+        }
+      }
+    }
+  });
+}
+
+//Chart 2: BEST-SELLING PRODUCTS SALES CHART
+function createCategoryChart() { //this finds the canvas element where the second chart will be drawn
+  const ctx2 = document.getElementById('categoryChart');
+
+  return new Chart(ctx2, { //creates the chart
+    type: 'bar', //sets the type of chart which is bar here.
+    data: {
+      labels: ['Hoodies', 'Shirts/Tops', 'Jeans', 'Shoes', 'Accessories'], //the product categories that are shown at the bottom.
+      datasets: [{
+        label: 'Units Sold', //label shown in the legend
+        data: [570, 380, 310, 260, 190], //these are the sales numbers for each category
+        backgroundColor: ['#222', '#444', '#666', '#888', '#aaa'], //sets the bar colours
+        borderRadius: 8 //makes the bar corners round
+      }]
+    },
+    options: {
+      responsive: true, // makes the chart resize on different screens.
+      plugins: {
+        title: { //adds the title above the chart.
+          display: true,
+          text: 'Urban 42 — Best-Selling Product Categories',
+          color: textColor(), //sets the colour of the text
+          font: {size: 20, weight: 'bold'} //sets the text size to 20 and makes it bold.
+        },
+        legend: { //styles the legend.
+          labels: {color: textColor()} //sets the labels colour.
+        }
+      },
+      scales: { //it controls the X and Y axes
+        x: {
+          ticks: {color: textColor()}, //sets the text colour of X-axis
+          grid: {display: false} //removes the vertical grid lines
+        },
+        y: {
+          beginAtZero: true, //makes the Y-Axis start at 0.
+          ticks: {color: textColor()}, //sets the text colour of Y-axis
+          grid: {color: 'rgba(150,150,150,0.2)'} //sets the colour of grid lines to light grey.
+        }
+      }
+    }
+  });
+}
+
+let monthlyChart = createMonthlySalesChart(); //creates monthly sales chart when the page loads.
+let categoryChart = createCategoryChart(); //creates best selling category chart when the page loads.
+
+//when the mode changes from light to dark or dark to light.
+document.getElementById("theme-toggle").addEventListener("click", () => {
+  setTimeout(() => { //it makes the browser wait briefly to allow the theme to change.
+    monthlyChart.destroy(); //removes the old monthly sales chart that have colours before changing the theme/mode.
+    categoryChart.destroy(); //removes the old best selling category chart that have colours before changing the theme/mode.
+    monthlyChart = createMonthlySalesChart(); //recreates monthly sales chart with the updated colours.
+    categoryChart = createCategoryChart(); //recreates best selling product category chart with the updated colours.
+  }, 300); //here 300 is used so browser gets enough time to switch the theme. it is basically 300 milliseconds which short enough that user doesn't notice and long enough for the theme to fully update.
+});
+</script>
 </body>
 </html>
