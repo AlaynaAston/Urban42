@@ -1,3 +1,34 @@
+<?php
+session_start();
+require 'db.php';
+
+if (!isset($_SESSION["user_id"])) {
+    header("Location: login.php");
+    exit();
+}
+
+$userID = $_SESSION["user_id"];
+
+/* Get user info */
+$userStmt = $db->prepare("
+    SELECT fullName, email, phone 
+    FROM Users 
+    WHERE userID = ?
+");
+$userStmt->execute([$userID]);
+$user = $userStmt->fetch(PDO::FETCH_ASSOC);
+
+/* Get orders */
+$orderStmt = $db->prepare("
+    SELECT orderID, orderDate, totalAmount, status 
+    FROM Orders 
+    WHERE userID = ?
+    ORDER BY orderDate DESC
+");
+$orderStmt->execute([$userID]);
+$orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -279,221 +310,98 @@
   </header>
 
   <main class="profile-wrapper">
-    <section id="profileContainer"></section>
-  </main>
+<section class="profile-card">
 
-  <script>
-    const userProfile = {
-      name: "John Doe",
-      photo: "team-img5.png",
-      membership: "Gold",
-      active: true,
-      contact: {
-        email: "john.doe@gmail.com",
-        phone: "+44 7700 900111",
-        address: "12 Starling Street, London, UK"
-      },
-      orders: [
-        { id: "#20001", date: "2025-11-20", total: "£59.99", status: "Delivered" },
-        { id: "#19987", date: "2025-10-05", total: "£23.50", status: "Delivered" }
-      ]
-    };
+  <!-- HEADER -->
+  <div class="profile-header">
+    <img class="profile-photo" src="team-img5.png" alt="Profile photo">
 
-    function createProfileCard(profile) {
-      const card = document.createElement("article");
-      card.className = "profile-card";
+    <div class="profile-main">
+      <div class="profile-name"><?= htmlspecialchars($user["fullName"]) ?></div>
+      <div class="membership-badge membership-gold">
+        <span class="dot"></span>
+        <span>Member</span>
+      </div>
+    </div>
 
-      const header = document.createElement("div");
-      header.className = "profile-header";
+    <div class="status-pill">Active</div>
+  </div>
 
-      const img = document.createElement("img");
-      img.className = "profile-photo";
-      img.src = profile.photo;
-      img.alt = profile.name;
+  <!-- CONTACT -->
+  <div class="section-title">Contact Details</div>
+  <div class="contact-details">
 
-      const main = document.createElement("div");
-      main.className = "profile-main";
+    <div class="detail-row">
+      <div class="detail-label">Email</div>
+      <div class="detail-value"><?= htmlspecialchars($user["email"]) ?></div>
+    </div>
 
-      const nameEl = document.createElement("div");
-      nameEl.className = "profile-name";
-      nameEl.textContent = profile.name;
+    <div class="detail-row">
+      <div class="detail-label">Phone</div>
+      <div class="detail-value"><?= htmlspecialchars($user["phone"]) ?></div>
+    </div>
 
-      const membershipBadge = document.createElement("div");
-      membershipBadge.className = "membership-badge";
+  </div>
 
-      if (profile.membership.toLowerCase() === "gold") {
-        membershipBadge.classList.add("membership-gold");
-      } else if (profile.membership.toLowerCase() === "silver") {
-        membershipBadge.classList.add("membership-silver");
-      }
+  <!-- ORDERS -->
+  <div class="section-title">Order Details</div>
+  <div class="order-summary">
 
-      const dot = document.createElement("span");
-      dot.className = "dot";
+    <div class="detail-row">
+      <div class="detail-label">Total Orders</div>
+      <div class="detail-value"><?= count($orders) ?></div>
+    </div>
 
-      const label = document.createElement("span");
-      label.textContent = profile.membership + " Member";
+    <div class="detail-row">
+      <div class="detail-label">Last Order</div>
+      <div class="detail-value">
+        <?php if ($orders): ?>
+          #<?= $orders[0]["orderID"] ?> • <?= $orders[0]["orderDate"] ?>
+        <?php else: ?>
+          No orders yet
+        <?php endif; ?>
+      </div>
+    </div>
 
-      membershipBadge.appendChild(dot);
-      membershipBadge.appendChild(label);
+    <div class="order-actions">
+      <div class="order-status-chip">
+        <?= $orders ? "Latest: ".$orders[0]["status"] : "No recent orders" ?>
+      </div>
 
-      main.appendChild(nameEl);
-      main.appendChild(membershipBadge);
+      <button class="toggle-orders-btn" type="button" onclick="toggleOrders()">View Orders</button>
+    </div>
 
-      const statusPill = document.createElement("div");
-      statusPill.className = "status-pill";
-      statusPill.textContent = profile.active ? "Active" : "Inactive";
-      if (!profile.active) {
-        statusPill.classList.add("inactive");
-      }
+    <div class="orders-list" id="ordersList" style="display:none;">
+      <?php if ($orders): ?>
+        <?php foreach ($orders as $o): ?>
+          <div class="order-item">
+            <div class="order-id">#<?= $o["orderID"] ?></div>
+            <div class="order-meta">
+              <?= $o["orderDate"] ?> • £<?= $o["totalAmount"] ?> • <?= $o["status"] ?>
+            </div>
+          </div>
+        <?php endforeach; ?>
+      <?php else: ?>
+        <div style="font-size:0.85rem;color:#9ca3af;">
+          This user has no previous orders.
+        </div>
+      <?php endif; ?>
+    </div>
 
-      header.appendChild(img);
-      header.appendChild(main);
-      header.appendChild(statusPill);
+  </div>
 
-      const contactTitle = document.createElement("div");
-      contactTitle.className = "section-title";
-      contactTitle.textContent = "Contact Details";
+</section>
+</main>
 
-      const contactBox = document.createElement("div");
-      contactBox.className = "contact-details";
+<script>
+function toggleOrders() {
+  const list = document.getElementById("ordersList");
+  const btn = document.querySelector(".toggle-orders-btn");
+  const open = list.style.display === "block";
+  list.style.display = open ? "none" : "block";
+  btn.textContent = open ? "View Orders" : "Hide Orders";
+}
+</script>
 
-      const rows = [
-        ["Email", profile.contact.email],
-        ["Phone", profile.contact.phone],
-        ["Address", profile.contact.address]
-      ];
-
-      rows.forEach(([labelText, valueText]) => {
-        const row = document.createElement("div");
-        row.className = "detail-row";
-
-        const labelEl = document.createElement("div");
-        labelEl.className = "detail-label";
-        labelEl.textContent = labelText;
-
-        const valueEl = document.createElement("div");
-        valueEl.className = "detail-value";
-        valueEl.textContent = valueText;
-
-        row.appendChild(labelEl);
-        row.appendChild(valueEl);
-        contactBox.appendChild(row);
-      });
-
-      const orderTitle = document.createElement("div");
-      orderTitle.className = "section-title";
-      orderTitle.textContent = "Order Details";
-
-      const orderBox = document.createElement("div");
-      orderBox.className = "order-summary";
-
-      const totalOrdersRow = document.createElement("div");
-      totalOrdersRow.className = "detail-row";
-
-      const totalOrdersLabel = document.createElement("div");
-      totalOrdersLabel.className = "detail-label";
-      totalOrdersLabel.textContent = "Total Orders";
-
-      const totalOrdersValue = document.createElement("div");
-      totalOrdersValue.className = "detail-value";
-      totalOrdersValue.textContent = profile.orders.length;
-
-      totalOrdersRow.appendChild(totalOrdersLabel);
-      totalOrdersRow.appendChild(totalOrdersValue);
-      orderBox.appendChild(totalOrdersRow);
-
-      const lastOrderRow = document.createElement("div");
-      lastOrderRow.className = "detail-row";
-
-      const lastOrderLabel = document.createElement("div");
-      lastOrderLabel.className = "detail-label";
-      lastOrderLabel.textContent = "Last Order";
-
-      const lastOrderValue = document.createElement("div");
-      lastOrderValue.className = "detail-value";
-      if (profile.orders.length > 0) {
-        const lastOrder = profile.orders[0];
-        lastOrderValue.textContent = `${lastOrder.id} • ${lastOrder.date}`;
-      } else {
-        lastOrderValue.textContent = "No orders yet";
-      }
-
-      lastOrderRow.appendChild(lastOrderLabel);
-      lastOrderRow.appendChild(lastOrderValue);
-      orderBox.appendChild(lastOrderRow);
-
-      const orderActions = document.createElement("div");
-      orderActions.className = "order-actions";
-
-      const statusChip = document.createElement("div");
-      statusChip.className = "order-status-chip";
-      if (profile.orders.length > 0) {
-        statusChip.textContent = `Latest: ${profile.orders[0].status}`;
-      } else {
-        statusChip.textContent = "No recent orders";
-      }
-
-      const toggleBtn = document.createElement("button");
-      toggleBtn.className = "toggle-orders-btn";
-      toggleBtn.type = "button";
-      toggleBtn.textContent = "View Orders";
-
-      const ordersList = document.createElement("div");
-      ordersList.className = "orders-list";
-
-      if (profile.orders.length > 0) {
-        profile.orders.forEach(order => {
-          const item = document.createElement("div");
-          item.className = "order-item";
-
-          const id = document.createElement("div");
-          id.className = "order-id";
-          id.textContent = order.id;
-
-          const meta = document.createElement("div");
-          meta.className = "order-meta";
-          meta.textContent = `${order.date} • ${order.total} • ${order.status}`;
-
-          item.appendChild(id);
-          item.appendChild(meta);
-          ordersList.appendChild(item);
-        });
-      } else {
-        const emptyOrders = document.createElement("div");
-        emptyOrders.style.fontSize = "0.85rem";
-        emptyOrders.style.color = "#9ca3af";
-        emptyOrders.textContent = "This user has no previous orders.";
-        ordersList.appendChild(emptyOrders);
-      }
-
-      toggleBtn.addEventListener("click", () => {
-        const isVisible = ordersList.style.display === "block";
-        ordersList.style.display = isVisible ? "none" : "block";
-        toggleBtn.textContent = isVisible ? "View Orders" : "Hide Orders";
-      });
-
-      orderActions.appendChild(statusChip);
-      orderActions.appendChild(toggleBtn);
-
-      orderBox.appendChild(orderActions);
-      orderBox.appendChild(ordersList);
-
-      card.appendChild(header);
-      card.appendChild(contactTitle);
-      card.appendChild(contactBox);
-      card.appendChild(orderTitle);
-      card.appendChild(orderBox);
-
-      return card;
-    }
-
-    function renderProfile() {
-      const container = document.getElementById("profileContainer");
-      const card = createProfileCard(userProfile);
-      container.appendChild(card);
-    }
-
-    document.addEventListener("DOMContentLoaded", renderProfile);
-  </script>
 </body>
 </html>

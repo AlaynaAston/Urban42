@@ -318,12 +318,13 @@
     </div>
     </div> 
     <div id="sidebar" class="sidebar">
+        <a href="Profile.php">Your Account</a>
         <a href="index.html">Home</a>
         <a href="aboutus.php">About Us</a>
-        <a href="#">Shop</a>
+        <a href="index.php">Shop</a>
         <a href="#">New Arrivals</a>
         <a href="#">Sale</a>
-        <a href="#">Contact Us</a>
+        <a href="ContactPage.php">Contact Us</a>
     </div><!--end of the navigation bar-->
     
     <!-- PAGE CONTENT (unchanged) -->
