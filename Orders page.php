@@ -5,7 +5,6 @@
   <title>My Orders — Urban 42</title> <!--text/title shown in the browser tab-->
   <link rel="stylesheet" href="Orderspagestyle.css" /> <!--connects the CSS file-->
 </head>
-
 <body>
   <div class="navbar"> <!--main navigation bar container-->
   <div class="nav-left"> <!--left side of the navigation bar-->
@@ -48,7 +47,6 @@
           <p><strong>Leather Boots</strong></p> <!--name of the item-->
           <button>Add to Cart</button> <!--button to add the item to the cart-->
         </div>
-
       </div>
     </section>
 
@@ -76,7 +74,6 @@
           <td>Processing</td>
           <td><a href="#">Track Order</a></td>
         </tr>
-
       </table>
     </section>
 
@@ -101,7 +98,6 @@
           <td>Leather Boots</td>
           <td>Delivered</td>
         </tr>
-
       </table>
     </section>
 
@@ -137,39 +133,7 @@
       </form>
     </section>
     </div>
-
   </div>
-
-  <!-- ===================================== -->
-  <!-- added: start chatbox -->
-  <!-- ===================================== -->
-  <div class="u42-chat-system">
-
-    <div class="u42-chat-toggle" onclick="toggleChat()">💬</div>
-
-    <div class="u42-chatbox" id="chatbox">
-
-      <div class="u42-chat-header">
-        Urban 42 Support
-        <span onclick="toggleChat()">✕</span>
-      </div>
-
-      <div class="u42-chat-messages" id="chatMessages"></div>
-
-      <div class="u42-chat-input-area">
-        <input type="text" id="chatInput" placeholder="Ask us something...">
-        <button onclick="sendMessage()">Send</button>
-      </div>
-
-    </div>
-
-  </div>
-  <!-- ===================================== -->
-  <!-- added: end chatbox -->
-  <!-- ===================================== -->
-
-  <!-- added: chatbox script -->
-  <script src="chatbox.js"></script>
 
 </body>
 </html>
