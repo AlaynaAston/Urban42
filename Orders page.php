@@ -167,6 +167,7 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 <!-- ================= RETURNS ================= -->
+<div class="return-form"> <!--container for returns form-->
 <section id="returns">
   <h2>Returns & Refunds</h2>
   <form method="post" action="return_request.php">
@@ -189,6 +190,7 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
   </form>
 </section>
 
+</div>
 </div>
     
 <!-- SIDEBAR SCRIPT -->
@@ -252,3 +254,4 @@ toggleBtn.addEventListener("click", () => {
 </body>
 
 </html>
+
