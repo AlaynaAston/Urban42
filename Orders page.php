@@ -190,7 +190,41 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
 </section>
 
 </div>
+    
+<!-- SIDEBAR SCRIPT -->
+<script>
+document.querySelector(".sidebar-icon").addEventListener("click", () => {
+  document.getElementById("sidebar").classList.toggle("open");
+});
 
+document.addEventListener("click", (e) => {
+  const sidebar = document.getElementById("sidebar");
+  const icon = document.querySelector(".sidebar-icon");
+
+  if (!sidebar.contains(e.target) && !icon.contains(e.target)) {
+    sidebar.classList.remove("open");
+  }
+});
+</script>
+
+<!-- THEME TOGGLE -->
+<script>
+const toggleBtn = document.getElementById("theme-toggle");
+
+if (localStorage.getItem("theme") === "dark") {
+  document.body.classList.add("dark-mode");
+  toggleBtn.textContent = "☀️";
+}
+
+toggleBtn.addEventListener("click", () => {
+  document.body.classList.toggle("dark-mode");
+
+  const isDark = document.body.classList.contains("dark-mode");
+  toggleBtn.textContent = isDark ? "☀️" : "🌙";
+
+  localStorage.setItem("theme", isDark ? "dark" : "light");
+});
+</script>
 <!-- ================= CHATBOX ================= -->
 <div class="u42-chat-system">
 
@@ -216,4 +250,5 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
 <script src="chatbox.js"></script>
 
 </body>
+
 </html>
