@@ -21,6 +21,7 @@
 }
 
 body.dark-mode {
+  --primary: #0d5388;
   --background: #121212;
   --text: #e5e5e5;
   --heading: #ffffff;
