@@ -3,7 +3,7 @@
   --text: #333;
   --heading: #222;
   --subheading: #222;
-  --card-bg: #ffffff;
+  --card-bg: #fdfdfd;
   --border: #030303;
   --input-border: #ccc;
   --button-bg: #222;
@@ -23,6 +23,7 @@ body.dark-mode {
   --button-text: #000000;
   --border-color:#203563;
 }
+
 body {
   margin: 0; /*removes the default space around the page*/
   font-family: 'Segoe UI', sans-serif; /*sets the style of the main text*/
@@ -55,7 +56,7 @@ a:hover {
   font-size: 14px; /*sets the text size in the navigation bar*/
 }
 
-.nav-left { 
+.nav-left {
   display: flex; /*places items in a row*/
   align-items: center; /*centers items vertically*/
   gap: 20px; /*space between items*/
@@ -141,117 +142,117 @@ a:hover {
   left: 0;
 }
 
-.container {
-  display: flex; /*places sections side by side*/
-  justify-content: space-between; /*speads them apart*/
-  padding: 40px; /*space inside the container*/
-  max-width: 1200px; /*it limits how wide the content can get*/
-  margin: auto; /*centers the container on the page*/
-  gap: 40px; /*sets the space between two main sections*/
+.wishlist-grid {
+  display: flex; /*displays wishlist items in a column*/
+  flex-direction: column; /*stacks items vertically*/
+  gap: 15px; /*adds space between each wishlist item*/
+  margin-bottom: 30px; /*adds space below the wishlist section*/
 }
 
-.logo-section {
-  flex: 1; /*allows this section to grow and fill space*/
+.wishlist-card {
+  background-color: var(--card-bg); /*sets the background colour to light grey*/
+  border: 1px solid var(--input-border); /*adds a ligh tcolour border around each card*/
+  padding: 15px; /*adds space inside the card*/
+  border-radius: 6px; /*makes the corners slightly round*/
+  box-shadow: 0 2px 6px rgba(0,0,0,0.03); /*adds soft shadow under the card*/
+  display: flex; /*puts text and button in a row*/
+  justify-content: space-between; /*spreads the content apart*/
+  align-items: center; /*centers the cards vertically*/
 }
 
-.logo-section img {
-  max-width: 300px; /*limits fow the logo can get*/
-  margin-bottom: 40px; /*sets the space under the logo*/
-  border-radius: 20px; /*rounds the corners of the logo*/
-}
-
-.contact-info {
-  font-size: 14px; /*sets the text size for contact details*/
-}
-
-.contact-info b {
-  display: block; /*makes the bold text appear on its own line*/
-  margin-top: 10px; /*adds space above each heading in bold*/
-}
-
-.contact-form {
-  width: 90%; /*makes the form take up 90% of the space*/
-  margin: 2px; /*puts the small space around the form*/
-  background: linear-gradient(to bottom, var(--border-color) 0%, var(--card-bg) 100%); /*sets the background colour to white*/
-  padding: 50px; /*sets the space inside the form*/
-  border-radius: 20px; /*make the corners round*/
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*creats a soft shadow around the form*/
-}
-
-.contact-form h2 {
-  margin-top: 0; /*removes space around the heading*/
-  font-size: 24px; /*sets the heading size*/
-  padding: 7px; /*sets the space inside the heading box*/
-  border-style: solid; /*adds a solid border*/
-  border-radius: 8px; /*makes corners of the border round*/
-}
-
-.contact-form p {
-  font-size: 14px; /*sets text size*/
-  color: var(--text); /*sets the text colour to grey*/
-  margin-bottom: 20px; /*sets space under the paragraph*/
-}
-
-.contact-form input,
-.contact-form select,
-.contact-form textarea {
-  width: 100%; /*makes input boxes stretch across the form*/
-  padding: 12px; /*sets the space inside the input boxes*/
-  margin-bottom: 15px; /*sets the space under each input box*/
-  border: 1px solid var(--border); /*adds a sold light grey border*/
-  border-radius: 4px; /*makes the corners slightly round*/
+.wishlist-card p {
+  margin: 0; /*removes default space around the text*/
   font-size: 14px; /*sets the text size*/
+  font-weight: 500; /*makes the text slightly bold*/
 }
 
-.contact-form textarea {
-  resize: vertical; /*allows the user to make the tmessage box taller or bigger*/
-  height: 120px; /*default height of the message box*/
-}
-
-.contact-form button {
-  background-color: var(--button-bg); /*sets the button background colour to very dark grey*/
+.wishlist-card button {
+  background-color: var(--button-bg); /*sets the button background to dark grey*/
   color: var(--button-text); /*sets the text colour to white*/
-  padding: 12px 20px; /*adds space inside the button*/
   border: none; /*removes border*/
-  border-radius: 4px; /*makes the corners round*/
-  cursor: pointer; /*shows pointer when hovering*/
-  font-weight: bold; /*makes the button text bold*/
+  padding: 8px 12px; /*adds space inside the button*/
+  border-radius: 4px; /*make the corners round*/
+  cursor: pointer; /*show pointer cursor when hovered*/
+  font-weight: bold; /*makes the text bold*/
 }
 
-.contact-form button:hover {
-  background-color: #444; /*makes the button background colour slightly light when hovered*/
+.wishlist-card button:hover {
+  background-color: #444; /*change the colour to slightly light grey when hovered*/
 }
 
-.faq {
-  font-size: 13px; /*sets the size of text*/
-  color: #777; /*sets the text colour*/
-  margin-top: 20px; /*adds the space above the FAQ note*/
+.orders-section {
+  max-width: 1000px; /*limits how wide the section can be*/
+  width: 100%; /*makes it stretch to full width if needed*/
+  margin: 40px auto; /*adds space above and below and centers it*/
+  padding: 40px; /*adds space inside the section*/
+  border-radius: 20px; /*make the corners round*/
+  border-style: solid; /*adds a solid border*/
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05); /*adds a soft shadow around the section*/
+  background: linear-gradient(to bottom, var(--border-color) -10%, var(--card-bg) 100%); /*sets the background colour to white*/
 }
 
-.faq-section {
-  width: 90%; /*makes the FAQ box wide*/
-  margin: -30px auto; /*it centers and moves the box up slightly*/
-  background: linear-gradient(to bottom, var(--border-color) 0%, var(--bg) 100%);/*sets the background colour*/
-  padding: 50px; /*adds the space inside the FAQ box*/
-  border-radius: 20px; /*makes the corners round*/
-  box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*adds a soft shadow*/
+.orders-section h1 {
+  font-size: 26px; /*sets the size of the orders section main heading*/
+  margin-bottom: 30px; /*adds space under the heading*/
+  text-align: center; /*centers the text*/
+  color: var(--heading); /*sets the text colour to dark grey*/
 }
 
-.faq-section h2 {
-  font-size: 22px; /*sets the size of FAQ section's heading*/
-  margin-bottom: 30px; /*adds the space under the heading*/
-  margin-top: 5px; /*adds the space above the heading*/
+.orders-section h2 {
+  font-size: 20px; /*sets size of the heading*/
+  margin-top: 30px; /*adds space above the heading*/
+  margin-bottom: 15px; /*adds space below the heading*/
+  color: var(--heading); /*sets the text colour to dark grey*/
 }
 
-.faq-section h3 {
-  font-size: 16px; /*sets the text side of each question in FAQ section*/
-  margin-top: 20px; /*adds space above eah question in FAQ section*/
-  color: var(--heading); /*sets the text colour to very dark grey*/
+table {
+  width: 100%; /*makes the table stretch across the section*/
+  border-collapse: collapse; /*removes gaps between table cells*/
+  margin-bottom: 30px; /*adds space under the table*/
 }
 
-.faq-section p {
-  font-size: 14px; /*sets the text size of each answer in FAQ section*/
-  color: var(--text); /*sets the text colour to medium grey*/
+table th, table td {
+  border: 1px solid var(--border); /*adds light grey border around each cell*/
+  padding: 12px; /*adds space inside each cell*/
+  font-size: 14px; /*sets text size*/
+  text-align: left; /*aligns text to the left*/
+}
+
+table th {
+  background-color: var(--card-bg); /*adds light grey background for table headers*/
+}
+
+.return-form {
+  display: block; /*makes the section take up full width and start on a new line*/
+  margin-top: 20px; /*adds space above the return form*/
+  font-size: 14px; /*sets the size of text*/
+  color: var(--text); /*sets the text colour*/
+}
+
+.return-form input,
+.return-form select,
+.return-form textarea {
+  width: 100%; /*makes the input boxes stretch across the form*/
+  padding: 10px; /*adds space inside the input box*/
+  margin-top: 6px; /*adds space above each input box*/
+  font-size: 14px; /*sets the text size*/
+  border: 1px solid var(--input-border); /*adds a light grey border*/
+  border-radius: 4px; /*make the corners round*/
+}
+
+.return-form button {
+  margin-top: 25px; /*adds space above the button*/
+  background-color: var(--button-bg); /*sets the button's background colour to dark grey*/
+  color: var(--button-text); /*sets the text colour to white*/
+  border: none; /*removes the border*/
+  padding: 10px 18px; /*adds space inside the button*/
+  font-weight: bold; /*makes the text bold*/
+  cursor: pointer; /*show pointer when cursor hovered*/
+  border-radius: 4px; /*make the corners round*/
+}
+
+.return-form button:hover {
+  background-color: #444; /*make the button's background colour slightly light when hovered*/
 }
 
 .theme-toggle {
