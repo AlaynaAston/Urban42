@@ -171,10 +171,9 @@ a:hover {
 .contact-form {
   width: 90%; /*makes the form take up 90% of the space*/
   margin: 2px; /*puts the small space around the form*/
-  background-color: var(--card-bg); /*sets the background colour to white*/
+  background: linear-gradient(to bottom, var(--border-color) 0%, var(--bg) 100%);
   padding: 50px; /*sets the space inside the form*/
   border-radius: 20px; /*make the corners round*/
-  /*border-style: solid; /*adds a solid border*/
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*creats a soft shadow around the form*/
 }
 
@@ -231,10 +230,9 @@ a:hover {
 .faq-section {
   width: 90%; /*makes the FAQ box wide*/
   margin: -30px auto; /*it centers and moves the box up slightly*/
-  background-color: var(--card-bg); /*sets the background colour to white*/
+  background: linear-gradient(to bottom, var(--border-color) 0%, var(--bg) 100%);
   padding: 50px; /*adds the space inside the FAQ box*/
   border-radius: 20px; /*makes the corners round*/
-  /*border-style: solid; /* adds a border*/
   box-shadow: 0 0 10px rgb(0, 0, 0, 0.05); /*adds a soft shadow*/
 }
 
@@ -264,3 +262,4 @@ a:hover {
   font-size: 16px;
   color: var(--text);
 }
+
