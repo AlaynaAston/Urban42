@@ -4,9 +4,9 @@
 
     $pid = $_GET['id'];
     $sql = $db->prepare("
-    SELECT products.*
-    FROM products
-    WHERE products.productID = :pid");
+    SELECT product.*
+    FROM product
+    WHERE product.productID = :pid");
     $sql->execute([':pid'=>$pid]);
     $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
     if(!$productDetails){
@@ -18,11 +18,23 @@
         $productID = $_POST['productID'];
         $productSize = $_POST['sizes'];
         $productQuantity = $_POST['quantity'];
-        
-         $stmt = $db->prepare("INSERT INTO baskets (userID, productID, quantity, size) VALUES (?, ?, ?, ?)");
-         $stmt->execute([$user_id, $productID, $productQuantity, $productSize]);
+        $sql = $db->prepare("
+    SELECT basket.*
+    FROM basket
+    WHERE basket.userID = :uid");
+    $sql->execute([':uid'=>$user_id]);
+$basketDetails = $sql->fetch(PDO::FETCH_ASSOC);
+if(!$basketDetails){
+   $stmt = $db->prepare("INSERT INTO basket (userID) VALUES (?)");
+   $stmt->execute([$user_id]);
+} 
+   $basketID = $basketDetails['basketID'];
+   $sql2 = $db->prepare("INSERT INTO basketitem (basketID, productID, quantity) VALUES (?, ?, ?)");
+   $sql2->execute([$basketID, $productID, $productQuantity]);
+
     }
 ?>
+ 
 
 <!DOCTYPE html>
 <html lang="en">
@@ -60,7 +72,7 @@
     </form></a>
     <a href="#">Cart</a>
     </div>
-  </div>
+  </div> 
     <div id="product-details">
         <div class="carousel" data-carousel aria-label="Product Photos">
             <button class="carousel-button prev" data-carousel-button="prev">&#60;</button>
@@ -75,7 +87,7 @@
                 <li class="slide">
                     <img src="<?php echo nl2br(htmlspecialchars($productDetails['image3Path']));?>">
                 </li>
-            </ul>
+</ul>
         </div>
         <div id="product-text">
             <div id="product-title">

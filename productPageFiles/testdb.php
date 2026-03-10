@@ -1,7 +1,7 @@
 <?php
 
 $db_host = 'localhost';
-$db_name = 'cs2team42_db';
+$db_name = 'cs2team42_db2';
 $username = 'root';
 $password = '';
 

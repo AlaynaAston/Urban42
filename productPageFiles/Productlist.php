@@ -3,7 +3,7 @@
 <?php
 require 'testdb.php';
 
-$sql = "SELECT products.* FROM products";
+$sql = "SELECT product.* FROM product";
 $products = $db->query($sql);
 $productDetails = $products->fetchAll(PDO::FETCH_ASSOC);
 
@@ -13,7 +13,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) {
     $price = $_POST['price'];
     $description = $_POST['description'];
     $material = $_POST['material'];
-    $category = $_POST['category'];
+    $categoryID = $_POST['categoryID'];
     $size = $_POST['size'];
     $colour = $_POST['colour'];
     
@@ -48,8 +48,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) {
         $newFileName3 = uniqid('img_', true) . '.' . $ext3;
         $destPath3 = $uploadDir . $newFileName3;
 
-        $stmt = $db->prepare("INSERT INTO products (availableStock, price, name, description, material, category, size, colour, image1Path, image2Path, image3Path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->execute([$availableStock, $price, $name, $description, $material, $category, $size, $colour, $destPath1, $destPath2, $destPath3]);
+        $stmt = $db->prepare("INSERT INTO product (availableStock, price, name, description, material, categoryID, size, colour, image1Path, image2Path, image3Path) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->execute([$availableStock, $price, $name, $description, $material, $categoryID, $size, $colour, $destPath1, $destPath2, $destPath3]);
 
         move_uploaded_file($image1TmpPath, $destPath1);
         move_uploaded_file($image2TmpPath, $destPath2);
@@ -86,14 +86,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) {
         <textarea name="material" placeholder="Materials" id="description" required type="text" maxlength="200"></textarea><br>
        
         <label for="category">Product Category: </label><br>
-        <input type="radio" name="category" class="radio" value="clothing" required>
-        <label for="clothing">Clothing</label><br>
-        <input type="radio" name="category" class="radio" value="shoes">
-        <label for="shoes">Shoes</label><br>
-        <input type="radio" name="category" class="radio" value="bags">
-        <label for="bags">Bags</label><br>
-        <input type="radio" name="category" class="radio" value="accessories">
-        <label for="accessories">Accessories</label><br>
+       <input name="categoryID" placeholder="1" id="categoryID" required type="number" ><br>
 
         <label for="size">Product Size: </label>
         <select name="size" class="sizes" required> 
