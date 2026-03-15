@@ -1,11 +1,35 @@
+/* Light mode variables (default) */
+:root {
+  --text: #333333;
+  --card-bg: #ffffff;
+  --border: #dddddd;
+  --input-border: #dddddd;
+  --button-text: #ffffff;
+  --bg-color: #f9f9f9;
+  --card-shadow: rgba(0, 0, 0, 0.12);
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --text: #ffffff;
+  --card-bg: #1a1a1a;
+  --border: #444444;
+  --input-border: #444444;
+  --button-text: #ffffff;
+  --bg-color: #121212;
+  --card-shadow: rgba(255, 255, 255, 0.1);
+}
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
-  background-color: #f9f9f9;
+  background-color: var(--bg-color);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 a {
-  color: #333;
+  color: var(--text);
   text-decoration: none;
 }
 
@@ -19,9 +43,10 @@ a:hover {
   justify-content: space-between;
   align-items: center;
   padding: 15px 40px;
-  background-color: white;
-  border-bottom: 2px solid #ddd;
+  background-color: var(--card-bg);
+  border-bottom: 2px solid var(--border);
   font-size: 14px;
+  transition: background-color 0.3s, border-color 0.3s;
 }
 
 .nav-left { 
@@ -40,7 +65,8 @@ a:hover {
 .sidebar-icon .bar {
   width: 25px;
   height: 3px;
-  background-color: #333;
+  background-color: var(--text);
+  transition: background-color 0.3s;
 }
 
 .brand-logo {
@@ -49,7 +75,7 @@ a:hover {
   gap: 10px;
   font-size: 18px;
   font-weight: bold;
-  color: #333;
+  color: var(--text);
 }
 
 .brand-logo img {
@@ -70,9 +96,10 @@ a:hover {
 
 .search-form {
   display: flex;
-  border: 1px solid #ddd;
+  border: 1px solid var(--input-border);
   border-radius: 4px;
   overflow: hidden;
+  transition: border-color 0.3s;
 }
 
 .search-form input {
@@ -81,14 +108,21 @@ a:hover {
   outline: none;
   font-size: 14px;
   width: 200px;
+  background-color: var(--card-bg);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .search-form button {
   background-color: #222;
-  color: white;
+  color: var(--button-text);
   border: none;
   padding: 8px 12px;
   cursor: pointer;
+}
+
+.dark-mode .search-form button {
+  background-color: #444;
 }
 
 .sidebar {
@@ -97,13 +131,13 @@ a:hover {
   left: -350px;
   width: 250px;
   height: 100%;
-  background: white;
-  border-right: 2px solid #ddd;
+  background: var(--card-bg);
+  border-right: 2px solid var(--border);
   padding: 20px;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  transition: 0.3s ease;
+  transition: left 0.3s ease, background-color 0.3s, border-color 0.3s;
   z-index: 1000;
 }
 
@@ -111,14 +145,26 @@ a:hover {
   left: 0;
 }
 
+.sidebar a {
+  color: var(--text);
+  padding: 10px;
+  border-radius: 4px;
+  transition: background-color 0.3s;
+}
+
+.sidebar a:hover {
+  background-color: rgba(128, 128, 128, 0.1);
+}
+
 .theme-toggle {
   background: none;
-  border: 1px solid #ddd;
+  border: 1px solid var(--border);
   padding: 6px 10px;
   border-radius: 6px;
   cursor: pointer;
   font-size: 16px;
-  color: #333;
+  color: var(--text);
+  transition: border-color 0.3s, color 0.3s;
 }
 
 /* Categories Section */
@@ -131,7 +177,8 @@ a:hover {
   margin-bottom: 25px;
   font-size: 2rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
+  transition: color 0.3s;
 }
 
 /* Category cards */
@@ -140,16 +187,16 @@ a:hover {
   width: 180px;
   margin: 15px;
   padding: 15px;
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  transition: transform 0.25s, box-shadow 0.25s, background-color 0.3s;
   vertical-align: top;
 }
 
 .category-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 14px var(--card-shadow);
 }
 
 .category-card img {
@@ -159,13 +206,19 @@ a:hover {
   border-radius: 8px;
   object-fit: cover;
   margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode .category-card img {
+  background: #333;
 }
 
 .category-card p {
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 5px;
-  color: #333;
+  color: var(--text);
+  transition: color 0.3s;
 }
 
 .category-card a {
@@ -184,7 +237,8 @@ a:hover {
   margin-bottom: 25px;
   font-size: 2rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
+  transition: color 0.3s;
 }
 
 /* Trending item cards */
@@ -193,16 +247,16 @@ a:hover {
   width: 180px;
   margin: 15px;
   padding: 15px;
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  transition: transform 0.25s, box-shadow 0.25s, background-color 0.3s;
   vertical-align: top;
 }
 
 .trending-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 6px 14px var(--card-shadow);
 }
 
 .trending-card img {
@@ -212,25 +266,19 @@ a:hover {
   border-radius: 8px;
   object-fit: cover;
   margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode .trending-card img {
+  background: #333;
 }
 
 .trending-card p {
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 5px;
-  color: #333;
-}
-
-/* Reset any generic section styles that might cause issues */
-section {
-  padding: 0;
-  text-align: left;
-}
-
-section h2 {
-  margin: 0;
-  font-size: inherit;
-  color: inherit;
+  color: var(--text);
+  transition: color 0.3s;
 }
 
 /* Footer */
@@ -241,6 +289,11 @@ footer {
   color: #fff;
   margin-top: 40px;
   font-size: 0.95rem;
+  transition: background-color 0.3s;
+}
+
+.dark-mode footer {
+  background: #000;
 }
 
 footer a {
@@ -255,8 +308,9 @@ footer a:hover {
 /* Horizontal rules */
 hr {
   border: none;
-  border-top: 1px solid #ddd;
+  border-top: 1px solid var(--border);
   margin: 20px 0;
+  transition: border-color 0.3s;
 }
 
 /* Responsive Design */
