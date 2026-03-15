@@ -44,10 +44,10 @@
         <a href="ContactPage.php">Help</a> <!--link to the help page-->
         <a href="login.php">Log in</a> <!--link to the login page-->
         <button id="theme-toggle" class="theme-toggle">🌙</button>
-        <form class="search-form"> <!--the search bar form-->
-        <input type="text" placeholder="Search..." name="search" class="nav-search"> <!--box where the user types what they want to search-->
-        <button type="submit">🔍</button> <!--button that user clicks to start the searching-->
-        </form>
+        <form class="search-form" action="search.php" method="GET">
+  <input type="text" placeholder="Search..." name="search" class="nav-search" required>
+  <button type="submit">🔍</button>
+</form>
         <a href="basket.php">Cart</a> <!--link that takes user to the shopping cart-->
     </div>
     </div> 
