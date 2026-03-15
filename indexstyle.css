@@ -190,7 +190,7 @@ a:hover {
   transition: color 0.3s;
 }
 
-/* Category cards with gradient border on hover */
+/* Category cards - smooth hover with box-shadow */
 .category-card {
   display: inline-block;
   width: 180px;
@@ -199,17 +199,18 @@ a:hover {
   background: var(--card-bg);
   border-radius: 12px;
   box-shadow: 0 4px 10px var(--card-shadow);
-  transition: transform 0.25s, box-shadow 0.25s, background-color 0.3s, border 0.3s;
+  transition: all 0.3s ease;
   vertical-align: top;
   position: relative;
-  border: 1px solid transparent;
 }
 
 .category-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 14px var(--card-shadow);
-  border: 1px solid;
-  border-image: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)) 1;
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+}
+
+.dark-mode .category-card:hover {
+  box-shadow: 0 8px 20px rgba(72, 149, 239, 0.4);
 }
 
 .category-card img {
@@ -254,7 +255,7 @@ a:hover {
   transition: color 0.3s;
 }
 
-/* Trending item cards with gradient accents */
+/* Trending item cards - smooth hover with glow */
 .trending-card {
   display: inline-block;
   width: 180px;
@@ -263,17 +264,17 @@ a:hover {
   background: var(--card-bg);
   border-radius: 12px;
   box-shadow: 0 4px 10px var(--card-shadow);
-  transition: transform 0.25s, box-shadow 0.25s, background-color 0.3s;
+  transition: all 0.3s ease;
   vertical-align: top;
-  border-bottom: 3px solid transparent;
 }
 
 .trending-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 14px var(--card-shadow);
-  border-bottom: 3px solid;
-  border-image: linear-gradient(135deg, var(--gradient-start), var(--gradient-end)) 1;
-  border-image-slice: 1;
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+}
+
+.dark-mode .trending-card:hover {
+  box-shadow: 0 8px 20px rgba(72, 149, 239, 0.4);
 }
 
 .trending-card img {
@@ -298,15 +299,6 @@ a:hover {
   transition: color 0.3s;
 }
 
-/* Add gradient to footer links on hover */
-footer a:hover {
-  text-decoration: underline;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
 /* Footer */
 footer {
   text-align: center;
@@ -326,14 +318,16 @@ footer a {
   color: #fff;
   margin: 0 10px;
   transition: all 0.3s;
+  position: relative;
 }
 
 footer a:hover {
-  text-decoration: underline;
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: #4cc9f0;
+  text-decoration: none;
+}
+
+.dark-mode footer a:hover {
+  color: #4cc9f0;
 }
 
 /* Horizontal rules */
@@ -342,16 +336,6 @@ hr {
   border-top: 1px solid var(--border);
   margin: 20px 0;
   transition: border-color 0.3s;
-}
-
-/* Add a subtle gradient to h2 on hover */
-.categories-section h2:hover,
-.trending-section h2:hover {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  display: inline-block;
 }
 
 /* Responsive Design */
