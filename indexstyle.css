@@ -1,141 +1,141 @@
 body {
-	  margin: 0;
-	  font-family: 'Segoe UI', sans-serif;
-	  background-color: #f9f9f9;
-	}
-	a {
-	  color: #333;
-	  text-decoration: none;
-	}
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f9f9f9;
+}
 
-	a:hover {
-	  text-decoration: underline;
-	}
-	/*Maida's Nav Bar*/
+a {
+  color: #333;
+  text-decoration: none;
+}
 
-	.navbar {
-            display: flex; /*places items in a row*/
-            justify-content: space-between; /*spreads items to left and right*/
-            align-items: center; /*centers items vertically*/
-            padding: 15px 40px; /*space inside the navigation bar*/
-            background-color: var(--card-bg); /*sets the background colour to white*/
-            border-bottom: 2px solid var(--border); /*creates a black line under the navigation bar*/
-            font-size: 14px; /*sets the text size in the navigation bar*/
-        }
+a:hover {
+  text-decoration: underline;
+}
 
-        .nav-left { 
-            display: flex; /*places items in a row*/
-            align-items: center; /*centers items vertically*/
-            gap: 20px; /*space between items*/
-        }
+/* Maida's Nav Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 40px;
+  background-color: white;
+  border-bottom: 2px solid #ddd;
+  font-size: 14px;
+}
 
-        .sidebar-icon {
-            display: flex; /*shows the bars in a column*/
-            flex-direction: column; /*stacks the bars (-) vertically*/
-            gap: 5px; /*sets the space between each bar*/
-            cursor: pointer; /*shows a pointer when hovering to make it look clickable*/
-        }
+.nav-left { 
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-        .sidebar-icon .bar {
-            width: 25px; /*length of the each bar*/
-            height: 3px; /*thickness of the each bar*/
-            background-color: var(--text); /*sets dark grey as the bar colour*/
-        }
+.sidebar-icon {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+}
 
-        .brand-logo {
-            display: flex; /*puts logo and text in a row*/
-            align-items: center; /*centers them vertically*/
-            gap: 10px; /*space between logo and text*/
-            font-size: 18px; /*size of the brand name text*/
-            font-weight: bold; /*makes the brand name bold*/
-            color: var(--text); /*sets the text colour*/
-        }
+.sidebar-icon .bar {
+  width: 25px;
+  height: 3px;
+  background-color: #333;
+}
 
-        .brand-logo img {
-            width: 40px; /*sets the width of the brand logo image*/
-            height: auto; /*keeps the image shape correct*/
-        }
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
 
-        .nav-right {
-            display: flex; /*puts items in a row*/
-            align-items: center; /*centers them vertically*/
-            gap: 20px; /*space between each item*/
-        }
+.brand-logo img {
+  width: 40px;
+  height: auto;
+}
 
-        .flag-icon {
-            width: 20px; /*size of the flag image*/
-            height: auto; /*keeps the image shape correct*/
-        }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
 
-        .search-form {
-            display: flex; /*puts items in a row*/
-            border: 1px solid var(--input-border); /*sets light grey border*/
-            border-radius: 4px; /*creates slightly rounded corners*/
-            overflow: hidden; /*keeps the corners clean and neat*/
-        }
+.flag-icon {
+  width: 20px;
+  height: auto;
+}
 
-        .search-form input {
-            padding: 8px 12px; /*spac inside the input box*/
-            border: none; /*it removes the border of search bar*/
-            outline: none; /*removes the outline when clicked*/
-            font-size: 14px; /*sets the text size*/
-        }
+.search-form {
+  display: flex;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+}
 
-        .search-form button {
-            background-color: #222; /*sets dark background for button*/
-            color: var(--button-text); /*sets the text colour to white*/
-            border: none; /*removes border*/
-            padding: 8px 12px; /*adds space inside the button*/
-            cursor: pointer; /*shows pointer when hovering*/
-        }
+.search-form input {
+  padding: 8px 12px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  width: 200px;
+}
 
-        .sidebar {
-            position: fixed;
-            top: 70px;
-            left: -350px; /* hides the side bar off-screen */
-            width: 250px;
-            height: 100%;
-            background: var(--card-bg);
-            border-right: 2px solid var(--border);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            transition: 0.3s ease; /* smooth slide animation */
-        }
+.search-form button {
+  background-color: #222;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+}
 
-        /* When sidebar is open */
-        .sidebar.open {
-            left: 0;
-        }
+.sidebar {
+  position: fixed;
+  top: 70px;
+  left: -350px;
+  width: 250px;
+  height: 100%;
+  background: white;
+  border-right: 2px solid #ddd;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s ease;
+  z-index: 1000;
+}
 
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border);
-            padding: 6px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            color: var(--text);
-        }
+.sidebar.open {
+  left: 0;
+}
 
+.theme-toggle {
+  background: none;
+  border: 1px solid #ddd;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #333;
+}
 
-
-    /* Categories*/
-    section {
+/* Categories Section */
+.categories-section {
   padding: 30px 20px;
   text-align: center;
 }
 
-section h2 {
+.categories-section h2 {
   margin-bottom: 25px;
   font-size: 2rem;
   font-weight: 700;
   color: #111;
 }
 
-/* Container for each card */
-section div {
+/* Category cards */
+.category-card {
   display: inline-block;
   width: 180px;
   margin: 15px;
@@ -144,41 +144,96 @@ section div {
   border-radius: 12px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
   transition: transform 0.25s, box-shadow 0.25s;
+  vertical-align: top;
 }
 
-section div:hover {
+.category-card:hover {
   transform: translateY(-6px);
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
 }
 
-/* Images */
-section div img {
+.category-card img {
   width: 100%;
   height: 140px;
-  background: #e0e0e0; /* placeholder color */
+  background: #e0e0e0;
   border-radius: 8px;
   object-fit: cover;
   margin-bottom: 10px;
 }
 
-/* Text below images */
-section div p {
+.category-card p {
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 5px;
   color: #333;
 }
 
-/* Remove underline from links */
-section a {
+.category-card a {
   text-decoration: none;
+  color: inherit;
+  display: block;
+}
+
+/* Trending Items Section */
+.trending-section {
+  padding: 30px 20px;
+  text-align: center;
+}
+
+.trending-section h2 {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111;
+}
+
+/* Trending item cards */
+.trending-card {
+  display: inline-block;
+  width: 180px;
+  margin: 15px;
+  padding: 15px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+  transition: transform 0.25s, box-shadow 0.25s;
+  vertical-align: top;
+}
+
+.trending-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+}
+
+.trending-card img {
+  width: 100%;
+  height: 140px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.trending-card p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 5px;
+  color: #333;
+}
+
+/* Reset any generic section styles that might cause issues */
+section {
+  padding: 0;
+  text-align: left;
+}
+
+section h2 {
+  margin: 0;
+  font-size: inherit;
   color: inherit;
 }
 
-/* ---------------------------
-   Footer
----------------------------- */
-
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -188,18 +243,55 @@ footer {
   font-size: 0.95rem;
 }
 
-/* ---------------------------
-   Responsive Design
----------------------------- */
+footer a {
+  color: #fff;
+  margin: 0 10px;
+}
 
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Horizontal rules */
+hr {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 20px 0;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  section div {
+  .navbar {
+    padding: 15px 20px;
+  }
+  
+  .nav-right {
+    gap: 10px;
+  }
+  
+  .search-form input {
+    width: 120px;
+  }
+  
+  .category-card, .trending-card {
     width: 45%;
   }
 }
 
 @media (max-width: 480px) {
-  section div {
+  .category-card, .trending-card {
     width: 90%;
+  }
+  
+  .brand-logo span {
+    display: none;
+  }
+  
+  .nav-right > span:not(.flag-icon) {
+    display: none;
+  }
+  
+  .search-form input {
+    width: 100px;
   }
 }
