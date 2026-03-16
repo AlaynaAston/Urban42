@@ -1,184 +1,271 @@
+/* Light mode variables (default) */
+:root {
+  --text: #333333;
+  --card-bg: #ffffff;
+  --border: #dddddd;
+  --input-border: #dddddd;
+  --button-text: #ffffff;
+  --bg-color: #f9f9f9;
+  --card-shadow: rgba(0, 0, 0, 0.12);
+  --gradient-start: #4361ee;
+  --gradient-end: #4cc9f0;
+}
+
+/* Dark mode variables */
+.dark-mode {
+  --text: #ffffff;
+  --card-bg: #1a1a1a;
+  --border: #444444;
+  --input-border: #444444;
+  --button-text: #ffffff;
+  --bg-color: #121212;
+  --card-shadow: rgba(255, 255, 255, 0.1);
+  --gradient-start: #4895ef;
+  --gradient-end: #4cc9f0;
+}
+
 body {
-	  margin: 0;
-	  font-family: 'Segoe UI', sans-serif;
-	  background-color: #f9f9f9;
-	}
-	a {
-	  color: #333;
-	  text-decoration: none;
-	}
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text);
+  transition: background-color 0.3s, color 0.3s;
+}
 
-	a:hover {
-	  text-decoration: underline;
-	}
-	/*Maida's Nav Bar*/
+a {
+  color: var(--text);
+  text-decoration: none;
+}
 
-	.navbar {
-            display: flex; /*places items in a row*/
-            justify-content: space-between; /*spreads items to left and right*/
-            align-items: center; /*centers items vertically*/
-            padding: 15px 40px; /*space inside the navigation bar*/
-            background-color: var(--card-bg); /*sets the background colour to white*/
-            border-bottom: 2px solid var(--border); /*creates a black line under the navigation bar*/
-            font-size: 14px; /*sets the text size in the navigation bar*/
-        }
+a:hover {
+  text-decoration: underline;
+}
 
-        .nav-left { 
-            display: flex; /*places items in a row*/
-            align-items: center; /*centers items vertically*/
-            gap: 20px; /*space between items*/
-        }
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 35px;
+background:var(--card-bg);
+border-bottom:2px solid var(--border);
+font-size:14px;
+height:70px;
+}
 
-        .sidebar-icon {
-            display: flex; /*shows the bars in a column*/
-            flex-direction: column; /*stacks the bars (-) vertically*/
-            gap: 5px; /*sets the space between each bar*/
-            cursor: pointer; /*shows a pointer when hovering to make it look clickable*/
-        }
+/* LEFT SIDE */
+.nav-left{
+display:flex;
+align-items:center;
+gap:18px;
+}
 
-        .sidebar-icon .bar {
-            width: 25px; /*length of the each bar*/
-            height: 3px; /*thickness of the each bar*/
-            background-color: var(--text); /*sets dark grey as the bar colour*/
-        }
+/* SIDEBAR ICON */
+.sidebar-icon{
+display:flex;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
+}
 
-        .brand-logo {
-            display: flex; /*puts logo and text in a row*/
-            align-items: center; /*centers them vertically*/
-            gap: 10px; /*space between logo and text*/
-            font-size: 18px; /*size of the brand name text*/
-            font-weight: bold; /*makes the brand name bold*/
-            color: var(--text); /*sets the text colour*/
-        }
+.sidebar-icon .bar{
+width:25px;
+height:3px;
+background:var(--text);
+}
 
-        .brand-logo img {
-            width: 40px; /*sets the width of the brand logo image*/
-            height: auto; /*keeps the image shape correct*/
-        }
+/* LOGO */
+.brand-logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+font-size:18px;
+}
 
-        .nav-right {
-            display: flex; /*puts items in a row*/
-            align-items: center; /*centers them vertically*/
-            gap: 20px; /*space between each item*/
-        }
+.brand-logo img{
+width:38px;
+}
 
-        .flag-icon {
-            width: 20px; /*size of the flag image*/
-            height: auto; /*keeps the image shape correct*/
-        }
+/* RIGHT SIDE */
+.nav-right{
+display:flex;
+align-items:center;
+gap:18px;
+}
 
-        .search-form {
-            display: flex; /*puts items in a row*/
-            border: 1px solid var(--input-border); /*sets light grey border*/
-            border-radius: 4px; /*creates slightly rounded corners*/
-            overflow: hidden; /*keeps the corners clean and neat*/
-        }
+/* FLAG */
+.flag-icon{
+width:22px;
+}
 
-        .search-form input {
-            padding: 8px 12px; /*spac inside the input box*/
-            border: none; /*it removes the border of search bar*/
-            outline: none; /*removes the outline when clicked*/
-            font-size: 14px; /*sets the text size*/
-        }
+/* SEARCH BAR */
+.search-form{
+display:flex;
+border:1px solid var(--input-border);
+border-radius:6px;
+overflow:hidden;
+height:36px;
+}
 
-        .search-form button {
-            background-color: #222; /*sets dark background for button*/
-            color: var(--button-text); /*sets the text colour to white*/
-            border: none; /*removes border*/
-            padding: 8px 12px; /*adds space inside the button*/
-            cursor: pointer; /*shows pointer when hovering*/
-        }
+.search-form input{
+border:none;
+outline:none;
+padding:0 12px;
+width:230px;
+font-size:14px;
+background:var(--card-bg);
+color:var(--text);
+}
 
-        .sidebar {
-            position: fixed;
-            top: 70px;
-            left: -350px; /* hides the side bar off-screen */
-            width: 250px;
-            height: 100%;
-            background: var(--card-bg);
-            border-right: 2px solid var(--border);
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            transition: 0.3s ease; /* smooth slide animation */
-        }
+.search-form button{
+border:none;
+padding:0 14px;
+cursor:pointer;
+background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
+color:white;
+font-size:14px;
+}
 
-        /* When sidebar is open */
-        .sidebar.open {
-            left: 0;
-        }
+/* CART LINK */
+.cart-link{
+font-weight:500;
+}
 
-        .theme-toggle {
-            background: none;
-            border: 1px solid var(--border);
-            padding: 6px 10px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 16px;
-            color: var(--text);
-        }
+/* THEME BUTTON */
+.theme-toggle{
+background:none;
+border:1px solid var(--border);
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
+}
 
-
-
-    /* Categories*/
-    section {
+/* Categories Section */
+.categories-section {
   padding: 30px 20px;
   text-align: center;
 }
 
-section h2 {
+.categories-section h2 {
   margin-bottom: 25px;
   font-size: 2rem;
   font-weight: 700;
-  color: #111;
+  color: var(--text);
+  transition: color 0.3s;
 }
 
-/* Container for each card */
-section div {
+/* Category cards - smooth hover with box-shadow */
+.category-card {
   display: inline-block;
   width: 180px;
   margin: 15px;
   padding: 15px;
-  background: #fff;
+  background: var(--card-bg);
   border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
-  transition: transform 0.25s, box-shadow 0.25s;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  transition: all 0.3s ease;
+  vertical-align: top;
+  position: relative;
 }
 
-section div:hover {
+.category-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.18);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
 }
 
-/* Images */
-section div img {
+.dark-mode .category-card:hover {
+  box-shadow: 0 8px 20px rgba(72, 149, 239, 0.4);
+}
+
+.category-card img {
   width: 100%;
   height: 140px;
-  background: #e0e0e0; /* placeholder color */
+  background: #e0e0e0;
   border-radius: 8px;
   object-fit: cover;
   margin-bottom: 10px;
+  transition: background-color 0.3s;
 }
 
-/* Text below images */
-section div p {
+.dark-mode .category-card img {
+  background: #333;
+}
+
+.category-card p {
   font-size: 1.1rem;
   font-weight: 600;
   margin-top: 5px;
-  color: #333;
+  color: var(--text);
+  transition: color 0.3s;
 }
 
-/* Remove underline from links */
-section a {
+.category-card a {
   text-decoration: none;
   color: inherit;
+  display: block;
 }
 
-/* ---------------------------
-   Footer
----------------------------- */
+/* Trending Items Section */
+.trending-section {
+  padding: 30px 20px;
+  text-align: center;
+}
 
+.trending-section h2 {
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+/* Trending item cards - smooth hover with glow */
+.trending-card {
+  display: inline-block;
+  width: 180px;
+  margin: 15px;
+  padding: 15px;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px var(--card-shadow);
+  transition: all 0.3s ease;
+  vertical-align: top;
+}
+
+.trending-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+}
+
+.dark-mode .trending-card:hover {
+  box-shadow: 0 8px 20px rgba(72, 149, 239, 0.4);
+}
+
+.trending-card img {
+  width: 100%;
+  height: 140px;
+  background: #e0e0e0;
+  border-radius: 8px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  transition: background-color 0.3s;
+}
+
+.dark-mode .trending-card img {
+  background: #333;
+}
+
+.trending-card p {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-top: 5px;
+  color: var(--text);
+  transition: color 0.3s;
+}
+
+/* Footer */
 footer {
   text-align: center;
   padding: 20px;
@@ -186,20 +273,70 @@ footer {
   color: #fff;
   margin-top: 40px;
   font-size: 0.95rem;
+  transition: background-color 0.3s;
 }
 
-/* ---------------------------
-   Responsive Design
----------------------------- */
+.dark-mode footer {
+  background: #000;
+}
 
+footer a {
+  color: #fff;
+  margin: 0 10px;
+  transition: all 0.3s;
+  position: relative;
+}
+
+footer a:hover {
+  color: #4cc9f0;
+  text-decoration: none;
+}
+
+.dark-mode footer a:hover {
+  color: #4cc9f0;
+}
+
+/* Horizontal rules */
+hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 20px 0;
+  transition: border-color 0.3s;
+}
+
+/* Responsive Design */
 @media (max-width: 768px) {
-  section div {
+  .navbar {
+    padding: 15px 20px;
+  }
+  
+  .nav-right {
+    gap: 10px;
+  }
+  
+  .search-form input {
+    width: 120px;
+  }
+  
+  .category-card, .trending-card {
     width: 45%;
   }
 }
 
 @media (max-width: 480px) {
-  section div {
+  .category-card, .trending-card {
     width: 90%;
+  }
+  
+  .brand-logo span {
+    display: none;
+  }
+  
+  .nav-right > span:not(.flag-icon) {
+    display: none;
+  }
+  
+  .search-form input {
+    width: 100px;
   }
 }

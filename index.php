@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<link rel="stylesheet" href="indexstyle.css">
-
-<!-- added: chatbox css -->
-<link rel="stylesheet" href="chatbox.css">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Urban 42 | Home</title>
+  
+  <link rel="stylesheet" href="indexstyle.css">
+  <link rel="stylesheet" href="chatbox.css">
 
   <script>
     // Show promotional pop-up when the page loads
@@ -17,86 +14,86 @@
       alert("🎉 Welcome to Urban 42! Get 10% off your first purchase when you sign up today!");
     };
   </script>
-
 </head>
 
 <body>
-
   <!-- Navigation Menu -->
-  <!-- If you guys could link your pages where the "#" is -->
-  <body>
-     <!-- NAVBAR (original, unchanged) -->
-   <div class="navbar"> <!--main navigation bar container-->
-    <div class="nav-left"> <!--left side of the navigation bar-->
-    <div class="sidebar-icon"> <!--button that users will click to open the side menu-->
-      <span class="bar"></span> <!--horizontal line 1 that creates the button-->
-      <span class="bar"></span> <!--line 2-->
-      <span class="bar"></span> <!--line 3-->
-    </div>
-    <div class="brand-logo"> <!--container that has logo and brand name in it-->
-      <img src="urban42.png" alt="Urban 42 Logo"> <!--shows the brand logo-->
-      <span>Urban 42</span> <!--displays the brand name-->
-    </div>
-    </div>
-    <div class="nav-right"> <!--right side of the navigation bar-->
-        <img src="ukflag.jpg" alt="UK Flag" class="flag-icon"> <!--shows a UK flag icon-->
-        <span>GBP £</span> <!--shows the currency-->
-        <a href="ContactPage.php">Help</a> <!--link to the help page-->
-        <a href="login.php">Log in</a> <!--link to the login page-->
-        <button id="theme-toggle" class="theme-toggle">🌙</button>
-        <form class="search-form"> <!--the search bar form-->
-        <input type="text" placeholder="Search..." name="search" class="nav-search"> <!--box where the user types what they want to search-->
-        <button type="submit">🔍</button> <!--button that user clicks to start the searching-->
-        </form>
-        <a href="basket.php">Cart</a> <!--link that takes user to the shopping cart-->
-    </div>
-    </div> 
+<div class="navbar">
 
-    <div id="sidebar" class="sidebar">
-        <a href="Profile.php">Your Account</a>
-        <a href="index.php">Home</a>
-        <a href="aboutus.php">About Us</a>
-        <a href="index.php">Shop</a>
-        <a href="#">New Arrivals</a>
-        <a href="#">Sale</a>
-        <a href="ContactPage.php">Contact Us</a>
-    </div><!--end of the navigation bar-->
-    
-  </body>
+  <div class="nav-left">
+    <div class="sidebar-icon" id="menu-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+
+    <div class="brand-logo">
+      <img src="urban42.png" alt="Urban 42 Logo">
+      <span>Urban 42</span>
+    </div>
+  </div>
+
+  <div class="nav-right">
+
+    <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
+    <span class="currency">GBP £</span>
+
+    <a href="ContactPage.php">Help</a>
+    <a href="login.php">Log in</a>
+
+    <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+    <form class="search-form" action="search.php" method="GET">
+      <input type="text" placeholder="Search..." name="search" class="nav-search" required>
+      <button type="submit">🔍</button>
+    </form>
+
+    <a href="basket.php" class="cart-link">Cart</a>
+
+  </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <a href="Profile.php">Your Account</a>
+  <a href="index.php">Home</a>
+  <a href="aboutus.php">About Us</a>
+  <a href="index.php">Shop</a>
+  <a href="#">New Arrivals</a>
+  <a href="#">Sale</a>
+  <a href="ContactPage.php">Contact Us</a>
+</div>
 
   <hr>
   <hr>
 
   <!-- Categories Section -->
-  <!-- If you guys could link your pages where the "#" is -->
-
-  <section>
+  <section class="categories-section">
     <h2>Categories</h2>
 
-    <div>
+    <div class="category-card">
       <a href="#">
-        <img src="">
+        <img src="placeholder.jpg" alt="Hoodies">
         <p>Hoodies</p>
       </a>
     </div>
 
-    <div>
+    <div class="category-card">
       <a href="#">
-        <img src="">
+        <img src="placeholder.jpg" alt="Jeans">
         <p>Jeans</p>
       </a>
     </div>
 
-    <div>
+    <div class="category-card">
       <a href="productPage.php">
-        <img src="hi top trainer back no bg.png">
+        <img src="hi top trainer back no bg.png" alt="Shoes">
         <p>Shoes</p>
       </a>
     </div>
 
-    <div>
+    <div class="category-card">
       <a href="#">
-        <img src="">
+        <img src="placeholder.jpg" alt="Hats">
         <p>Hats</p>
       </a>
     </div>
@@ -104,28 +101,28 @@
 
   <hr>
 
-  <!-- Products Section -->
-  <section>
+  <!-- Trending Items Section -->
+  <section class="trending-section">
     <h2>Trending Items</h2>
 
-    <div>
-      <img src="">
-      <p></p>
+    <div class="trending-card">
+      <img src="placeholder.jpg" alt="Trending Item">
+      <p>Urban Hoodie - £45</p>
     </div>
 
-    <div>
-      <img src="">
-      <p></p>
+    <div class="trending-card">
+      <img src="placeholder.jpg" alt="Trending Item">
+      <p>Denim Jacket - £65</p>
     </div>
 
-    <div>
-      <img src="">
-      <p></p>
+    <div class="trending-card">
+      <img src="placeholder.jpg" alt="Trending Item">
+      <p>Leather Boots - £89</p>
     </div>
 
-    <div>
-      <img src="">
-      <p></p>
+    <div class="trending-card">
+      <img src="placeholder.jpg" alt="Trending Item">
+      <p>Graphic Tee - £25</p>
     </div>
   </section>
 
@@ -137,18 +134,11 @@
     <p>&copy; 2025 Urban 42 | All Rights Reserved</p>
   </footer>
 
-
-  <!-- ========================================= -->
-  <!-- added: chatbox html -->
-  <!-- ========================================= -->
+  <!-- Chatbox -->
   <div class="u42-chat-system">
-
-    <!-- added: floating chat button -->
     <div class="u42-chat-toggle" onclick="toggleChat()">💬</div>
 
-    <!-- added: chatbox panel -->
     <div class="u42-chatbox" id="chatbox">
-
       <div class="u42-chat-header">
         Urban 42 Support
         <span onclick="toggleChat()">✕</span>
@@ -160,14 +150,60 @@
         <input type="text" id="chatInput" placeholder="Ask us something...">
         <button onclick="sendMessage()">Send</button>
       </div>
-
     </div>
-
   </div>
 
-  <!-- added: chatbox script -->
+  <!-- Sidebar Toggle Script -->
+  <script>
+    document.querySelector(".sidebar-icon").addEventListener("click", function() {
+      document.getElementById("sidebar").classList.toggle("open");
+    });
+
+    document.addEventListener("click", function(e) {
+      const sidebar = document.getElementById("sidebar");
+      const icon = document.querySelector(".sidebar-icon");
+
+      if (!sidebar.contains(e.target) && !icon.contains(e.target)) {
+        sidebar.classList.remove("open");
+      }
+    });
+  </script>
+
+  <!-- Theme Toggle Script -->
+  <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const toggleBtn = document.getElementById("theme-toggle");
+
+  if (!toggleBtn) return;
+
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
+
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+  } else {
+    toggleBtn.textContent = "🌙";
+  }
+
+  // Toggle theme
+  toggleBtn.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+
+    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
+  });
+
+});
+</script>
+
+  <!-- Chatbox Script -->
   <script src="chatbox.js"></script>
-
 </body>
-
 </html>

@@ -1,6 +1,12 @@
 <?php 
-    include('testdb.php');
-    session_start();
+include('testdb.php');
+session_start();
+
+/* Check product ID exists */
+if (!isset($_GET['id'])) {
+    header("Location: 404PageError.php");
+    exit();
+}
 
     $pid = $_GET['id'];
     $sql = $db->prepare("
@@ -41,50 +47,61 @@ if(!$basketDetails){
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Product</title>
-    <link href="styles.css" rel="stylesheet">
-    <link href="navbarstyling.css" rel="stylesheet">
-    <script src="scripts.js" defer></script>
-    <script src="ajax.js" defer></script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title><?= htmlspecialchars($productDetails['name']); ?> | Urban 42</title>
+
+<link href="styles.css" rel="stylesheet">
+<link href="navbarstyling.css" rel="stylesheet">
+
+<script src="scripts.js" defer></script>
+<script src="ajax.js" defer></script>
+
 </head>
 
 <body>
-  <!-- NAVBAR (original, unchanged) -->
-   <div class="navbar"> <!--main navigation bar container-->
-    <div class="nav-left"> <!--left side of the navigation bar-->
-    <div class="sidebar-icon"> <!--button that users will click to open the side menu-->
-      <span class="bar"></span> <!--horizontal line 1 that creates the button-->
-      <span class="bar"></span> <!--line 2-->
-      <span class="bar"></span> <!--line 3-->
-    </div>
-    <div class="brand-logo"> <!--container that has logo and brand name in it-->
-      <img src="urban42.png" alt="Urban 42 Logo"> <!--shows the brand logo-->
-      <span>Urban 42</span> <!--displays the brand name-->
-    </div>
-    </div>
-    <div class="nav-right"> <!--right side of the navigation bar-->
-        <img src="ukflag.jpg" alt="UK Flag" class="flag-icon"> <!--shows a UK flag icon-->
-        <span>GBP £</span> <!--shows the currency-->
-        <a href="ContactPage.php">Help</a> <!--link to the help page-->
-        <a href="login.php">Log in</a> <!--link to the login page-->
-        <button id="theme-toggle" class="theme-toggle">🌙</button>
-        <form class="search-form"> <!--the search bar form-->
-        <input type="text" placeholder="Search..." name="search" class="nav-search"> <!--box where the user types what they want to search-->
-        <button type="submit">🔍</button> <!--button that user clicks to start the searching-->
-        </form>
-        <a href="basket.php">Cart</a> <!--link that takes user to the shopping cart-->
-    </div>
-    </div> 
-    <div id="sidebar" class="sidebar">
-  <a href="index.html">Home</a>
-  <a href="aboutus.php">About Us</a>
-  <a href="#">Shop</a>
-  <a href="#">New Arrivals</a>
-  <a href="#">Sale</a>
-  <a href="ContactPage.php">Contact Us</a>
+
+<!-- NAVBAR -->
+<div class="navbar">
+
+<div class="nav-left">
+
+<div class="sidebar-icon">
+<span class="bar"></span>
+<span class="bar"></span>
+<span class="bar"></span>
 </div>
+
+<div class="brand-logo">
+<img src="urban42.png" alt="Urban 42 Logo">
+<span>Urban 42</span>
+</div>
+
+</div>
+
+<div class="nav-right">
+
+<img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
+<span>GBP £</span>
+
+<a href="ContactPage.php">Help</a>
+<a href="login.php">Log in</a>
+
+<button id="theme-toggle" class="theme-toggle">🌙</button>
+
+<form class="search-form" action="search.php" method="GET">
+<input type="text" placeholder="Search..." name="search" class="nav-search">
+<button type="submit">🔍</button>
+</form>
+
+<a href="basket.php">Cart</a>
+
+</div>
+</div>
+
+<!-- SIDEBAR -->
 <div id="sidebar" class="sidebar">
         <a href="Profile.php">Your Account</a>
         <a href="index.php">Home</a>
@@ -109,7 +126,7 @@ if(!$basketDetails){
                 <li class="slide">
                     <img src="<?php echo nl2br(htmlspecialchars($productDetails['image3Path']));?>">
                 </li>
-    </ul>
+            </ul>
         </div>
         <div id="product-text">
             <div id="product-title">
@@ -124,7 +141,7 @@ if(!$basketDetails){
             <div id="short-description">
                 <p><?php echo nl2br(htmlspecialchars($productDetails['description']));?></p>
             </div>
-            <form method="POST" onsubmit="submitForm()">
+            <form method="POST">
                 <input type="hidden" name="submitted" value="1">
                 <div id="inputSize">
                     <label>Size: </label><br>
@@ -143,9 +160,8 @@ if(!$basketDetails){
                     <input type="number" value="1" name="quantity" min="1">
                 </div>
                 <input hidden value="<?php echo nl2br(htmlspecialchars($productDetails['productID']));?>" name="productID">
-                <div class="checkout"><input type="submit" value="basket" name="action" id="basketButton"></div>
-                <div class="checkout"><input type="submit" value="buyNow" name="action" id="buyNowButton"></div>
-                
+                <div class="checkout"><input type="submit" value="Add to Basket"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
+                <!--<div class="checkout"><input type="submit" value="Buy Now"></div> -->
             </form>
         </div>
     </div>
@@ -162,5 +178,4 @@ if(!$basketDetails){
     </div>
     </div>
 </body>
-
 </html>

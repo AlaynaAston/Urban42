@@ -118,6 +118,66 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
       font-size: 1.2rem;
       margin-bottom: 0.25rem;
     }
+    /* PROFILE BUTTON STYLE */
+.profile-btn {
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-weight: 500;
+  transition: transform 0.08s ease, box-shadow 0.1s ease, background 0.2s ease;
+}
+
+.profile-btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+  transform: translateY(-1px);
+}
+
+.profile-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* PHOTO FORM */
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.photo-form input[type="file"] {
+  font-size: 0.75rem;
+}
+
+/* MEMBERSHIP FORM */
+.membership-form {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.membership-select {
+  padding: 0.3rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  background: white;
+}
+
+/* SMALL MOBILE IMPROVEMENT */
+@media (max-width:480px){
+
+  .membership-form{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
 
     .membership-badge {
       display: inline-flex;
@@ -154,6 +214,14 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
 
     .membership-silver .dot {
       background: #4b5563;
+    }
+
+    .membership-standard {
+  background: #555;
+  color: white;
+}
+.membership-standard .dot {
+      background: #3fa161;
     }
 
     .status-pill {
@@ -313,19 +381,62 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
 <section class="profile-card">
 
   <!-- HEADER -->
-  <div class="profile-header">
-    <img class="profile-photo" src="team-img5.png" alt="Profile photo">
+ <div class="profile-header">
 
-    <div class="profile-main">
-      <div class="profile-name"><?= htmlspecialchars($user["fullName"]) ?></div>
-      <div class="membership-badge membership-gold">
-        <span class="dot"></span>
-        <span>Member</span>
-      </div>
-    </div>
+  <div class="photo-section">
 
-    <div class="status-pill">Active</div>
+<form id="photoForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
+
+<label for="photoInput" class="photo-label">
+
+<img class="profile-photo"
+id="profilePreview"
+src="<?= !empty($user['profilePhoto']) ? $user['profilePhoto'] : 'team-img5.png'; ?>"
+alt="Profile photo">
+
+<div class="photo-overlay">
+Change Photo
+</div>
+
+</label>
+
+<input type="file" id="photoInput" name="photo" accept="image/*" hidden>
+
+</form>
+
+</div>
+
+  <div class="profile-main">
+
+    <div class="profile-name"><?= htmlspecialchars($user["fullName"]) ?></div>
+
+<?php
+$membership = $user["membership"] ?? "Standard";
+$class = strtolower($membership);
+?>
+
+<div class="membership-badge membership-<?= $class ?>">
+  <span class="dot"></span>
+  <span><?= htmlspecialchars($membership) ?> Member</span>
+</div>
+
+<form action="update_membership.php" method="POST" class="membership-form">
+
+<select name="membership" class="membership-select" required>
+  <option value="Standard">Standard</option>
+  <option value="Silver">Silver</option>
+  <option value="Gold">Gold</option>
+</select>
+
+<button type="submit" class="profile-btn">Update</button>
+
+</form>
+
   </div>
+
+  <div class="status-pill">Active</div>
+
+</div>
 
   <!-- CONTACT -->
   <div class="section-title">Contact Details</div>
