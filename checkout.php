@@ -2,12 +2,12 @@
 session_start();
 require 'db.php';
 
-if (!isset($_SESSION["user_id"])) {
+if (!isset($_SESSION["userID"])) {
     header("Location: login.php");
     exit();
 }
 
-$userID = $_SESSION["user_id"];
+$userID = $_SESSION["userID"];
 
 // Get basket items
 $sql = "
