@@ -21,22 +21,7 @@ $stmt->execute([$userID]);
 $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
-<?php
-$total = 0;
 
-foreach ($items as $row) {
-
-    $itemTotal = $row['price'] * $row['quantity'];
-    $total += $itemTotal;
-?>
-<div class="basket-item">
-  <span>
-    <?php echo htmlspecialchars($row['name']); ?>
-    <span class="price">£<?php echo number_format($row['price'],2); ?></span>
-  </span>
-  <input class="qty" type="number" min="0" value="<?php echo $row['quantity']; ?>">
-</div>
-<?php } ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,24 +67,22 @@ foreach ($items as $row) {
         <a href="ContactPage.php">Contact Us</a>
     </div><!--end of the navigation bar-->
 
-<div class="container">
-  <h1>Your Basket</h1>
+<?php
+$total = 0;
 
-  <?php
-  $total = 0;
+foreach ($items as $row) {
 
-  while ($row = $result->fetch_assoc()) {
-      $itemTotal = $row['price'] * $row['quantity'];
-      $total += $itemTotal;
-  ?>
-    <div class="basket-item">
-      <span>
-        <?php echo $row['name']; ?>
-        <span class="price">£<?php echo number_format($row['price'],2); ?></span>
-      </span>
-      <input class="qty" type="number" min="0" value="<?php echo $row['quantity']; ?>">
-    </div>
-  <?php } ?>
+    $itemTotal = $row['price'] * $row['quantity'];
+    $total += $itemTotal;
+?>
+<div class="basket-item">
+  <span>
+    <?php echo htmlspecialchars($row['name']); ?>
+    <span class="price">£<?php echo number_format($row['price'],2); ?></span>
+  </span>
+  <input class="qty" type="number" min="0" value="<?php echo $row['quantity']; ?>">
+</div>
+<?php } ?>
 
   <div class="total-box">
     Total: £<span id="total"><?php echo number_format($total,2); ?></span>
