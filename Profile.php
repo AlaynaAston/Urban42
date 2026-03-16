@@ -384,15 +384,27 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
  <div class="profile-header">
 
   <div class="photo-section">
-    <img class="profile-photo"
-    src="<?= !empty($user['profilePhoto']) ? $user['profilePhoto'] : 'team-img5.png'; ?>"
-    alt="Profile photo">
 
-    <form action="upload_photo.php" method="POST" enctype="multipart/form-data" class="photo-form">
-      <input type="file" name="photo" accept="image/*" required>
-      <button type="submit" class="profile-btn">Change Photo</button>
-    </form>
-  </div>
+<form id="photoForm" action="upload_photo.php" method="POST" enctype="multipart/form-data">
+
+<label for="photoInput" class="photo-label">
+
+<img class="profile-photo"
+id="profilePreview"
+src="<?= !empty($user['profilePhoto']) ? $user['profilePhoto'] : 'team-img5.png'; ?>"
+alt="Profile photo">
+
+<div class="photo-overlay">
+Change Photo
+</div>
+
+</label>
+
+<input type="file" id="photoInput" name="photo" accept="image/*" hidden>
+
+</form>
+
+</div>
 
   <div class="profile-main">
 
