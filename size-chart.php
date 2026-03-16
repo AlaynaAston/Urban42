@@ -4,15 +4,18 @@
 
     <div class="product-card">
 
+          <!-- LEFT SIDE: Main product image + thumbnails -->
         
         <div>
+            
+              <!-- Main product image -->
             <div class="image-box">
                 
                 <img src="images/hoodie.jpg" alt="Heather Gray Hoodie">
             </div>
-
+           <!-- Thumbnail image row -->
             <div class="thumb-row">
-            
+              <!-- Each thumbnail is wrapped in a placeholder div -->
                 <div class="thumb-placeholder">
                     <img src="images/beanie.jpg" alt="Beanie Thumbnail">
                 </div>
@@ -24,15 +27,16 @@
                 </div>
             </div>
         </div>
-
+  <!-- RIGHT SIDE: Size guide content -->
         
         <div>
+              <!-- Page title -->
             <h1 class="product-title">Size Guide</h1>
-
+             <!-- Description text -->
             <p class="description">
                 Use the chart below to find your perfect fit. All measurements are in centimetres.
             </p>
-
+              <!-- Size chart table -->
             <table class="size-table">
                 <tr>
                     <th>Size</th>

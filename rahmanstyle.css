@@ -1,18 +1,41 @@
+/* unified navbar style to match contact page */
+
 /* ============================== */
 /* ROOT VARIABLES */
 /* ============================== */
 :root {
   --primary: #2196F3;
   --primary-dark: #1976D2;
-  --background: #f4f6f9;
+  --background: #e8ebf0;
   --card-bg: #ffffff;
   --radius: 10px;
   --shadow: 0 4px 12px rgba(0,0,0,0.12);
   --text: #333;
+  --heading: #222;
+  --subheading: #222;
+  --border: #030303;
+  --input-border: #ccc;
+  --button-bg: #222;
+  --button-text: #fff;
+  --border-color:#768fc5;
+}
+
+body.dark-mode {
+  --primary: #0d5388;
+  --background: #121212;
+  --text: #e5e5e5;
+  --heading: #ffffff;
+  --subheading: #ffffff;
+  --card-bg: #1e1e1e;
+  --border: #444;
+  --input-border: #555;
+  --button-bg: #ffffff;
+  --button-text: #000000;
+  --border-color:#203563;
 }
 
 /* ============================== */
-/* GLOBAL STYLES */
+/* GLOBAL */
 /* ============================== */
 body {
   margin: 0;
@@ -34,78 +57,130 @@ a:hover {
 /* NAVBAR */
 /* ============================== */
 .navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background: white;
-  border-bottom: 1px solid #eaeaea;
-  font-size: 14px;
+  display: flex; /*places items in a row*/
+  justify-content: space-between; /*spreads items to left and right*/
+  align-items: center; /*centers items vertically*/
+  padding: 15px 40px; /*space inside the navigation bar*/
+  background-color: var(--card-bg); /*sets the background colour to white*/
+  border-bottom: 2px solid var(--border); /*creates a black line under the navigation bar*/
+  font-size: 14px; /*sets the text size in the navigation bar*/
 }
 
-.nav-left {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+.nav-left { 
+  display: flex; /*places items in a row*/
+  align-items: center; /*centers items vertically*/
+  gap: 20px; /*space between items*/
 }
 
 .sidebar-icon {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  cursor: pointer;
+  display: flex; /*shows the bars in a column*/
+  flex-direction: column; /*stacks the bars (-) vertically*/
+  gap: 5px; /*sets the space between each bar*/
+  cursor: pointer; /*shows a pointer when hovering to make it look clickable*/
 }
 
 .sidebar-icon .bar {
-  width: 24px;
-  height: 3px;
-  background: #333;
+  width: 25px; /*length of the each bar*/
+  height: 3px; /*thickness of the each bar*/
+  background-color: var(--text); /*sets dark grey as the bar colour*/
 }
 
 .brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 18px;
-  font-weight: bold;
+  display: flex; /*puts logo and text in a row*/
+  align-items: center; /*centers them vertically*/
+  gap: 10px; /*space between logo and text*/
+  font-size: 18px; /*size of the brand name text*/
+  font-weight: bold; /*makes the brand name bold*/
+  color: var(--text); /*sets the text colour*/
 }
 
 .brand-logo img {
-  width: 38px;
+  width: 40px; /*sets the width of the brand logo image*/
+  height: auto; /*keeps the image shape correct*/
 }
 
 .nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  display: flex; /*puts items in a row*/
+  align-items: center; /*centers them vertically*/
+  gap: 20px; /*space between each item*/
 }
 
 .flag-icon {
-  width: 20px;
+  width: 20px; /*size of the flag image*/
+  height: auto; /*keeps the image shape correct*/
 }
+
+.search-form {
+  display: flex; /*puts items in a row*/
+  border: 1px solid var(--input-border); /*sets light grey border*/
+  border-radius: 4px; /*creates slightly rounded corners*/
+  overflow: hidden; /*keeps the corners clean and neat*/
+}
+
+.search-form input {
+  padding: 8px 12px; /*spac inside the input box*/
+  border: none; /*it removes the border of search bar*/
+  outline: none; /*removes the outline when clicked*/
+  font-size: 14px; /*sets the text size*/
+}
+
+.search-form button {
+  background-color: #222; /*sets dark background for button*/
+  color: var(--button-text); /*sets the text colour to white*/
+  border: none; /*removes border*/
+  padding: 8px 12px; /*adds space inside the button*/
+  cursor: pointer; /*shows pointer when hovering*/
+}
+
+.sidebar {
+  position: fixed;
+  top: 70px;
+  left: -350px; /* hides the side bar off-screen */
+  width: 250px;
+  height: 100%;
+  background: var(--card-bg);
+  border-right: 2px solid var(--border);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  transition: 0.3s ease; /* smooth slide animation */
+}
+
+/* When sidebar is open */
+.sidebar.open {
+  left: 0;
+}
+
+.theme-toggle {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--text);
+}
+
 
 /* ============================== */
 /* CONTAINER */
 /* ============================== */
 .container {
   max-width: 420px;
-  background: var(--card-bg);
+  background: linear-gradient(to bottom, var(--border-color) -20%, var(--card-bg) 100%);
   margin: 60px auto;
   padding: 25px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
 }
 
-h1 {
-  text-align: center;
-  margin-bottom: 25px;
-}
-
 /* ============================== */
-/* INPUTS */
+/* FORM ELEMENTS */
 /* ============================== */
-input:not([type="checkbox"]),
-select {
+input:not([type="checkbox"]):not(.nav-search),
+select,
+textarea {
   width: 100%;
   padding: 13px;
   margin-bottom: 18px;
@@ -116,27 +191,16 @@ select {
 }
 
 input:focus,
-select:focus {
+select:focus,
+textarea:focus {
   outline: none;
   border-color: var(--primary);
 }
 
 /* ============================== */
-/* CHECKBOX ROWS */
+/* BUTTONS */
 /* ============================== */
-.remember-wrapper,
-.checkbox-row {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 6px;
-  margin-bottom: 10px;
-}
-
-/* ============================== */
-/* BUTTON */
-/* ============================== */
-button {
+.container button {
   width: 100%;
   padding: 14px;
   border: none;
@@ -158,7 +222,7 @@ button:hover {
 .basket-item {
   display: flex;
   justify-content: space-between;
-  background: #fafafa;
+  background:var(--background);
   padding: 14px;
   margin-bottom: 15px;
   border-radius: var(--radius);
@@ -175,99 +239,4 @@ button:hover {
   font-size: 18px;
   font-weight: bold;
   margin-top: 20px;
-}
-
-/* ============================== */
-/* CHATBOX */
-/* ============================== */
-
-.chat-toggle {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--primary);
-  color: white;
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 22px;
-  cursor: pointer;
-  box-shadow: var(--shadow);
-  transition: 0.3s ease;
-  z-index: 1000;
-}
-
-.chat-toggle:hover {
-  transform: scale(1.1);
-}
-
-.chatbox {
-  position: fixed;
-  bottom: 90px;
-  right: 20px;
-  width: 320px;
-  background: white;
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-  display: none;
-  flex-direction: column;
-  overflow: hidden;
-  z-index: 1000;
-}
-
-.chat-header {
-  background: var(--primary);
-  color: white;
-  padding: 12px;
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-}
-
-.chat-messages {
-  height: 250px;
-  padding: 12px;
-  overflow-y: auto;
-  background: #f7f7f7;
-}
-
-.chat-message {
-  margin-bottom: 10px;
-  font-size: 14px;
-}
-
-.user-message {
-  text-align: right;
-  color: var(--primary-dark);
-}
-
-.bot-message {
-  text-align: left;
-}
-
-.timestamp {
-  display: block;
-  font-size: 11px;
-  opacity: 0.6;
-  margin-top: 2px;
-}
-
-.chat-input-area {
-  display: flex;
-  border-top: 1px solid #eee;
-}
-
-.chat-input-area input {
-  flex: 1;
-  padding: 10px;
-  border: none;
-  outline: none;
-}
-
-.chat-input-area button {
-  width: 80px;
-  border-radius: 0;
 }

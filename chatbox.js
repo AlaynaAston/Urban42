@@ -1,55 +1,149 @@
+// ===============================
+// Urban42 Shopping Assistant Bot
+// ===============================
+
 function toggleChat() {
-  const chat = document.getElementById("chatbox");
-  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+    const chat = document.getElementById("chatbox");
+    chat.style.display = (chat.style.display === "flex") ? "none" : "flex";
+
+    if (chat.style.display === "flex" && !chat.dataset.loaded) {
+        chat.dataset.loaded = true;
+        startChat();
+    }
 }
 
-function sendMessage() {
-  const input = document.getElementById("chatInput");
-  const text = input.value.trim();
-  if (text === "") return;
-
-  appendMessage(text, "user-message");
-  input.value = "";
-
-  setTimeout(() => {
-    showTyping();
-  }, 500);
+function startChat() {
+    appendBot("Welcome to the Urban42 Shopping Assistant! 🛍️<br>How can I help you today?");
+    showMainOptions();
 }
 
-function appendMessage(text, type) {
-  const container = document.getElementById("chatMessages");
-  const message = document.createElement("div");
-  message.className = "chat-message " + type;
-
-  const time = new Date();
-  const stamp = time.getHours().toString().padStart(2,"0") + ":" +
-                time.getMinutes().toString().padStart(2,"0");
-
-  message.innerHTML = text + `<span class="timestamp">${stamp}</span>`;
-  container.appendChild(message);
-  container.scrollTop = container.scrollHeight;
+// MAIN MENU OPTIONS
+function showMainOptions() {
+    const options = [
+        "Find a product",
+        "Help choosing a size",
+        "Show current offers",
+        "What's popular right now?",
+        "Take me to a page"
+    ];
+    appendOptions(options, handleMainOption);
 }
 
-function showTyping() {
-  const container = document.getElementById("chatMessages");
-  const typing = document.createElement("div");
-  typing.className = "chat-message bot-message";
-  typing.innerText = "Support is typing...";
-  container.appendChild(typing);
-  container.scrollTop = container.scrollHeight;
+function handleMainOption(option) {
+    appendUser(option);
 
-  setTimeout(() => {
-    typing.remove();
-    appendMessage(generateReply(), "bot-message");
-  }, 1200);
+    if (option === "Find a product") showProductCategories();
+    if (option === "Help choosing a size") showSizeHelp();
+    if (option === "Show current offers") showOffers();
+    if (option === "What's popular right now?") showPopularItems();
+    if (option === "Take me to a page") showPageLinks();
 }
 
-function generateReply() {
-  const replies = [
-    "We’re happy to help!",
-    "Orders usually arrive within 3–5 days.",
-    "You can view your orders in your profile.",
-    "Feel free to ask anything else."
-  ];
-  return replies[Math.floor(Math.random() * replies.length)];
+// PRODUCT CATEGORY SELECTOR
+function showProductCategories() {
+    appendBot("What type of product are you looking for?");
+    appendOptions(["Hoodies", "Jeans", "Shoes", "Hats"], function (choice) {
+        appendUser(choice);
+        appendBot(`Great choice! Here you go:<br><a href="products.php" style="color:#1976D2">View ${choice}</a>`);
+    });
+}
+
+// SIZE HELP
+function showSizeHelp() {
+    appendBot("Which item do you want size help with?");
+    appendOptions(["Hoodie", "T-Shirt", "Shoes"], function (choice) {
+        appendUser(choice);
+        appendBot(`You can find full sizing here:<br><a href="size-chart.php" style="color:#1976D2">Urban42 Size Chart</a>`);
+    });
+}
+
+// OFFERS
+function showOffers() {
+    appendBot(`
+        🎉 <b>Current Urban42 Offers</b><br><br>
+        ✔ 10% OFF for new customers<br>
+        ✔ Free UK shipping over £50<br>
+        ✔ Student discount 15% (coming soon)<br>
+    `);
+}
+
+// POPULAR ITEMS
+function showPopularItems() {
+    appendBot(`
+        🔥 <b>Popular Items Right Now</b><br><br>
+        • Urban Hoodie<br>
+        • Hi-Top Trainers<br>
+        • Graphic Tees<br><br>
+        <a href="products.php" style="color:#1976D2">Browse trending products</a>
+    `);
+}
+
+// QUICK NAVIGATION
+function showPageLinks() {
+    appendBot("Which page would you like to go to?");
+    appendOptions([
+        "Home",
+        "Products",
+        "Contact Page",
+        "About Us",
+        "Basket",
+        "Size Guide",
+        "Orders"
+    ], function (page) {
+        appendUser(page);
+
+        const links = {
+            "Home": "index.php",
+            "Products": "products.php",
+            "Contact Page": "ContactPage.php",
+            "About Us": "aboutus.php",
+            "Basket": "basket.html",
+            "Size Guide": "size-chart.php",
+            "Orders": "Orders page.php"
+        };
+
+        appendBot(`Here you go:<br><a href="${links[page]}" style="color:#1976D2">Open ${page}</a>`);
+    });
+}
+
+// ===============================
+// REUSABLE MESSAGE + BUTTON UI
+// ===============================
+
+function appendBot(text) {
+    const box = document.getElementById("chatMessages");
+    const div = document.createElement("div");
+    div.className = "u42-chat-message bot-message";
+    div.innerHTML = text;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+}
+
+function appendUser(text) {
+    const box = document.getElementById("chatMessages");
+    const div = document.createElement("div");
+    div.className = "u42-chat-message user-message";
+    div.innerHTML = text;
+    box.appendChild(div);
+    box.scrollTop = box.scrollHeight;
+}
+
+function appendOptions(options, callback) {
+    const box = document.getElementById("chatMessages");
+    const wrapper = document.createElement("div");
+    wrapper.className = "u42-option-wrapper";
+
+    options.forEach(opt => {
+        const btn = document.createElement("button");
+        btn.className = "u42-option-button";
+        btn.innerText = opt;
+        btn.onclick = () => {
+            wrapper.remove();
+            callback(opt);
+        };
+        wrapper.appendChild(btn);
+    });
+
+    box.appendChild(wrapper);
+    box.scrollTop = box.scrollHeight;
 }

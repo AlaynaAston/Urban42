@@ -1,0 +1,116 @@
+/* ============================== */
+/* U42 CHAT SYSTEM */
+/* ============================== */
+
+.u42-chat-system .u42-chat-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #2196F3;
+  color: white;
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+  z-index: 9999;
+}
+
+.u42-chat-system .u42-chat-toggle:hover {
+  transform: scale(1.1);
+}
+
+.u42-chat-system .u42-chatbox {
+  position: fixed;
+  bottom: 90px;
+  right: 20px;
+  width: 340px;
+  height: 420px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.25);
+  display: none;
+  flex-direction: column;
+  overflow: hidden;
+  z-index: 9999;
+}
+
+.u42-chat-system .u42-chat-header {
+  background: #2196F3;
+  color: white;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.u42-chat-system .u42-chat-header span {
+  cursor: pointer;
+}
+
+.u42-chat-system .u42-chat-messages {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  background: #f7f7f7;
+  font-size: 14px;
+}
+
+.u42-chat-system .u42-chat-message {
+  margin-bottom: 10px;
+}
+
+.u42-chat-system .u42-user-message {
+  text-align: right;
+  color: #1976D2;
+  font-weight: 500;
+}
+
+.u42-chat-system .u42-bot-message {
+  text-align: left;
+}
+
+.u42-chat-system .u42-chat-input-area {
+  display: flex;
+  border-top: 1px solid #eee;
+}
+
+.u42-chat-system .u42-chat-input-area input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 14px;
+}
+
+.u42-chat-system .u42-chat-input-area button {
+  width: 80px;
+  border-radius: 0;
+  border: none;
+  background: #2196F3;
+  color: white;
+  cursor: pointer;
+}
+
+.u42-chat-system .u42-chat-messages button {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.u42-chat-system .u42-chat-messages button:hover {
+  background: #2196F3;
+  color: white;
+}
+
