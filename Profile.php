@@ -156,6 +156,14 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
       background: #4b5563;
     }
 
+    .membership-standard {
+  background: #555;
+  color: white;
+}
+.membership-standard .dot {
+      background: #3fa161;
+    }
+
     .status-pill {
       margin-left: auto;
       font-size: 0.75rem;
@@ -313,15 +321,36 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
 <section class="profile-card">
 
   <!-- HEADER -->
-  <div class="profile-header">
-    <img class="profile-photo" src="team-img5.png" alt="Profile photo">
+  <img class="profile-photo"
+     src="<?= !empty($user['profilePhoto']) ? $user['profilePhoto'] : 'team-img5.png'; ?>"
+     alt="Profile photo">
+     <form action="upload_photo.php" method="POST" enctype="multipart/form-data">
+  <input type="file" name="photo" accept="image/*" required>
+  <button type="submit">Change Photo</button>
+</form>
 
     <div class="profile-main">
       <div class="profile-name"><?= htmlspecialchars($user["fullName"]) ?></div>
-      <div class="membership-badge membership-gold">
-        <span class="dot"></span>
-        <span>Member</span>
-      </div>
+      <?php
+$membership = $user["membership"] ?? "Standard";
+$class = strtolower($membership);
+?>
+
+<div class="membership-badge membership-<?= $class ?>">
+  <span class="dot"></span>
+  <span><?= htmlspecialchars($membership) ?> Member</span>
+</div>
+      <form method="POST" action="update_membership.php">
+  <label>Choose Membership:</label>
+
+  <select name="membership">
+    <option value="Standard">Standard</option>
+    <option value="Silver">Silver</option>
+    <option value="Gold">Gold</option>
+  </select>
+
+  <button type="submit">Update Membership</button>
+</form>
     </div>
 
     <div class="status-pill">Active</div>
