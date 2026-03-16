@@ -9,23 +9,34 @@ if (!isset($_SESSION["user_id"])) {
 
 $userID = $_SESSION["user_id"];
 
-$sql = "SELECT Product.name, Product.price, BasketItem.quantity
+$stmt = $db->prepare("
+SELECT Product.name, Product.price, BasketItem.quantity
 FROM BasketItem
 JOIN Product ON BasketItem.productID = Product.productID
-JOIN Basket ON BasketItem.basketID = Basket.basketID
-WHERE Basket.userID = $userID
-";
+WHERE BasketItem.userID = ?
+");
 
-$result = $conn->query($sql);
+$stmt->execute([$userID]);
 
-$items = [];
-
-while ($row = $result->fetch_assoc()) {
-    $items[] = $row;
-}
-
-echo json_encode($items);
+$items = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
+
+<?php
+$total = 0;
+
+foreach ($items as $row) {
+
+    $itemTotal = $row['price'] * $row['quantity'];
+    $total += $itemTotal;
+?>
+<div class="basket-item">
+  <span>
+    <?php echo htmlspecialchars($row['name']); ?>
+    <span class="price">£<?php echo number_format($row['price'],2); ?></span>
+  </span>
+  <input class="qty" type="number" min="0" value="<?php echo $row['quantity']; ?>">
+</div>
+<?php } ?>
 
 <!DOCTYPE html>
 <html lang="en">
