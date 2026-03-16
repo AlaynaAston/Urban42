@@ -31,8 +31,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     if ($user && password_verify($password, $user["passwordHash"])) {
 
         $_SESSION["login_attempts"] = 0;
-        $_SESSION["user_id"] = $user["userID"];
-        $_SESSION["user_email"] = $email;
+        $_SESSION["userID"] = $user["userID"];
+        $_SESSION["email"] = $email;
 
         header("Location: index.php");
         exit();
