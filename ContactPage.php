@@ -69,7 +69,7 @@
       <h2>    CONTACT US </h2> <!--title of the form-->
       <p>We’d love to hear from you!</p> <!--short message for the user-->
 
-      <form> <!--form that users will use to send message/queries-->
+      <form action="contact_submit.php" method="POST"><!--form that users will use to send message/queries-->
         <label for="name">Full Name*</label> <!--label for the name box-->
         <input type="text" id="name" name="name" required> <!--box where user types the full name-->
         <label for="email">Email Address*</label> <!--label for email box-->
