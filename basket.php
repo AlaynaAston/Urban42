@@ -11,9 +11,10 @@ $userID = $_SESSION["userID"];
 
 $stmt = $db->prepare("
 SELECT Product.name, Product.price, BasketItem.quantity
-FROM BasketItem
+FROM Basket
+JOIN BasketItem ON Basket.basketID = BasketItem.basketID
 JOIN Product ON BasketItem.productID = Product.productID
-WHERE BasketItem.userID = ?
+WHERE Basket.userID = ?
 ");
 
 $stmt->execute([$userID]);
