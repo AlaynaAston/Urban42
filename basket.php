@@ -2,6 +2,8 @@
 session_start();
 require 'db.php';
 
+$_SESSION["userID"] = 2; // remove later when login works
+
 if (!isset($_SESSION["userID"])) {
     header("Location: login.php");
     exit();
