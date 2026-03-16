@@ -41,139 +41,105 @@ a:hover {
   text-decoration: underline;
 }
 
-/* Maida's Nav Bar */
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 40px;
-  background-color: var(--card-bg);
-  border-bottom: 2px solid var(--border);
-  font-size: 14px;
-  transition: background-color 0.3s, border-color 0.3s;
+/* NAVBAR */
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:12px 35px;
+background:var(--card-bg);
+border-bottom:2px solid var(--border);
+font-size:14px;
+height:70px;
 }
 
-.nav-left { 
-  display: flex;
-  align-items: center;
-  gap: 20px;
+/* LEFT SIDE */
+.nav-left{
+display:flex;
+align-items:center;
+gap:18px;
 }
 
-.sidebar-icon {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  cursor: pointer;
+/* SIDEBAR ICON */
+.sidebar-icon{
+display:flex;
+flex-direction:column;
+gap:5px;
+cursor:pointer;
 }
 
-.sidebar-icon .bar {
-  width: 25px;
-  height: 3px;
-  background-color: var(--text);
-  transition: background-color 0.3s;
+.sidebar-icon .bar{
+width:25px;
+height:3px;
+background:var(--text);
 }
 
-.brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  color: var(--text);
+/* LOGO */
+.brand-logo{
+display:flex;
+align-items:center;
+gap:10px;
+font-weight:600;
+font-size:18px;
 }
 
-.brand-logo img {
-  width: 40px;
-  height: auto;
+.brand-logo img{
+width:38px;
 }
 
-.nav-right {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+/* RIGHT SIDE */
+.nav-right{
+display:flex;
+align-items:center;
+gap:18px;
 }
 
-.flag-icon {
-  width: 20px;
-  height: auto;
+/* FLAG */
+.flag-icon{
+width:22px;
 }
 
-.search-form {
-  display: flex;
-  border: 1px solid var(--input-border);
-  border-radius: 4px;
-  overflow: hidden;
-  transition: border-color 0.3s;
+/* SEARCH BAR */
+.search-form{
+display:flex;
+border:1px solid var(--input-border);
+border-radius:6px;
+overflow:hidden;
+height:36px;
 }
 
-.search-form input {
-  padding: 8px 12px;
-  border: none;
-  outline: none;
-  font-size: 14px;
-  width: 200px;
-  background-color: var(--card-bg);
-  color: var(--text);
-  transition: background-color 0.3s, color 0.3s;
+.search-form input{
+border:none;
+outline:none;
+padding:0 12px;
+width:230px;
+font-size:14px;
+background:var(--card-bg);
+color:var(--text);
 }
 
-.search-form button {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  transition: opacity 0.3s;
+.search-form button{
+border:none;
+padding:0 14px;
+cursor:pointer;
+background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
+color:white;
+font-size:14px;
 }
 
-.search-form button:hover {
-  opacity: 0.9;
+/* CART LINK */
+.cart-link{
+font-weight:500;
 }
 
-.dark-mode .search-form button {
-  background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
-}
-
-.sidebar {
-  position: fixed;
-  top: 70px;
-  left: -350px;
-  width: 250px;
-  height: 100%;
-  background: var(--card-bg);
-  border-right: 2px solid var(--border);
-  padding: 20px;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  transition: left 0.3s ease, background-color 0.3s, border-color 0.3s;
-  z-index: 1000;
-}
-
-.sidebar.open {
-  left: 0;
-}
-
-.sidebar a {
-  color: var(--text);
-  padding: 10px;
-  border-radius: 4px;
-  transition: background-color 0.3s;
-}
-
-.sidebar a:hover {
-  background-color: rgba(128, 128, 128, 0.1);
-}
-
-.theme-toggle {
-  background: none;
-  border: 1px solid var(--border);
-  padding: 6px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  font-size: 16px;
-  color: var(--text);
-  transition: border-color 0.3s, color 0.3s;
+/* THEME BUTTON */
+.theme-toggle{
+background:none;
+border:1px solid var(--border);
+padding:6px 10px;
+border-radius:6px;
+cursor:pointer;
+font-size:16px;
 }
 
 /* Categories Section */

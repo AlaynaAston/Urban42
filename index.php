@@ -18,42 +18,50 @@
 
 <body>
   <!-- Navigation Menu -->
-  <div class="navbar">
-    <div class="nav-left">
-      <div class="sidebar-icon">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-      <div class="brand-logo">
-        <img src="urban42.png" alt="Urban 42 Logo">
-        <span>Urban 42</span>
-      </div>
+<div class="navbar">
+
+  <div class="nav-left">
+    <div class="sidebar-icon" id="menu-toggle">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
     </div>
-    
-    <div class="nav-right">
-      <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
-      <span>GBP £</span>
-      <a href="ContactPage.php">Help</a>
-      <a href="login.php">Log in</a>
-      <button id="theme-toggle" class="theme-toggle">🌙</button>
-      <form class="search-form" action="search.php" method="GET">
-        <input type="text" placeholder="Search..." name="search" class="nav-search" required>
-        <button type="submit">🔍</button>
-      </form>
-      <a href="basket.php">Cart</a>
+
+    <div class="brand-logo">
+      <img src="urban42.png" alt="Urban 42 Logo">
+      <span>Urban 42</span>
     </div>
   </div>
 
-  <div id="sidebar" class="sidebar">
-    <a href="Profile.php">Your Account</a>
-    <a href="index.php">Home</a>
-    <a href="aboutus.php">About Us</a>
-    <a href="index.php">Shop</a>
-    <a href="#">New Arrivals</a>
-    <a href="#">Sale</a>
-    <a href="ContactPage.php">Contact Us</a>
+  <div class="nav-right">
+
+    <img src="ukflag.jpg" alt="UK Flag" class="flag-icon">
+    <span class="currency">GBP £</span>
+
+    <a href="ContactPage.php">Help</a>
+    <a href="login.php">Log in</a>
+
+    <button id="theme-toggle" class="theme-toggle">🌙</button>
+
+    <form class="search-form" action="search.php" method="GET">
+      <input type="text" placeholder="Search..." name="search" class="nav-search" required>
+      <button type="submit">🔍</button>
+    </form>
+
+    <a href="basket.php" class="cart-link">Cart</a>
+
   </div>
+</div>
+
+<div id="sidebar" class="sidebar">
+  <a href="Profile.php">Your Account</a>
+  <a href="index.php">Home</a>
+  <a href="aboutus.php">About Us</a>
+  <a href="index.php">Shop</a>
+  <a href="#">New Arrivals</a>
+  <a href="#">Sale</a>
+  <a href="ContactPage.php">Contact Us</a>
+</div>
 
   <hr>
   <hr>
@@ -163,22 +171,37 @@
 
   <!-- Theme Toggle Script -->
   <script>
-    const toggleBtn = document.getElementById("theme-toggle");
+document.addEventListener("DOMContentLoaded", function () {
 
-    if (localStorage.getItem("theme") === "dark") {
-      document.body.classList.add("dark-mode");
-      toggleBtn.textContent = "☀️";
-    }
+  const toggleBtn = document.getElementById("theme-toggle");
 
-    toggleBtn.addEventListener("click", () => {
-      document.body.classList.toggle("dark-mode");
+  if (!toggleBtn) return;
 
-      const isDark = document.body.classList.contains("dark-mode");
-      toggleBtn.textContent = isDark ? "☀️" : "🌙";
+  // Load saved theme
+  const savedTheme = localStorage.getItem("theme");
 
-      localStorage.setItem("theme", isDark ? "dark" : "light");
-    });
-  </script>
+  if (savedTheme === "dark") {
+    document.body.classList.add("dark-mode");
+    toggleBtn.textContent = "☀️";
+  } else {
+    toggleBtn.textContent = "🌙";
+  }
+
+  // Toggle theme
+  toggleBtn.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode");
+
+    const isDark = document.body.classList.contains("dark-mode");
+
+    toggleBtn.textContent = isDark ? "☀️" : "🌙";
+
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+
+  });
+
+});
+</script>
 
   <!-- Chatbox Script -->
   <script src="chatbox.js"></script>
