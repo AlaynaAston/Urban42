@@ -118,6 +118,66 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
       font-size: 1.2rem;
       margin-bottom: 0.25rem;
     }
+    /* PROFILE BUTTON STYLE */
+.profile-btn {
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0.45rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent);
+  color: white;
+  font-weight: 500;
+  transition: transform 0.08s ease, box-shadow 0.1s ease, background 0.2s ease;
+}
+
+.profile-btn:hover {
+  background: #1d4ed8;
+  box-shadow: 0 4px 10px rgba(37,99,235,0.3);
+  transform: translateY(-1px);
+}
+
+.profile-btn:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
+
+/* PHOTO FORM */
+.photo-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.photo-form input[type="file"] {
+  font-size: 0.75rem;
+}
+
+/* MEMBERSHIP FORM */
+.membership-form {
+  display: flex;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+}
+
+.membership-select {
+  padding: 0.3rem 0.45rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  font-size: 0.8rem;
+  background: white;
+}
+
+/* SMALL MOBILE IMPROVEMENT */
+@media (max-width:480px){
+
+  .membership-form{
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+}
 
     .membership-badge {
       display: inline-flex;
@@ -321,17 +381,24 @@ $orders = $orderStmt->fetchAll(PDO::FETCH_ASSOC);
 <section class="profile-card">
 
   <!-- HEADER -->
-  <img class="profile-photo"
-     src="<?= !empty($user['profilePhoto']) ? $user['profilePhoto'] : 'team-img5.png'; ?>"
-     alt="Profile photo">
-     <form action="upload_photo.php" method="POST" enctype="multipart/form-data">
-  <input type="file" name="photo" accept="image/*" required>
-  <button type="submit">Change Photo</button>
-</form>
+ <div class="profile-header">
 
-    <div class="profile-main">
-      <div class="profile-name"><?= htmlspecialchars($user["fullName"]) ?></div>
-      <?php
+  <div class="photo-section">
+    <img class="profile-photo"
+    src="<?= !empty($user['profilePhoto']) ? $user['profilePhoto'] : 'team-img5.png'; ?>"
+    alt="Profile photo">
+
+    <form action="upload_photo.php" method="POST" enctype="multipart/form-data" class="photo-form">
+      <input type="file" name="photo" accept="image/*" required>
+      <button type="submit" class="profile-btn">Change Photo</button>
+    </form>
+  </div>
+
+  <div class="profile-main">
+
+    <div class="profile-name"><?= htmlspecialchars($user["fullName"]) ?></div>
+
+<?php
 $membership = $user["membership"] ?? "Standard";
 $class = strtolower($membership);
 ?>
@@ -340,21 +407,24 @@ $class = strtolower($membership);
   <span class="dot"></span>
   <span><?= htmlspecialchars($membership) ?> Member</span>
 </div>
-      <form method="POST" action="update_membership.php">
-  <label>Choose Membership:</label>
 
-  <select name="membership">
-    <option value="Standard">Standard</option>
-    <option value="Silver">Silver</option>
-    <option value="Gold">Gold</option>
-  </select>
+<form action="update_membership.php" method="POST" class="membership-form">
 
-  <button type="submit">Update Membership</button>
+<select name="membership" class="membership-select" required>
+  <option value="Standard">Standard</option>
+  <option value="Silver">Silver</option>
+  <option value="Gold">Gold</option>
+</select>
+
+<button type="submit" class="profile-btn">Update</button>
+
 </form>
-    </div>
 
-    <div class="status-pill">Active</div>
   </div>
+
+  <div class="status-pill">Active</div>
+
+</div>
 
   <!-- CONTACT -->
   <div class="section-title">Contact Details</div>

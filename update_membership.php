@@ -11,9 +11,9 @@ $userID = $_SESSION["user_id"];
 $membership = $_POST["membership"];
 
 $stmt = $db->prepare("
-    UPDATE Users
-    SET membership = ?
-    WHERE userID = ?
+UPDATE Users
+SET membership = ?
+WHERE userID = ?
 ");
 
 $stmt->execute([$membership, $userID]);

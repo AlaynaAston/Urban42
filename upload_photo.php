@@ -15,22 +15,21 @@ if (isset($_FILES["photo"])) {
 
     if ($file["error"] === 0) {
 
-        $ext = pathinfo($file["name"], PATHINFO_EXTENSION);
+        $ext = strtolower(pathinfo($file["name"], PATHINFO_EXTENSION));
+
+        $allowed = ["jpg","jpeg","png","webp"];
+
+        if (!in_array($ext, $allowed)) {
+            exit("Invalid file type.");
+        }
 
         $newName = "profile_" . $userID . "." . $ext;
-
         $uploadPath = "uploads/" . $newName;
 
         move_uploaded_file($file["tmp_name"], $uploadPath);
 
-        $stmt = $db->prepare("
-            UPDATE Users
-            SET profilePhoto = ?
-            WHERE userID = ?
-        ");
-
+        $stmt = $db->prepare("UPDATE Users SET profilePhoto = ? WHERE userID = ?");
         $stmt->execute([$uploadPath, $userID]);
-
     }
 }
 
