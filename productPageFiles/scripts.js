@@ -42,3 +42,4 @@ returns.addEventListener("click", ()=> {
     if (returnPolicy.hidden == true) {returnPolicy.hidden = false;}
     else {returnPolicy.hidden = true;}
 });
+

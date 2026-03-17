@@ -20,13 +20,14 @@ if (!isset($_GET['id'])) {
         header("Location: 404PageError.php"); 
     }
     $_SESSION["userID"] = "1"; //some hard coding ill use for now until the user account functionality has been made
-    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) { 
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted']) ) { 
         $user_id = $_SESSION['userID'];
         $productID = $_POST['productID'];
         $productSize = $_POST['sizes'];
         $productQuantity = $_POST['quantity'];
-        $action = $_POST["action"]
-        $sql = $db->prepare("
+        
+        if ($_POST["action"] === "Add to Basket") {
+            $sql = $db->prepare("
     SELECT basket.*
     FROM basket
     WHERE basket.userID = :uid");
@@ -35,12 +36,21 @@ $basketDetails = $sql->fetch(PDO::FETCH_ASSOC);
 if(!$basketDetails){
    $stmt = $db->prepare("INSERT INTO basket (userID) VALUES (?)");
    $stmt->execute([$user_id]);
+   $basketID = $db->lastInsertId();
 } 
-   $basketID = $basketDetails['basketID'];
+   else{
+    $basketID = $basketDetails['basketID'];
+}
    $sql2 = $db->prepare("INSERT INTO basketitem (basketID, productID, quantity) VALUES (?, ?, ?)");
    $sql2->execute([$basketID, $productID, $productQuantity]);
 
     }
+
+    if ($_POST["action"] === "Buy Now"){
+        //add to orders table logic here
+    }
+        }
+        
 ?>
  
 
@@ -160,8 +170,8 @@ if(!$basketDetails){
                     <input type="number" value="1" name="quantity" min="1">
                 </div>
                 <input hidden value="<?php echo nl2br(htmlspecialchars($productDetails['productID']));?>" name="productID">
-                <div class="checkout"><input type="submit" value="Add to Basket"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
-                <!--<div class="checkout"><input type="submit" value="Buy Now"></div> -->
+                <div class="checkout"><input type="submit" value="Add to Basket" name="action"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
+                <div class="checkout"><input type="submit" value="Buy Now" name="action"></div>
             </form>
         </div>
     </div>
