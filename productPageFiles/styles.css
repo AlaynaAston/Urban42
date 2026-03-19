@@ -26,13 +26,15 @@ active slides will be hidden. */
 .slide > img {
     display: block;
     object-fit: cover;
-    max-width: 30vw;
-    max-height: 30vw;
-    margin-left: auto;
+    width: 30vw;
+    height: 30vw;
+    margin-left: 5vw;
     margin-right: auto;
 }
 
-
+#descriptionAndButtons {
+    width: 40rem;
+}
 .slide[data-active] {
     opacity: 1;
 }
@@ -61,11 +63,11 @@ active slides will be hidden. */
 }
 
 .carousel-button.prev {
-    left: 1rem;
+    margin-left: 2.5vw;
 }
 
 .carousel-button.next {
-    right: 1rem;
+    margin-left: 35vw;
 }
 .carousel > ul {
     margin: 0;
@@ -75,21 +77,21 @@ active slides will be hidden. */
 
 #product-title {
     display: flex;
-    padding-top: 3rem;
+    padding-top: 2rem;
     font-size: 2.5vw;
 }
 
 #short-description {
     font-size: 1.2vw;
-    max-width: 40%;
+   
 }
 
 #product-details {
-    gap: 3rem;
+    gap: 10rem;
     display: flex;
     flex-wrap: nowrap;
-    max-width: 100%;
-    max-height: 50%;
+    width: 90%;
+    
     vertical-align: top;
 }
 
@@ -105,4 +107,64 @@ active slides will be hidden. */
     padding-top: 5rem;
     padding-left: 1rem;
     max-width: 40vw;
+}
+
+#recommendedProducts {
+    display: flex;
+    flex-wrap: nowrap;
+}
+#recommendedProductsImages {
+    display: inline;
+}
+.recommendedProduct {
+    width: 10vw;
+    height: 10vw;
+}
+.recommendedProduct:hover{
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
+    transform: scale(1.1);
+}
+#price {
+    margin-top: 0%;
+    font-size: 1.5vw;
+}
+
+.sizes, #quantity {
+    background-color: white;
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    padding-left: 1%;
+    margin-top: 1.5%;
+    margin-bottom: 2%;
+    border-radius: 1rem;
+}
+
+#basketButton {
+    width: 100%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    border-radius: 1rem;
+    background-color: aquamarine;
+    border-color: aquamarine;
+}
+
+#basketButton:hover {
+    background-color: rgb(111, 216, 181);
+}
+#buyButton {
+    width: 100%;
+    padding-top: 2.5%;
+    padding-bottom: 2.5%;
+    border-radius: 1rem;
+    background-color: white;
+    border-color: aquamarine;
+}
+
+#buyButton:hover {
+    background-color: rgb(228, 228, 228);;
+}
+
+input, select {
+    cursor: pointer;
 }

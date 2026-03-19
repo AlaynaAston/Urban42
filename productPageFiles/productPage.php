@@ -19,6 +19,53 @@ if (!isset($_GET['id'])) {
     if(!$productDetails){
         header("Location: 404PageError.php"); 
     }
+
+    //this basically generates random products to suggest the user to buy
+
+    $rsql = $db->prepare("SELECT COUNT(*)
+    FROM product");
+    $rsql->execute();
+    $numProducts = $rsql->fetchColumn();
+    
+    $productID1 = rand(4, $numProducts);
+   while ($productID1 == $pid){
+    $productID1 = rand(4, $numProducts);
+   }
+
+   $ksql  = $db->prepare("
+    SELECT product.*
+    FROM product
+    WHERE product.productID = :pid");
+    $ksql->execute([':pid'=>$productID1]);
+    $product1Details = $ksql->fetch(PDO::FETCH_ASSOC);
+
+   
+    $productID2 = rand(4, $numProducts);
+    while ($productID2 == $productID1 || $productID2 == $pid){
+        $productID2 = rand(4, $numProducts);
+    }
+    
+    $ksql2  = $db->prepare("
+    SELECT product.*
+    FROM product
+    WHERE product.productID = :pid");
+    $ksql2->execute([':pid'=>$productID2]);
+    $product2Details = $ksql2->fetch(PDO::FETCH_ASSOC);
+
+    $productID3 = rand(4, $numProducts);
+    while ($productID3 == $productID1 || $productID3 == $productID2 || $productID3 == $pid) {
+        $productID3 = rand(4, $numProducts);
+    }
+
+    $ksql3  = $db->prepare("
+    SELECT product.*
+    FROM product
+    WHERE product.productID = :pid");
+    $ksql3->execute([':pid'=>$productID3]);
+    $product3Details = $ksql3->fetch(PDO::FETCH_ASSOC);
+
+
+
     $_SESSION["userID"] = "1"; //some hard coding ill use for now until the user account functionality has been made
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted']) ) { 
         $user_id = $_SESSION['userID'];
@@ -71,7 +118,6 @@ if(!$basketDetails){
         $sql4->execute([':totalAmount'=>$total, ':orderID'=>$orderID]);
     }
         }
-        
 ?>
  
 
@@ -149,7 +195,7 @@ if(!$basketDetails){
             <button class="carousel-button next" data-carousel-button="next">&#62;</button>
             <ul data-slides>
                 <li class="slide">
-                    <img src="<?php echo nl2br(htmlspecialchars($productDetails['image1Path']));?>" >
+                    <img src="<?php echo nl2br(htmlspecialchars($productDetails['image1Path']));?>" id="carousel img">
                 </li>
                 <li class="slide" data-active>
                     <img src="<?php echo nl2br(htmlspecialchars($productDetails['image2Path']));?>">
@@ -159,12 +205,13 @@ if(!$basketDetails){
                 </li>
             </ul>
         </div>
+        <div id="descriptionAndButtons">
         <div id="product-text">
             <div id="product-title">
                 <p><?php echo nl2br(htmlspecialchars($productDetails['name'])); ?></p>
             </div>
-            <div id="price">
-                <p>£<?php echo nl2br(htmlspecialchars($productDetails['price']));?></p>
+            <div id="priceDiv">
+                <p id="price">£<?php echo nl2br(htmlspecialchars($productDetails['price']));?></p>
             </div>
             <div id="stockCount">
                 <p>In Stock</p>
@@ -188,13 +235,27 @@ if(!$basketDetails){
                 </div>
                 <div id="inputQuantity">
                     <label>Quantity: </label><br>
-                    <input type="number" value="1" name="quantity" min="1">
+                    <input type="number" value="1" name="quantity" min="1" max="30" id="quantity">
                 </div>
                 <input hidden value="<?php echo nl2br(htmlspecialchars($productDetails['productID']));?>" name="productID">
-                <div class="checkout"><input type="submit" value="Add to Basket" name="action"></div><!-- there should be some php here tracks what the user put in our form and puts it in the basket-->
-                <div class="checkout"><input type="submit" value="Buy Now" name="action"></div>
+                <div class="checkout"><input type="submit" value="Add to Basket" name="action" id="basketButton"></div>
+                <div class="checkout"><input type="submit" value="Buy Now" name="action" id="buyButton"></div>
+
             </form>
         </div>
+    </div>
+    
+    <div id="recommendedProducts">
+        <div id="recommendedProductsImages">
+        <h2>You Might Also Like:</h2>
+        <a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product1Details['productID']));?>"> <img src="<?php echo nl2br(htmlspecialchars($product1Details['image1Path']));?>"class="recommendedProduct"></a>
+        <u><p><?php echo nl2br (htmlspecialchars($product1Details['name']));?></p></u>
+<a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product2Details['productID']));?>"><img src="<?php echo nl2br(htmlspecialchars($product2Details['image2Path']));?>"class="recommendedProduct"></a>
+    <u><p><?php echo nl2br (htmlspecialchars($product2Details['name']));?></p><br></u>
+<a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product3Details['productID']));?>"><img src="<?php echo nl2br(htmlspecialchars($product3Details['image3Path']));?>"class="recommendedProduct"></a>
+<u><p><?php echo nl2br (htmlspecialchars($product3Details['name']));?></p><br></u>
+</div>
+</div>
     </div>
     <div id="extra-details">
         <p id="materials">More Information</p>
