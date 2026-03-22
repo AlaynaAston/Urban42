@@ -10,9 +10,9 @@ if (!isset($_GET['productID'])) {
 
 $pid = $_GET['productID'];
 $sql = $db->prepare("
-    SELECT product.*
-    FROM product
-    WHERE product.productID = :pid");
+    SELECT Product.*
+    FROM Product
+    WHERE Product.productID = :pid");
 $sql->execute([':pid'=>$pid]);
 
 $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
@@ -34,9 +34,9 @@ while ($productID1 == $pid) {
 }
 
 $ksql = $db->prepare("
-    SELECT product.*
-    FROM product
-    WHERE product.productID = :pid");
+    SELECT Product.*
+    FROM Product
+    WHERE Product.productID = :pid");
 $ksql->execute([':pid'=>$productID1]);
 $product1Details = $ksql->fetch(PDO::FETCH_ASSOC);
 
@@ -46,9 +46,9 @@ while ($productID2 == $productID1 || $productID2 == $pid) {
 }
 
 $ksql2 = $db->prepare("
-    SELECT product.*
-    FROM product
-    WHERE product.productID = :pid");
+    SELECT Product.*
+    FROM Product
+    WHERE Product.productID = :pid");
 $ksql2->execute([':pid'=>$productID2]);
 $product2Details = $ksql2->fetch(PDO::FETCH_ASSOC);
 
@@ -58,102 +58,63 @@ while ($productID3 == $productID1 || $productID3 == $productID2 || $productID3 =
 }
 
 $ksql3 = $db->prepare("
-    SELECT product.*
-    FROM product
-    WHERE product.productID = :pid");
+    SELECT Product.*
+    FROM Product
+    WHERE Product.productID = :pid");
 $ksql3->execute([':pid'=>$productID3]);
 $product3Details = $ksql3->fetch(PDO::FETCH_ASSOC);
 
-if (!isset($_SESSION["userID"])) {
-    // Redirect to login if user is not signed in
-    header("Location: login.php");
-    exit();
+
+
+    $_SESSION["userID"] = "1"; //some hard coding ill use for now until the user account functionality has been made
+    if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted']) ) { 
+        $user_id = $_SESSION['userID'];
+        $productID = $_POST['productID'];
+        $productSize = $_POST['sizes'];
+        $productQuantity = $_POST['quantity'];
+        
+        if ($_POST["action"] === "Add to Basket") {
+            $sql = $db->prepare("
+    SELECT Basket.*
+    FROM Basket
+    WHERE Basket.userID = :uid");
+    $sql->execute([':uid'=>$user_id]);
+$basketDetails = $sql->fetch(PDO::FETCH_ASSOC);
+if(!$basketDetails){
+   $stmt = $db->prepare("INSERT INTO Basket (userID) VALUES (?)");
+   $stmt->execute([$user_id]);
+   $basketID = $db->lastInsertId();
+} 
+   else{
+    $basketID = $basketDetails['basketID'];
 }
+   $sql2 = $db->prepare("INSERT INTO BasketItem (basketID, productID, quantity) VALUES (?, ?, ?)");
+   $sql2->execute([$basketID, $productID, $productQuantity]);
 
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) { 
-    $user_id = $_SESSION['userID']; 
-    $productID = $_POST['productID'];
-    $productSize = $_POST['sizes'];
-    $productQuantity = (int)$_POST['quantity'];
-
-if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted'])) { 
-    $user_id = $_SESSION['userID'];
-    $productID = $_POST['productID'];
-    $productSize = $_POST['sizes'];
-    $productQuantity = (int)$_POST['quantity'];
-    
-    // Validate quantity
-    if ($productQuantity < 1 || $productQuantity > 30) {
-        $productQuantity = 1;
     }
-    
-    if ($_POST["action"] === "Add to Basket") {
-        // Check if user has a basket
-        $sql = $db->prepare("
-            SELECT basket.*
-            FROM basket
-            WHERE basket.userID = :uid");
-        $sql->execute([':uid'=>$user_id]);
-        $basketDetails = $sql->fetch(PDO::FETCH_ASSOC);
+
+    //buy now button adds order to orders Table and marks it as unpaid
+    if ($_POST["action"] === "Buy Now"){
         
-        if(!$basketDetails){
-            $stmt = $db->prepare("INSERT INTO basket (userID) VALUES (?)");
-            $stmt->execute([$user_id]);
-            $basketID = $db->lastInsertId();
-        } else {
-            $basketID = $basketDetails['basketID'];
-        }
-        
-        // Check if item already exists in basket
-        $checkItem = $db->prepare("
-            SELECT * FROM basketitem 
-            WHERE basketID = ? AND productID = ?");
-        $checkItem->execute([$basketID, $productID]);
-        
-        if($checkItem->rowCount() > 0) {
-            // Update quantity if item exists
-            $updateItem = $db->prepare("
-                UPDATE basketitem 
-                SET quantity = quantity + ? 
-                WHERE basketID = ? AND productID = ?");
-            $updateItem->execute([$productQuantity, $basketID, $productID]);
-        } else {
-            // Insert new item
-            $sql2 = $db->prepare("
-                INSERT INTO basketitem (basketID, productID, quantity) 
-                VALUES (?, ?, ?)");
-            $sql2->execute([$basketID, $productID, $productQuantity]);
-        }
-        
-        // Redirect to prevent form resubmission
-        header("Location: productPage.php?id=" . $productID);
-        exit();
-    }
-    
-    // Buy now button adds order to orders table and marks it as unpaid
-    if ($_POST["action"] === "Buy Now") {
-        $stmt2 = $db->prepare("
-            INSERT INTO orders (userID, orderDate, status) 
-            VALUES (?, CURDATE(), ?)");
+        $stmt2 = $db->prepare("INSERT INTO Orders (userID, orderDate, status) VALUES (?, CURDATE(), ?)");
         $stmt2->execute([$user_id, "Unpaid"]);
         $orderID = $db->lastInsertId();
         
         $sql3 = $db->prepare("
             SELECT price
-            FROM product
-            WHERE product.productID = :productID");
+            FROM Product
+            WHERE Product.productID = :productID");
         $sql3->execute([':productID'=>$productID]);
         $price = $sql3->fetchColumn();
         
         $stmt3 = $db->prepare("
-            INSERT INTO orderitem (orderID, productID, quantity, priceAtPurchase) 
+            INSERT INTO OrderItem (orderID, productID, quantity, priceAtPurchase) 
             VALUES (?, ?, ?, ?)");
         $stmt3->execute([$orderID, $productID, $productQuantity, $price]);
         
         $total = $productQuantity * $price;
         $sql4 = $db->prepare("
-            UPDATE orders
+            UPDATE Orders
             SET totalAmount = :totalAmount
             WHERE orderID = :orderID");
         $sql4->execute([':totalAmount'=>$total, ':orderID'=>$orderID]);
