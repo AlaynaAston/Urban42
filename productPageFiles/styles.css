@@ -168,3 +168,27 @@ active slides will be hidden. */
 input, select {
     cursor: pointer;
 }
+
+#images{
+padding-top: 0%;
+    flex-wrap: wrap;
+    display: flex;
+    margin-left: auto;
+}
+#card-image {
+    width: 20vw;
+    height: 20vw;
+    margin-left: 5vw;
+}
+
+#smalltext {
+    margin-left: 5vw;
+}
+
+#card-image:hover {
+    box-shadow:0 8px 16px 0 rgba(0,0,0,0.6);
+}
+
+#list-title {
+    text-align: center;
+}

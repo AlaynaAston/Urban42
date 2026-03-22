@@ -8,16 +8,17 @@ if (!isset($_GET['id'])) {
     exit();
 }
 
-    $pid = $_GET['id'];
+    $pid = (int)$_GET['id'];
     $sql = $db->prepare("
-    SELECT product.*
-    FROM product
-    WHERE product.productID = :pid");
+    SELECT Product.*
+    FROM Product
+    WHERE Product.productID = :pid");
     $sql->execute([':pid'=>$pid]);
     
     $productDetails = $sql->fetch(PDO::FETCH_ASSOC);
     if(!$productDetails){
         header("Location: 404PageError.php"); 
+        exit();
     }
 
     //this basically generates random products to suggest the user to buy
@@ -27,7 +28,7 @@ if (!isset($_GET['id'])) {
     $rsql->execute();
     $numProducts = $rsql->fetchColumn();
     
-    $productID1 = rand(4, $numProducts);
+    $productID1 = rand(1, $numProducts);
    while ($productID1 == $pid){
     $productID1 = rand(4, $numProducts);
    }
@@ -66,8 +67,12 @@ if (!isset($_GET['id'])) {
 
 
 
-    $_SESSION["userID"] = "1"; //some hard coding ill use for now until the user account functionality has been made
+   
     if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['submitted']) ) { 
+        if(!isset($_SESSION["userID"])) {
+            header("Location: login.php");
+            exit();
+        }
         $user_id = $_SESSION['userID'];
         $productID = $_POST['productID'];
         $productSize = $_POST['sizes'];
@@ -164,7 +169,8 @@ if(!$basketDetails){
 <span>GBP £</span>
 
 <a href="ContactPage.php">Help</a>
-<a href="login.php">Log in</a>
+<a href="<?php if(isset($_SESSION['userID']))
+    {echo("logout.php");} else{echo("login.php");}?>"><?php if(isset($_SESSION['userID'])){echo("Log Out");} else{echo("Log In");}?></a>
 
 <button id="theme-toggle" class="theme-toggle">🌙</button>
 
@@ -183,7 +189,7 @@ if(!$basketDetails){
         <a href="Profile.php">Your Account</a>
         <a href="index.php">Home</a>
         <a href="aboutus.php">About Us</a>
-        <a href="index.php">Shop</a>
+        <a href="Productlist.php">Shop</a>
         <a href="#">New Arrivals</a>
         <a href="#">Sale</a>
         <a href="ContactPage.php">Contact Us</a>
@@ -250,9 +256,9 @@ if(!$basketDetails){
         <h2>You Might Also Like:</h2>
         <a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product1Details['productID']));?>"> <img src="<?php echo nl2br(htmlspecialchars($product1Details['image1Path']));?>"class="recommendedProduct"></a>
         <u><p><?php echo nl2br (htmlspecialchars($product1Details['name']));?></p></u>
-<a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product2Details['productID']));?>"><img src="<?php echo nl2br(htmlspecialchars($product2Details['image2Path']));?>"class="recommendedProduct"></a>
+<a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product2Details['productID']));?>"><img src="<?php echo nl2br(htmlspecialchars($product2Details['image1Path']));?>"class="recommendedProduct"></a>
     <u><p><?php echo nl2br (htmlspecialchars($product2Details['name']));?></p><br></u>
-<a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product3Details['productID']));?>"><img src="<?php echo nl2br(htmlspecialchars($product3Details['image3Path']));?>"class="recommendedProduct"></a>
+<a href="productPage.php?id=<?php echo nl2br (htmlspecialchars($product3Details['productID']));?>"><img src="<?php echo nl2br(htmlspecialchars($product3Details['image1Path']));?>"class="recommendedProduct"></a>
 <u><p><?php echo nl2br (htmlspecialchars($product3Details['name']));?></p><br></u>
 </div>
 </div>
