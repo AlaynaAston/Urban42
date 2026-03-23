@@ -82,7 +82,7 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php else: ?>
         
         <div class="basket-header">
-            <span>Product</span>
+            <span>Product </span>
             <span style="margin-right: 250px;">Quantity</span>
             <span>Item Total</span>
         </div>
