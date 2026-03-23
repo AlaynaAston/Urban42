@@ -1,14 +1,13 @@
-
-
-<?php
+<?php 
 require 'testdb.php';
-
-$sql = "SELECT product.* FROM product";
-$products = $db->query($sql);
-$productDetails = $products->fetchAll(PDO::FETCH_ASSOC);
-
-
+session_start();
+if(!isset($_SESSION["userID"])) {
+            header("Location: login.php");
+            exit();
+        }
 ?>
+
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -20,8 +19,7 @@ $productDetails = $products->fetchAll(PDO::FETCH_ASSOC);
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    
-<!-- NAVBAR -->
+    <!-- NAVBAR -->
 <div class="navbar">
 
 <div class="nav-left">
@@ -45,7 +43,6 @@ $productDetails = $products->fetchAll(PDO::FETCH_ASSOC);
 <span>GBP £</span>
 
 <a href="ContactPage.php">Help</a>
-<a href="OrdersPage.php">Orders</a>
 <a href="<?php if(isset($_SESSION['userID']))
     {echo("logout.php");} else{echo("login.php");}?>"><?php if(isset($_SESSION['userID'])){echo("Log Out");} else{echo("Log In");}?></a>
 
@@ -60,7 +57,9 @@ $productDetails = $products->fetchAll(PDO::FETCH_ASSOC);
 
 </div>
 </div>
-    <div id="sidebar" class="sidebar">
+
+<!-- SIDEBAR -->
+<div id="sidebar" class="sidebar">
         <a href="Profile.php">Your Account</a>
         <a href="index.php">Home</a>
         <a href="aboutus.php">About Us</a>
@@ -68,16 +67,6 @@ $productDetails = $products->fetchAll(PDO::FETCH_ASSOC);
         <a href="#">New Arrivals</a>
         <a href="#">Sale</a>
         <a href="ContactPage.php">Contact Us</a>
-    </div>
-    <h1 id="list-title">Our Techwear Range</h1>
-    <div id="images">
-    <?php foreach($productDetails as $product): ?>
-    <div class="image-card">
-    <a href="productPage.php?id=<?php echo $product['productID']; ?>"><img src="<?php echo nl2br(htmlspecialchars($product['image1Path'])); ?>" id="card-image"></a>
-    <a href="productPage.php?id=<?php echo $product['productID']; ?>">  <p id="smalltext"><?php echo nl2br(htmlspecialchars($product['name'])); ?></p> </a>
-    <p id="smalltext">£<?php echo nl2br(htmlspecialchars($product['price'])); ?></p>
-    </div>
-        <?php endforeach; ?>
-    </div>
+    </div><!--end of the navigation bar-->
 </body>
 </html>

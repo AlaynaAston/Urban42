@@ -1,0 +1,19 @@
+<?php
+// products/hoodie-classic.php
+// Simple product page definition + render
+
+$product = [
+    'id' => 101,
+    'name' => 'Classic Hoodie',
+    'price' => 39.99,
+    'description' => "A soft cotton-blend hoodie with a clean, minimalist design. Ribbed cuffs, durable stitching, and a comfortable relaxed fit — perfect for daily wear.",
+    'stock' => 18,
+    'img' => '/assets/images/hoodie-classic-main.jpg',
+    'gallery' => [
+        '/assets/images/hoodie-classic-1.jpg',
+        '/assets/images/hoodie-classic-2.jpg'
+    ],
+    'sizes' => ['S','M','L','XL']
+];
+
+include_once __DIR__ . '/product.php';

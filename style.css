@@ -6,7 +6,13 @@ body {
     color: #1e293b;
 }
 
-.container { max-width: 1100px; margin: auto; padding: 1.5rem; }
+.container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 1.5rem;
+}
+
+/* NAVBAR */
 
 .topbar {
     background: #fff;
@@ -16,25 +22,24 @@ body {
 .topbar-inner {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    gap: 1.5rem;
     padding: 10px 20px;
 }
 
 .logo {
     font-size: 1.6rem;
     font-weight: 700;
-    font-family: 'Inter', sans-serif;
 }
 
 .nav {
     display: flex;
     align-items: center;
+    flex-grow: 1;
 }
 
 .nav a {
     margin: 0 1rem;
     color: #475569;
-    font-size: 1rem;
     text-decoration: none;
 }
 
@@ -47,12 +52,14 @@ body {
     gap: 0.5rem;
 }
 
+/* BUTTONS */
+
 .btn {
     padding: 0.45rem 0.9rem;
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.85rem;
-    border: 1px solid transparent;
+    border: none;
     cursor: pointer;
 }
 
@@ -61,32 +68,61 @@ body {
     color: white;
 }
 
-.btn.outline {
-    border: 1px solid #111827;
-    color: #111827;
+/* SEARCH BAR */
+
+.search-bar form {
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 999px;
+    padding: 4px 6px;
+    border: 1px solid #e2e8f0;
+}
+
+.search-bar input {
+    border: none;
     background: transparent;
+    padding: 6px 10px;
+    outline: none;
+    font-size: 0.9rem;
+    width: 160px;
 }
 
-.btn.small {
-    padding: 0.35rem 0.7rem;
+.search-bar button {
+    border: none;
+    background: #111827;
+    color: white;
+    border-radius: 999px;
+    padding: 6px 10px;
+    cursor: pointer;
 }
 
-.product-wrapper { margin-top: 2rem; }
+/* PRODUCT GRID */
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-top: 2rem;
+}
+
+/* PRODUCT CARD */
 
 .product-card {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    display: flex;
+    flex-direction: column;
     background: white;
-    padding: 2rem;
+    padding: 1rem;
     border-radius: 16px;
     box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    height: 100%;
 }
+
+/* IMAGE */
 
 .image-box {
     width: 100%;
-    max-width: 500px;
-    height: 400px;
+    height: 220px;
     background: #e2e8f0;
     border-radius: 12px;
     overflow: hidden;
@@ -94,44 +130,37 @@ body {
 
 .image-box img {
     width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.thumb-row {
-    display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
-}
-
-.thumb-row img {
-    width: 70px;
-    height: auto;
+    height: 100%;
     object-fit: cover;
 }
 
-.product-title {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
+/* TEXT */
 
-.price {
-    font-weight: 700;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
+.product-title {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
 }
 
 .description {
-    margin-bottom: 1.2rem;
-    line-height: 1.5;
+    margin-top: 0.3rem;
+    font-size: 0.9rem;
+    color: #475569;
 }
 
-.stock {
-    margin-bottom: 1.2rem;
-    font-weight: 600;
+/* FIXED ROW (KEY PART) */
+
+.bottom-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
 }
 
-.in-stock { color: #059669; }
+.price {
+    font-weight: bold;
+}
+
+/* FOOTER */
 
 .footer {
     margin-top: 3rem;
@@ -142,71 +171,4 @@ body {
 .footer-inner {
     display: flex;
     justify-content: space-between;
-}
-
-.footer-col h4 { margin-bottom: 0.6rem; }
-
-.footer-col a {
-    display: block;
-    margin-bottom: 0.3rem;
-    color: #475569;
-}
-
-.footer-bottom {
-    text-align: center;
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid #cbd5e1;
-    font-size: 0.85rem;
-}
-
-.size-chart-wrapper {
-    margin-top: 2rem;
-    background: white;
-    padding: 2rem;
-    border-radius: 16px;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.05);
-}
-
-.size-chart-wrapper h2 {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-}
-
-.size-chart-subtitle {
-    font-size: 1rem;
-    margin-bottom: 1.2rem;
-    color: #475569;
-}
-
-.size-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 1rem;
-    border: 1px solid #cbd5e1;
-    border-radius: 12px;
-    overflow: hidden;
-}
-
-.size-table th,
-.size-table td {
-    padding: 0.9rem;
-    text-align: center;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-.size-table th {
-    background: #f1f5f9;
-    font-weight: 700;
-}
-
-.size-table tr:last-child td {
-    border-bottom: none;
-}
-
-.measure-note {
-    margin-top: 1.2rem;
-    font-size: 0.95rem;
-    color: #475569;
-    line-height: 1.5;
 }
