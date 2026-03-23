@@ -171,32 +171,37 @@ p {
 
 
     </style>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<title>Search Results</title>
+    <title>Search Results</title>
 </head>
 
 <body>
 
-<h1>Search Results for "<?php echo htmlspecialchars($search); ?>"</h1>
+<h1>
+  Search Results for "<?php echo htmlspecialchars($search); ?>"
+</h1>
 
-<?php if ($products): ?>
-
-    <form method="GET" class="filter-form">
+<!-- ✅ FILTER FORM (always visible) -->
+<form method="GET" class="filter-form">
 
   <input type="text" name="search" placeholder="Search..."
     value="<?php echo htmlspecialchars($search); ?>">
 
   <input type="number" name="min_price" placeholder="Min £"
-    value="<?php echo htmlspecialchars($min_price); ?>">
+    value="<?php echo htmlspecialchars($min_price ?? ''); ?>">
 
   <input type="number" name="max_price" placeholder="Max £"
-    value="<?php echo htmlspecialchars($max_price); ?>">
+    value="<?php echo htmlspecialchars($max_price ?? ''); ?>">
 
   <button type="submit">Filter</button>
 
 </form>
+
+<?php if (!empty($products)): ?>
 
 <div class="product-grid">
 
@@ -204,13 +209,15 @@ p {
 
 <div class="product-card">
 
-<img src="<?php echo $p["image1Path"]; ?>" width="200">
+  <img src="<?php echo htmlspecialchars($p["image1Path"]); ?>" width="200">
 
-<h3><?php echo htmlspecialchars($p["name"]); ?></h3>
+  <h3><?php echo htmlspecialchars($p["name"]); ?></h3>
 
-<p>Â£<?php echo $p["price"]; ?></p>
+  <p>£<?php echo number_format($p["price"], 2); ?></p>
 
-<a href="product.php?id=<?php echo $p["productID"]; ?>">View Product</a>
+  <a href="product.php?id=<?php echo (int)$p["productID"]; ?>">
+    View Product
+  </a>
 
 </div>
 
@@ -220,7 +227,7 @@ p {
 
 <?php else: ?>
 
-<p>No products found.</p>
+<p class="no-results">No products found.</p>
 
 <?php endif; ?>
 
