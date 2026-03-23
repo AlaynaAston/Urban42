@@ -98,30 +98,6 @@ if(!$basketDetails){
 
     }
 
-    //buy now button adds order to orders Table and marks it as unpaid
-    if ($_POST["action"] === "Buy Now"){
-        
-        $stmt2 = $db->prepare("INSERT INTO orders (userID, orderDate, status) VALUES (?, CURDATE(), ?)");
-        $stmt2->execute([$user_id, "Unpaid"]);
-        $orderID = $db->lastInsertID();
-        $sql3 = $db->prepare("
-        SELECT price
-        FROM product
-        WHERE product.productID = :productID
-        ");
-        $sql3->execute([':productID'=>$productID]);
-        $price = $sql3->fetchColumn();
-
-        $stmt3 = $db->prepare("INSERT INTO orderitem (orderID, productID, quantity, priceAtPurchase) VALUES (?, ?, ?, ?)");
-        $stmt3->execute([$orderID, $productID, $productQuantity, $price]);
-        $total = $productQuantity * $price;
-        $sql4 = $db->prepare("
-        UPDATE orders
-        SET totalAmount = :totalAmount
-        WHERE orderID = :orderID
-        ");
-        $sql4->execute([':totalAmount'=>$total, ':orderID'=>$orderID]);
-    }
         }
 ?>
  
@@ -245,7 +221,7 @@ if(!$basketDetails){
                 </div>
                 <input hidden value="<?php echo nl2br(htmlspecialchars($productDetails['productID']));?>" name="productID">
                 <div class="checkout"><input type="submit" value="Add to Basket" name="action" id="basketButton"></div>
-                <div class="checkout"><input type="submit" value="Buy Now" name="action" id="buyButton"></div>
+                <!--<div class="checkout"><input type="submit" value="Buy Now" name="action" id="buyButton"></div>-->
 
             </form>
         </div>

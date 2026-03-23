@@ -1,0 +1,55 @@
+h1 {
+    text-align: center;
+}
+
+#order-card {
+    padding-bottom: 3%;
+    border: 1px solid grey;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    margin-bottom: 1%;
+    border-radius: 10px;
+}
+
+#order-headings {
+    padding-left: 3%;
+    display: flex;
+    gap: 10vw;
+    background-color: rgb(219, 236, 224);
+}
+
+#order-content {
+    width: 100%;
+    margin-left: 3%;
+    display: flex;
+    justify-content: flex-start;
+}
+#product-image {
+    width: 6vw;
+    height: 6vw;
+    margin-right: 3%;
+}
+
+#redirectButton {
+    cursor: pointer;
+    height: 30px;
+    width: 15vw;
+    margin-left: 40vw;
+    border-radius: 25px;
+    background-color: rgb(136, 205, 168);
+    border-style: none;
+}
+
+
+#redirectButton:hover {
+    background-color: rgb(118, 176, 145);
+}
+
+#order-link {
+    cursor: pointer;
+}
+
+#order-link:hover {
+    color: #4400ff;
+}
