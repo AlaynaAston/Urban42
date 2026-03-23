@@ -176,57 +176,22 @@ font-size:16px;
 }
 
 
-/* Categories Section */
-.categories-section {
-  padding: 30px 20px;
+/* Sections */
+.categories-section,
+.trending-section {
+  padding: 40px 20px;
   text-align: center;
 }
 
-.categories-section h2 {
-  margin-bottom: 25px;
+.categories-section h2,
+.trending-section h2 {
+  margin-bottom: 30px;
   font-size: 2rem;
   font-weight: 700;
   color: var(--text);
-  transition: color 0.3s;
 }
 
-/* Category cards - smooth hover with box-shadow */
-.category-card {
-  display: inline-block;
-  width: 180px;
-  margin: 15px;
-  padding: 15px;
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px var(--card-shadow);
-  transition: all 0.3s ease;
-  vertical-align: top;
-  position: relative;
-}
-
-.category-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
-}
-
-.dark-mode .category-card:hover {
-  box-shadow: 0 8px 20px rgba(72, 149, 239, 0.4);
-}
-
-.category-card img {
-  width: 100%;
-  height: 140px;
-  background: #e0e0e0;
-  border-radius: 8px;
-  object-fit: cover;
-  margin-bottom: 10px;
-  transition: background-color 0.3s;
-}
-
-.dark-mode .category-card img {
-  background: #333;
-}
-
+/* Card */
 .category-card,
 .trending-card {
   display: inline-block;
@@ -234,59 +199,53 @@ font-size:16px;
   margin: 15px;
   padding: 15px;
 
+  /* Gradient background */
   background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
 
-  border-radius: 14px;
+  border-radius: 16px;
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+
   transition: all 0.3s ease;
   vertical-align: top;
-  color: white; /* important for readability */
+  position: relative;
+  overflow: hidden;
+
+  color: white;
 }
 
-/* Trending Items Section */
-.trending-section {
-  padding: 30px 20px;
-  text-align: center;
-}
-
-.trending-section h2 {
-  margin-bottom: 25px;
-  font-size: 2rem;
-  font-weight: 700;
-  color: var(--text);
-  transition: color 0.3s;
-}
-
-
+/* Card Hover */
+.category-card:hover,
 .trending-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(67, 97, 238, 0.3);
+  transform: translateY(-6px) scale(1.02);
+  box-shadow: 0 12px 28px rgba(67, 97, 238, 0.35);
 }
 
+.dark-mode .category-card:hover,
 .dark-mode .trending-card:hover {
-  box-shadow: 0 8px 20px rgba(72, 149, 239, 0.4);
+  box-shadow: 0 12px 28px rgba(72, 149, 239, 0.45);
 }
 
+/* Images */
+.category-card img,
 .trending-card img {
   width: 100%;
   height: 140px;
-  background: #e0e0e0;
-  border-radius: 8px;
+  border-radius: 10px;
   object-fit: cover;
   margin-bottom: 10px;
-  transition: background-color 0.3s;
 }
 
 .dark-mode .trending-card img {
   background: #333;
 }
 
+/* Text */
+.category-card p,
 .trending-card p {
   font-size: 1.1rem;
   font-weight: 600;
-  margin-top: 5px;
-  color: var(--text);
-  transition: color 0.3s;
+  margin-top: 8px;
+  color: white;
 }
 
 /* Footer */
