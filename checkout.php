@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['purchase']) && !empty(
         $db->beginTransaction();
         
         // Create order
-        $orderSql = "INSERT INTO OrderTable (userID, orderDate, totalAmount) VALUES (?, NOW(), ?)";
+        $orderSql = "INSERT INTO Orders (userID, orderDate, totalAmount) VALUES (?, NOW(), ?)";
         $orderStmt = $db->prepare($orderSql);
         $orderStmt->execute([$userID, $total]);
         $orderID = $db->lastInsertId();
@@ -131,7 +131,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['purchase']) && !empty(
     <a href="Profile.php">Your Account</a>
     <a href="index.php">Home</a>
     <a href="aboutus.php">About Us</a>
-    <a href="shop.php">Shop</a>
+    <a href="Productlist.php">Shop</a>
     <a href="#">New Arrivals</a>
     <a href="#">Sale</a>
     <a href="ContactPage.php">Contact Us</a>
@@ -149,7 +149,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['purchase']) && !empty(
     <h2>Order Summary</h2>
 
     <?php if (empty($rows)): ?>
-        <p class="empty-message">Your basket is empty. <a href="shop.php">Continue shopping</a></p>
+        <p class="empty-message">Your basket is empty. <a href="index.php">Continue shopping</a></p>
     <?php else: ?>
         <table>
             <thead>
