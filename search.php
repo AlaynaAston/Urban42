@@ -9,7 +9,6 @@ if (isset($_GET['query'])) {
 
     $search = $_GET['query'];
 
-    // Prepared statement (SECURE)
     $stmt = $conn->prepare(
         "SELECT * FROM Product 
          WHERE name LIKE ? 
@@ -30,17 +29,25 @@ if (isset($_GET['query'])) {
 
             echo '
             <div class="product-card">
+
                 <div class="image-box">
-                    <img src="' . $row["image1Path"] . '" alt="">
+                    <img src="/Urban42/' . $row["image1Path"] . '" alt="' . $row["name"] . '">
                 </div>
 
                 <h2 class="product-title">' . $row["name"] . '</h2>
 
                 <p class="description">
-                    ' . substr($row["description"], 0, 80) . '...
+                    ' . substr($row["description"], 0, 60) . '...
                 </p>
 
-                <p class="price">£' . $row["price"] . '</p>
+                <div class="bottom-row">
+                    <p class="price">£' . $row["price"] . '</p>
+
+                    <a href="/Urban42/cart.php?productID=' . $row["productID"] . '" class="btn primary">
+                        Add to Cart
+                    </a>
+                </div>
+
             </div>
             ';
         }
