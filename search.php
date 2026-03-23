@@ -4,62 +4,94 @@
 <div class="container">
     <h1>Search Results</h1>
 
+    <!-- FILTER BAR -->
+    <?php include 'includes/filters.php'; ?>
+
 <?php
-if (isset($_GET['query'])) {
 
-    $search = $_GET['query'];
+$conditions = [];
+$params = [];
+$types = "";
 
-    $stmt = $conn->prepare(
-        "SELECT * FROM Product 
-         WHERE name LIKE ? 
-         OR description LIKE ?"
-    );
+/* SEARCH */
+if (!empty($_GET['query'])) {
+    $conditions[] = "(name LIKE ? OR description LIKE ?)";
+    $searchTerm = "%" . $_GET['query'] . "%";
+    $params[] = $searchTerm;
+    $params[] = $searchTerm;
+    $types .= "ss";
+}
 
-    $searchTerm = "%" . $search . "%";
-    $stmt->bind_param("ss", $searchTerm, $searchTerm);
-    $stmt->execute();
+/* MIN PRICE */
+if (!empty($_GET['min_price'])) {
+    $conditions[] = "price >= ?";
+    $params[] = $_GET['min_price'];
+    $types .= "d";
+}
 
-    $result = $stmt->get_result();
+/* MAX PRICE */
+if (!empty($_GET['max_price'])) {
+    $conditions[] = "price <= ?";
+    $params[] = $_GET['max_price'];
+    $types .= "d";
+}
 
-    if ($result->num_rows > 0) {
+/* BUILD QUERY */
+$sql = "SELECT * FROM Product";
 
-        echo '<div class="product-grid">';
+if (!empty($conditions)) {
+    $sql .= " WHERE " . implode(" AND ", $conditions);
+}
 
-        while ($row = $result->fetch_assoc()) {
+$stmt = $conn->prepare($sql);
 
-            echo '
-            <div class="product-card">
+if (!empty($params)) {
+    $stmt->bind_param($types, ...$params);
+}
 
-                <div class="image-box">
-                    <img src="/Urban42/' . $row["image1Path"] . '" alt="' . $row["name"] . '">
-                </div>
+$stmt->execute();
+$result = $stmt->get_result();
 
-                <h2 class="product-title">' . $row["name"] . '</h2>
+/* DISPLAY RESULTS */
 
-                <p class="description">
-                    ' . substr($row["description"], 0, 60) . '...
-                </p>
+if ($result->num_rows > 0) {
 
-                <div class="bottom-row">
-                    <p class="price">£' . $row["price"] . '</p>
+    echo '<div class="product-grid">';
 
-                    <a href="/Urban42/cart.php?productID=' . $row["productID"] . '" class="btn primary">
-                        Add to Cart
-                    </a>
-                </div>
+    while ($row = $result->fetch_assoc()) {
 
+        echo '
+        <div class="product-card">
+
+            <div class="image-box">
+                <img src="/Urban42/' . $row["image1Path"] . '" alt="' . $row["name"] . '">
             </div>
-            ';
-        }
 
-        echo '</div>';
+            <h2 class="product-title">' . $row["name"] . '</h2>
 
-    } else {
-        echo "<p>No products found.</p>";
+            <p class="description">
+                ' . substr($row["description"], 0, 60) . '...
+            </p>
+
+            <div class="bottom-row">
+                <p class="price">£' . $row["price"] . '</p>
+
+                <a href="/Urban42/cart.php?productID=' . $row["productID"] . '" class="btn primary">
+                    Add to Cart
+                </a>
+            </div>
+
+        </div>
+        ';
     }
 
-    $stmt->close();
+    echo '</div>';
+
+} else {
+    echo "<p>No products found.</p>";
 }
+
+$stmt->close();
 ?>
 
 </div>
