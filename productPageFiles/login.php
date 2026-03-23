@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'testdb.php';
+require 'db.php';
 
 if (!isset($_SESSION["login_attempts"])) {
     $_SESSION["login_attempts"] = 0;

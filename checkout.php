@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['purchase']) && !empty(
 <head>
     <meta charset="UTF-8">
     <title>Checkout - Urban 42</title>
-    <link rel="stylesheet" href="css/checkout.css">
+    <link rel="stylesheet" href="checkoutstyle.css">
 </head>
 <body>
 

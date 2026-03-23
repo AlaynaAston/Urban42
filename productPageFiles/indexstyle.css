@@ -42,105 +42,123 @@ a:hover {
 }
 
 /* NAVBAR */
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:12px 35px;
-background:var(--card-bg);
-border-bottom:2px solid var(--border);
-font-size:14px;
-height:70px;
-}
+.navbar {
+            display: flex; /*places items in a row*/
+            justify-content: space-between; /*spreads items to left and right*/
+            align-items: center; /*centers items vertically*/
+            padding: 15px 40px; /*space inside the navigation bar*/
+            background-color: var(--card-bg); /*sets the background colour to white*/
+            border-bottom: 2px solid var(--border); /*creates a black line under the navigation bar*/
+            font-size: 14px; /*sets the text size in the navigation bar*/
+        }
 
-/* LEFT SIDE */
-.nav-left{
-display:flex;
-align-items:center;
-gap:18px;
-}
+        .nav-left { 
+            display: flex; /*places items in a row*/
+            align-items: center; /*centers items vertically*/
+            gap: 20px; /*space between items*/
+        }
 
-/* SIDEBAR ICON */
-.sidebar-icon{
-display:flex;
-flex-direction:column;
-gap:5px;
-cursor:pointer;
-}
+        .sidebar-icon {
+            display: flex; /*shows the bars in a column*/
+            flex-direction: column; /*stacks the bars (-) vertically*/
+            gap: 5px; /*sets the space between each bar*/
+            cursor: pointer; /*shows a pointer when hovering to make it look clickable*/
+        }
 
-.sidebar-icon .bar{
-width:25px;
-height:3px;
-background:var(--text);
-}
+        .sidebar-icon .bar {
+            width: 25px; /*length of the each bar*/
+            height: 3px; /*thickness of the each bar*/
+            background-color: var(--text); /*sets dark grey as the bar colour*/
+        }
 
-/* LOGO */
-.brand-logo{
-display:flex;
-align-items:center;
-gap:10px;
-font-weight:600;
-font-size:18px;
-}
+        .brand-logo {
+            display: flex; /*puts logo and text in a row*/
+            align-items: center; /*centers them vertically*/
+            gap: 10px; /*space between logo and text*/
+            font-size: 18px; /*size of the brand name text*/
+            font-weight: bold; /*makes the brand name bold*/
+            color: var(--text); /*sets the text colour*/
+        }
 
-.brand-logo img{
-width:38px;
-}
+        .brand-logo img {
+            width: 40px; /*sets the width of the brand logo image*/
+            height: auto; /*keeps the image shape correct*/
+        }
 
-/* RIGHT SIDE */
-.nav-right{
-display:flex;
-align-items:center;
-gap:18px;
-}
+        .nav-right {
+            display: flex; /*puts items in a row*/
+            align-items: center; /*centers them vertically*/
+            gap: 20px; /*space between each item*/
+        }
 
-/* FLAG */
-.flag-icon{
-width:22px;
-}
+        .flag-icon {
+            width: 20px; /*size of the flag image*/
+            height: auto; /*keeps the image shape correct*/
+        }
 
-/* SEARCH BAR */
-.search-form{
-display:flex;
-border:1px solid var(--input-border);
-border-radius:6px;
-overflow:hidden;
-height:36px;
-}
+        .search-form {
+            display: flex; /*puts items in a row*/
+            border: 1px solid var(--input-border); /*sets light grey border*/
+            border-radius: 4px; /*creates slightly rounded corners*/
+            overflow: hidden; /*keeps the corners clean and neat*/
+        }
 
-.search-form input{
-border:none;
-outline:none;
-padding:0 12px;
-width:230px;
-font-size:14px;
-background:var(--card-bg);
-color:var(--text);
-}
+        .search-form input {
+            padding: 8px 12px; /*spac inside the input box*/
+            border: none; /*it removes the border of search bar*/
+            outline: none; /*removes the outline when clicked*/
+            font-size: 14px; /*sets the text size*/
+        }
 
-.search-form button{
-border:none;
-padding:0 14px;
-cursor:pointer;
-background:linear-gradient(135deg,var(--gradient-start),var(--gradient-end));
-color:white;
-font-size:14px;
-}
+        .search-form button {
+            background-color: #222; /*sets dark background for button*/
+            color: var(--button-text); /*sets the text colour to white*/
+            border: none; /*removes border*/
+            padding: 8px 12px; /*adds space inside the button*/
+            cursor: pointer; /*shows pointer when hovering*/
+        }
 
-/* CART LINK */
-.cart-link{
-font-weight:500;
-}
+        .sidebar {
+            position: fixed;
+            top: 70px;
+            left: -350px; /* hides the side bar off-screen */
+            width: 250px;
+            height: 100%;
+            background: var(--card-bg);
+            border-right: 2px solid var(--border);
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            transition: 0.3s ease; /* smooth slide animation */
+        }
 
-/* THEME BUTTON */
-.theme-toggle{
-background:none;
-border:1px solid var(--border);
-padding:6px 10px;
-border-radius:6px;
-cursor:pointer;
-font-size:16px;
-}
+        /* When sidebar is open */
+        .sidebar.open {
+            left: 0;
+        }
+
+        .theme-toggle {
+            background: none;
+            border: 1px solid var(--border);
+            padding: 6px 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+            color: var(--text);
+        }
+
+        .chart-container {
+            width: 80%;
+            max-width: 700px;
+            margin: 60px auto;
+            padding: 30px;
+            background: var(--card-bg);
+            border-radius: 20px;
+            border: 1px solid var(--border);
+            box-shadow: 0 0 12px rgba(0,0,0,0.08);
+        }
+
 
 /* Categories Section */
 .categories-section {

@@ -61,20 +61,6 @@
   <a href="#">New Arrivals</a>
   <a href="#">Sale</a>
   <a href="ContactPage.php">Contact Us</a>
-
-  <?php if (isset($_SESSION["userID"]) && $_SESSION["userID"] == 1): ?>
-    
-    <hr>
-
-    <div class="admin-section">
-      <strong style="padding:10px; display:block;">Admin Only</strong>
-      <a href="ProductAdd.php">Manage Products</a>
-      
-    </div>
-
-  <?php endif; ?>
-  <br>
-  <a href="logout.php">Log Out</a>
 </div>
 
   <hr>

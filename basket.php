@@ -77,12 +77,12 @@ $items = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php if (!$items): ?>
         <div class="empty-basket">
             <p>Your basket is empty.</p>
-            <a href="shop.php" class="continue-shopping">Continue Shopping</a>
+            <a href="index.php" class="continue-shopping">Continue Shopping</a>
         </div>
     <?php else: ?>
         
         <div class="basket-header">
-            <span>Product</span>
+            <span>Product </span>
             <span style="margin-right: 250px;">Quantity</span>
             <span>Item Total</span>
         </div>

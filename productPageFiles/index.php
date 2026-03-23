@@ -92,8 +92,8 @@
 
     <div class="category-card">
       <a href="#">
-        <img src="placeholder.jpg" alt="Hats">
-        <p>Hats</p>
+        <img src="placeholder.jpg" alt="Accessories">
+        <p>Accessories</p>
       </a>
     </div>
   </section>

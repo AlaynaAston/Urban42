@@ -104,7 +104,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     </div>
     </div> 
     <div id="sidebar" class="sidebar">
-  <a href="index.html">Home</a>
+  <a href="index.php">Home</a>
   <a href="aboutus.php">About Us</a>
   <a href="#">Shop</a>
   <a href="#">New Arrivals</a>
